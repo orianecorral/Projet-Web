@@ -4,26 +4,35 @@
         <title>Home page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style/style_main.css">
     </head>
     <body>
         <header>
             <nav>
               <!-- logo -->
-              <div>
-                <a href="home_page.html">LOGO</a>
+              <div class="logo">
+                <a href="home_page.html"><img src="JobFinder_Front_Elements/Logo_main.png" class="logo_img"></a>
               </div>
               <!-- connexion -->
-               <div>
-                <a href="">Connexion</a>
-               </div>
+              <div class="log">
+                <a href="" class="button-1 connexion">Connexion</a>
                <!-- Inscription-->
-                <div>
-                  <a href="user_form.html">Inscription</a>
-                </div>
+                <a href="user_form.html " class="button-1 inscription">Inscription</a>
+              </div>
             </nav>
         </header>
         <main>
+          <form action="recherche_page.html">
+            <label for="recherche" class="find">Find ton job de rêve ici</label><br>
+            <div class="searchBar">
+              <input type="text" name="recherche" class="recherche" size="40" placeholder="Search here"/>
+              <button class="searchBut"><img src="JobFinder_Front_Elements/Loupe.png" class="searchBut"></button>
+            </div>
+          </form>
 
+          <div class="divCatch">
+            <h2 class="catchPhrase">Find your dream job here</h2>
+          </div>
         </main>
         <!-- Contact us -->
         <footer>
