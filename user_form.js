@@ -4,9 +4,4 @@ function SetUtilisateur() {
     email= document.getElementById("email").value
     telephone= document.getElementById("telephone").value
     mdp= document.getElementById("mdp").value
-    //boite.onclick = function () 
-    //{
-        console.log(nom)
-    //}
 }
-//clic()

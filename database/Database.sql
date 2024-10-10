@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 09 oct. 2024 à 19:46
+-- Généré le : jeu. 10 oct. 2024 à 12:17
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -37,14 +37,14 @@ CREATE TABLE `Annonces` (
   `date` date NOT NULL,
   `short_description` text NOT NULL,
   `long_description` text NOT NULL,
-  `compagny_id` int(11) NOT NULL
+  `company_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `Annonces`
 --
 
-INSERT INTO `Annonces` (`annonce_id`, `titre`, `adresse`, `nom_entreprise`, `salaire`, `contrat`, `date`, `short_description`, `long_description`, `compagny_id`) VALUES
+INSERT INTO `Annonces` (`annonce_id`, `titre`, `adresse`, `nom_entreprise`, `salaire`, `contrat`, `date`, `short_description`, `long_description`, `company_id`) VALUES
 (1, 'Développeur Full-Stack', '12 Rue de Rivoli, 75001 Paris', 'TechAdvance', '45000', 'CDI', '2024-08-21', 'Rejoignez notre équipe de développeurs pour construire des applications web modernes et performantes.', 'TechAdvance est à la recherche d’un Développeur Full-Stack pour rejoindre une équipe dynamique à Paris. Vous participerez au développement de nos solutions SaaS en utilisant React et Node.js, tout en collaborant avec l\'équipe DevOps pour améliorer les performances et la sécurité des systèmes. Nous recherchons quelqu\'un avec une expérience en développement d\'applications web, des compétences solides en JavaScript, ainsi qu\'une bonne maîtrise des bases de données NoSQL (MongoDB). Si vous êtes passionné par les nouvelles technologies et aimez travailler en équipe, ce poste est fait pour vous.', 1),
 (2, 'Ingénieur DevOps', '12 Rue de Rivoli, 75001 Paris', 'TechAdvance', '50000', 'CDI', '2024-08-16', 'Nous recherchons un expert DevOps pour automatiser nos processus d’intégration et de déploiement.', 'En tant qu\'Ingénieur DevOps chez TechAdvance, vous serez responsable de la gestion des pipelines d\'intégration et de déploiement continus (CI/CD). Vous travaillerez en étroite collaboration avec les équipes de développement pour améliorer l\'efficacité et la fiabilité des systèmes. Vous maîtrisez Docker, Kubernetes et les environnements cloud (AWS, Azure). Nous recherchons une personne capable de gérer la scalabilité et la sécurité des infrastructures tout en réduisant les temps de déploiement.', 1),
 (3, 'Chef de Projet IT', '12 Rue de Rivoli, 75001 Paris', 'TechAdvance', '55000', 'CDI', '2024-08-16', 'Le Chef de Projet IT sera le point de contact principal pour gérer des projets technologiques chez TechAdvance. Vous serez responsable de la planification, du suivi des délais et de la gestion des ressources tout en coordonnant les différentes équipes de développement et d’infrastructure. Une expérience en méthodologies agiles (Scrum) est indispensable, ainsi que la capacité à comprendre les besoins techniques et commerciaux. Vous assurerez également le suivi de la qualité et la gestion des risques.', 'Vous serez chargé de piloter des projets IT complexes dans un environnement agile.', 1),
@@ -64,7 +64,8 @@ INSERT INTO `Annonces` (`annonce_id`, `titre`, `adresse`, `nom_entreprise`, `sal
 
 CREATE TABLE `Candidatures` (
   `candidature_id` int(11) NOT NULL,
-  `annonce_id` int(11) NOT NULL
+  `annonce_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -80,7 +81,6 @@ CREATE TABLE `Entreprises` (
   `pageweb` text NOT NULL,
   `taille` text NOT NULL,
   `description` text NOT NULL,
-  `annonce_id` int(11) NOT NULL,
   `email` text NOT NULL,
   `mdp` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -89,11 +89,11 @@ CREATE TABLE `Entreprises` (
 -- Déchargement des données de la table `Entreprises`
 --
 
-INSERT INTO `Entreprises` (`company_id`, `nom_entreprise`, `adresse`, `pageweb`, `taille`, `description`, `annonce_id`, `email`, `mdp`) VALUES
-(1, 'TechAdvance', '12 Rue de Rivoli, 75001 Paris, France', 'www.techadvance.fr', '150', 'TechAdvance est une entreprise spécialisée dans le développement de solutions SaaS et de plateformes numériques pour les entreprises. Fondée en 2014, TechAdvance accompagne ses clients dans leur transformation digitale en offrant des services sur mesure dans les domaines du développement web, du cloud, et de la cybersécurité. Son expertise en technologies de pointe telles que React, Node.js et Kubernetes en fait un acteur incontournable dans l\'écosystème tech français.', 1234, 'contact@techadvance.fr', 'azerty'),
-(2, 'Innov&Boost', '45 Avenue Foch, 69006 Lyon, France', 'www.innovboost.com', '75', 'Innov&Boost est une agence de conseil en marketing digital qui aide les entreprises à accroître leur visibilité en ligne et à optimiser leurs performances marketing. Créée en 2016, Innov&Boost propose des services en gestion de campagnes publicitaires, SEO, gestion des réseaux sociaux et stratégie de contenu. Grâce à une équipe d\'experts en marketing digital, l\'agence collabore avec des startups et des PME pour les aider à atteindre leurs objectifs de croissance.', 56, 'info@innovboost.com', 'azerty'),
-(3, 'Comptabiliz', '23 Rue du Palais Gallien, 33000 Bordeaux, France', 'www.comptabiliz.fr', '40', 'Comptabiliz est un cabinet d\'expertise comptable basé à Bordeaux, spécialisé dans la comptabilité, la fiscalité, et le conseil financier pour les entreprises. Depuis sa création en 2010, Comptabiliz s\'est forgé une solide réputation grâce à son expertise et à ses services personnalisés pour les PME et les entrepreneurs. Le cabinet accompagne ses clients dans la gestion quotidienne de leurs finances et dans l\'optimisation de leurs processus comptables.', 78, 'service@comptabiliz.fr', 'azerty'),
-(4, 'AI Minds', '8 Rue des Carmes, 31000 Toulouse, France', 'www.aiminds.ai', '120', 'AI Minds est une entreprise innovante spécialisée dans l’intelligence artificielle et le machine learning. Fondée en 2017 à Toulouse, AI Minds conçoit des solutions basées sur l\'IA pour les secteurs de la santé, de la finance et du commerce. Grâce à une équipe d’ingénieurs et de chercheurs en intelligence artificielle, l’entreprise développe des modèles prédictifs et des systèmes de recommandation pour aider les entreprises à prendre des décisions plus éclairées et automatiser des processus complexes.', 910, 'hr@aiminds.ai', 'azerty');
+INSERT INTO `Entreprises` (`company_id`, `nom_entreprise`, `adresse`, `pageweb`, `taille`, `description`, `email`, `mdp`) VALUES
+(1, 'TechAdvance', '12 Rue de Rivoli, 75001 Paris, France', 'www.techadvance.fr', '150', 'TechAdvance est une entreprise spécialisée dans le développement de solutions SaaS et de plateformes numériques pour les entreprises. Fondée en 2014, TechAdvance accompagne ses clients dans leur transformation digitale en offrant des services sur mesure dans les domaines du développement web, du cloud, et de la cybersécurité. Son expertise en technologies de pointe telles que React, Node.js et Kubernetes en fait un acteur incontournable dans l\'écosystème tech français.', 'contact@techadvance.fr', 'azerty'),
+(2, 'Innov&Boost', '45 Avenue Foch, 69006 Lyon, France', 'www.innovboost.com', '75', 'Innov&Boost est une agence de conseil en marketing digital qui aide les entreprises à accroître leur visibilité en ligne et à optimiser leurs performances marketing. Créée en 2016, Innov&Boost propose des services en gestion de campagnes publicitaires, SEO, gestion des réseaux sociaux et stratégie de contenu. Grâce à une équipe d\'experts en marketing digital, l\'agence collabore avec des startups et des PME pour les aider à atteindre leurs objectifs de croissance.', 'info@innovboost.com', 'azerty'),
+(3, 'Comptabiliz', '23 Rue du Palais Gallien, 33000 Bordeaux, France', 'www.comptabiliz.fr', '40', 'Comptabiliz est un cabinet d\'expertise comptable basé à Bordeaux, spécialisé dans la comptabilité, la fiscalité, et le conseil financier pour les entreprises. Depuis sa création en 2010, Comptabiliz s\'est forgé une solide réputation grâce à son expertise et à ses services personnalisés pour les PME et les entrepreneurs. Le cabinet accompagne ses clients dans la gestion quotidienne de leurs finances et dans l\'optimisation de leurs processus comptables.', 'service@comptabiliz.fr', 'azerty'),
+(4, 'AI Minds', '8 Rue des Carmes, 31000 Toulouse, France', 'www.aiminds.ai', '120', 'AI Minds est une entreprise innovante spécialisée dans l’intelligence artificielle et le machine learning. Fondée en 2017 à Toulouse, AI Minds conçoit des solutions basées sur l\'IA pour les secteurs de la santé, de la finance et du commerce. Grâce à une équipe d’ingénieurs et de chercheurs en intelligence artificielle, l’entreprise développe des modèles prédictifs et des systèmes de recommandation pour aider les entreprises à prendre des décisions plus éclairées et automatiser des processus complexes.', 'hr@aiminds.ai', 'azerty');
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,6 @@ CREATE TABLE `Utilisateurs` (
   `nom` text NOT NULL,
   `email` text NOT NULL,
   `telephone` text NOT NULL,
-  `candidature_id` int(11) NOT NULL,
   `mdp` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -115,10 +114,10 @@ CREATE TABLE `Utilisateurs` (
 -- Déchargement des données de la table `Utilisateurs`
 --
 
-INSERT INTO `Utilisateurs` (`user_id`, `prenom`, `nom`, `email`, `telephone`, `candidature_id`, `mdp`) VALUES
-(1, 'Julie', 'Martin', 'julie.martin@example.com', '+33 6 12 34 56 78', 0, 'azerty'),
-(2, 'Nicolas', 'Lefebvre', 'nicolas.lefebvre@example.com', '+33 6 87 65 43 21', 0, 'azerty'),
-(3, 'Claire', 'Durand', 'claire.durand@example.com', '+33 7 22 33 44 55', 0, 'azerty');
+INSERT INTO `Utilisateurs` (`user_id`, `prenom`, `nom`, `email`, `telephone`, `mdp`) VALUES
+(1, 'Julie', 'Martin', 'julie.martin@example.com', '+33 6 12 34 56 78', 'azerty'),
+(2, 'Nicolas', 'Lefebvre', 'nicolas.lefebvre@example.com', '+33 6 87 65 43 21', 'azerty'),
+(3, 'Claire', 'Durand', 'claire.durand@example.com', '+33 7 22 33 44 55', 'azerty');
 
 --
 -- Index pour les tables déchargées

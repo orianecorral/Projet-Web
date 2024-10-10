@@ -23,10 +23,10 @@ except mysql.connector.Error as err :
 the_cursor = cnx.cursor(dictionary=True)
 
 # Selectionner la table 
-the_cursor.execute('SELECT * FROM Annonces')
+the_cursor.execute('SELECT * FROM Utilisateurs')
 result = the_cursor.fetchall()
 
-print(result[0]["titre"])
+print(result)
 
 the_cursor.close()
 
