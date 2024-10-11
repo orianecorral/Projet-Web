@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import errorcode
-
+import hashlib
 from config import config
 
 
@@ -17,10 +17,12 @@ except mysql.connector.Error as err :
 
     exit()
 
-
+MDP = hashlib.md5(b'Julien')
+MDO = MDP.hexdigest()
 the_cursor = cnx.cursor(dictionary=True)
 #push ce qui se trouve dans le .execute dans la base de donnée
-the_cursor.execute('INSERT INTO Utilisateurs( prenom,nom,email,telephone,mdp) VALUES("Jean","Castex","Jean.Castex@gmail.com","08 36 65 65 65","Jupiter")') 
+the_cursor.execute('INSERT INTO Utilisateurs( prenom,nom,email,telephone,mdp) VALUES("Jean","Castex","Jean.Castex@gmail.com","08 36 65 65 65",%s)',(MDO,))  
+#le %S indique qu'on remplace ça par une variable qui sera mis juste après ,ici MDO est la variable encodé , il faut bien mettre une virgule juste après MDO car sinon ils demanderons de mettre une liste ou un tuple à la place
 cnx.commit()
 
 the_cursor.close()
