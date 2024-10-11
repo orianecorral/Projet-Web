@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Annonce Form</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style/style_form.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+              <!-- logo -->
+              <div class="logo">
+                <a href="home_page.html"><img src="JobFinder_Front_Elements/Logo_main.png" class="logo_img"></a>
+              </div>
+              <!-- connexion -->
+              <div class="log">
+                <a href="" class="button-1 connexion">Connexion</a>
+               <!-- Inscription-->
+                <a href="user_form.html " class="button-1 inscription">Inscription</a>
+              </div>
+            </nav>
+        </header>
+        <main>
+            <form>
+                <div class="element">
+                    <label for="titre">Titre de l'annonce</label><br>
+                    <input type="text" name="titre" class="input" required>
+                </div>
+                <div class="element">
+                    <label for="adresse">Localisation du poste</label><br>
+                    <input type="text" name="adresse"  class="input"required>
+                </div>
+                <div class="element">
+                    <label for="nom_entreprise">Nom de l'entreprise</label><br>
+                    <input type="text" name="nom_entreprise"  class="input"required>
+                </div>
+                <div class="element">
+                    <label for="salaire">Fourchette de salaire</label><br>
+                    <input type="text" name="salaire" class="input">
+                </div>
+                <div class="element">
+                    <label for="date">Date de publication de l'annonce</label><br>
+                    <input type="date" name="date" class="input" required>
+                </div>
+                <div class="element">
+                    <label for="salaire">Type de contrat</label><br>
+                    <select name="salaire" class="input" required>
+                        <option value="">Selectionner le type de contrat</option>
+                        <option value="CDI">CDI</option>
+                        <option value="CDD 6 mois">CDD 6 mois</option>
+                        <option value="CDD 12 mois">CDD 12 mois</option>
+                        <option value="CDD 18 mois">CDD 18 mois</option>
+                        <option value="Stage">Stage</option>
+                        <option value="Stage 6 mois">Stage 6 mois</option>
+                        <option value="Alternance">Alternance</option>
+                    </select>
+                </div>
+                <div class="element_descr">
+                    <label for="short_description">Description courte du post (100 caractères)</label><br>
+                    <textarea name="short_description" maxlength="100" rows="3" required></textarea>
+                </div>
+                <div class="element_descr">
+                    <label for="long_description">Description détaillé du poste</label><br>
+                    <textarea name="long_description" rows="5" required></textarea>
+                </div>
+                <div class="submit_div">
+                    <label for="submit"></label><br>
+                    <input type="submit" name="submit" value="Envoyer" class="submit">
+                </div>
+            </form>
+        </main>
+        <footer>
+            <h4>Contactez-nous</h4>
+            <p>Email : x </p>
+            <p>Telephone : 06-</p>
+            <p>adresse</p>
+        </footer>
+    </body>
+</html>
