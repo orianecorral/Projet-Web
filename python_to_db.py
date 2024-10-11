@@ -19,8 +19,8 @@ except mysql.connector.Error as err :
 
 
 the_cursor = cnx.cursor(dictionary=True)
-
-the_cursor.execute('INSERT INTO Utilisateurs( prenom,nom,email,telephone,mdp) VALUES("Jean","Castex","Jean.Castex@gmail.com","08 36 65 65 65","Jupiter")')
+#push ce qui se trouve dans le .execute dans la base de donnée
+the_cursor.execute('INSERT INTO Utilisateurs( prenom,nom,email,telephone,mdp) VALUES("Jean","Castex","Jean.Castex@gmail.com","08 36 65 65 65","Jupiter")') 
 cnx.commit()
 
 the_cursor.close()

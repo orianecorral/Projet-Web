@@ -1,8 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
-
 from config import config
-
+import sys
 
 try:
     cnx = mysql.connector.connect(**config)
