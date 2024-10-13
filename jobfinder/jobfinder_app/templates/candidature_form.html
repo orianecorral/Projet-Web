@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Candidature form</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
+    </head>
+    <body>
+      <header>
+        <nav>
+          <!-- logo -->
+          <div class="logo">
+            <a href="http://127.0.0.1:8000/"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+          </div>
+          <div class="log">
+            <!-- Connexion -->
+            <a href="" class="button-1 connexion">Connexion</a>
+            <!-- Inscription-->
+            <a href="/user_form" class="button-1 inscription">Inscription</a>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="element">
+            <label for="nom">Nom</label><br>
+            <input type="text" name="nom" class="input" required>
+          </div>
+          <div class="element">
+            <label for="prenom">Prénom</label><br>
+            <input type="text" name="prenom" class="input" required>
+          </div>
+          <div class="element">
+            <label for="email">Email</label><br>
+            <input type="email" name="email" class="input" required>
+          </div>
+          <div class="element">
+            <label for="telephone">Téléphone</label><br>
+            <input type="text" name="telephone" class="input">
+          </div>
+        </form>
+      </main>
+      <footer>
+        <h4>Contactez-nous</h4>
+        <p>Email : x </p>
+        <p>Télephone : 06-</p>
+        <p>adresse</p>
+      </footer>
+    </body>
+</html>

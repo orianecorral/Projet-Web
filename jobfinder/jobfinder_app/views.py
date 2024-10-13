@@ -3,14 +3,26 @@ from django.shortcuts import render
 # from .forms import AnnoncesForm
 from django.http import HttpResponse
 from .models import Annonces
+from django.db.models import Q
 
 
 def home_page(request):
     return render(request,'home_page.html')
 
 def recherche_page(request):
-    annonces = Annonces.objects.all()
-    return render(request,'recherche_page.html',{'annonces':annonces})
+    if request.method == "POST":
+        recherche = request.POST['recherche']
+        annonces = Annonces.objects.filter(Q(titre__contains=recherche) | Q(nom_entreprise__contains=recherche) | Q(nom_entreprise__contains=recherche)| Q(short_description__contains=recherche)| Q(long_description__contains=recherche))
+        return render(request,'recherche_page.html',{'annonces':annonces})
+    else:
+        annonces = Annonces.objects.all()
+        return render(request,'recherche_page.html',{'annonces':annonces})
+
+def connexion_page(request):
+    return render(request,'connexion.html')
+
+def inscription_page(request):
+    return render(request,'inscription.html')
 
 
 def annonce_entry(request):
@@ -37,6 +49,11 @@ def process_annonce_entry(request):
     else:
         return HttpResponse("Invalid request method.")
     
+
+
+
+def candidature_entry(request):
+    return render(request, 'candidature_form.html')
 
 
 # def create_annonce(request):
