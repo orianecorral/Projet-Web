@@ -3,6 +3,7 @@ from django.shortcuts import render
 # from .forms import AnnoncesForm
 from django.http import HttpResponse
 from .models import Annonces
+from .models import Utilisateur
 
 
 def home_page(request):
@@ -15,7 +16,6 @@ def recherche_page(request):
 
 def annonce_entry(request):
     return render(request, 'annonce_form.html')
-
 def process_annonce_entry(request):
     if request.method == 'POST':
         titre = request.POST.get('titre')
@@ -38,7 +38,26 @@ def process_annonce_entry(request):
         return HttpResponse("Invalid request method.")
     
 
+def user_form(request):
+    return render(request, 'user_form.html')
 
+def process_user_form(request):
+    if request.method == 'POST':
+        nom = request.POST.get('nom')
+        prenom = request.POST.get('prenom')
+        email = request.POST.get('email')
+        telephone = request.POST.get('telephone')
+        mdp = request.POST.get('mdp')
+        
+        # Create a new patient entry in the database using the Patient model
+        patient = Utilisateur(prenom=prenom, nom=nom, email=email, telephone=telephone, mdp=mdp)
+        patient.save()
+
+
+
+        return HttpResponse("Data successfully inserted!")
+    else:
+        return HttpResponse("Invalid request method.")
 # def create_annonce(request):
 #     if request.method == "POST":
 #         form = AnnoncesForm(request.POST)

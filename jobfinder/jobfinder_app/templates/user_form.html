@@ -22,6 +22,8 @@
             </div>
         </nav>
     </header>
+    <form method="post" action="{% url 'process_user_form' %}">
+        {% csrf_token %}
         <main>
           <div>
             <label for="nom">Nom</label><br>

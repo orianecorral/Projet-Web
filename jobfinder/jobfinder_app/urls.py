@@ -13,4 +13,6 @@ urlpatterns = [
     path('recherche_page/', recherche_page, name='recherche_page'),
     path('annonce_form/', annonce_entry, name='annonce_form'),
     path('process_annonce_entry/', process_annonce_entry, name='process_annonce_entry'),
+    path('user_form/', user_form, name='user_form'),
+    path('process_user_form/', process_user_form, name='process_user_form'),
 ]
