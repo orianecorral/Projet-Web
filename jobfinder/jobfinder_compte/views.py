@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Utilisateurs, Entreprises
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth.hashers import make_password, is_password_usable
 
 # Create your views here.
 
@@ -78,18 +79,16 @@ def user_form(request):
         username = request.POST.get('username')
         telephone = request.POST.get('telephone')
         password = request.POST.get('password')
-        
-        # Create a new patient entry in the database using the Patient model
-        patient = Utilisateurs(prenom=prenom, nom=nom, username=username, telephone=telephone, password=password)
-        patient.save()
-
-
-
-        return HttpResponse("Data successfully inserted!")
-    
-    # Apres il faudra redirect to user_page
+        cmdp = request.POST.get('cmdp')
+        if(cmdp == password):
+            password =make_password(password)
+            patient = Utilisateurs(prenom=prenom, nom=nom, username=username, telephone=telephone, password=password)
+            patient.save()
+            return HttpResponse("Data successfully inserted!")
+        elif(cmdp != password):
+            messages.info(request,'Mot de Passe Incorect')
+            return redirect('/compte/user_form/')
     return render(request,'user_form.html')
-
 
 # Pour le Logout
 
