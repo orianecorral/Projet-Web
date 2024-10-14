@@ -15,9 +15,9 @@
                 <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
               </div>
               {% if user.authentificated %}
-
+              
               <div class="log">
-                <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> {{utilisateur.prenom}} </a>
+                <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> {{Particuliers.prenom}} </a>
               </div>
 
               {% else %}
