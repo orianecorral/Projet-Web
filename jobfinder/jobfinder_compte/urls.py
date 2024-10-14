@@ -10,7 +10,7 @@ urlpatterns = [
     path('entreprise_form/', entreprise_form, name='entreprise_form'),
 
     path('user_form/', user_form, name='user_form'),
-    path('process_user_form/', process_user_form, name='process_user_form'),
+    #path('process_user_form/', process_user_form, name='process_user_form'),
 
     path('entreprise_page/', entreprise_page, name='entreprise_page'),
     path('user_page/', user_page, name='user_page'),

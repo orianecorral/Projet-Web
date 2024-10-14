@@ -48,32 +48,27 @@ def user_page(request):
 def entreprise_form(request):
     return render(request,'entreprise_form.html')
 
-def user_form(request):
-    return render(request,'user_form.html')
-
-
-def process_user_form(request):
-    if request.method == 'POST':
-        nom = request.POST.get('nom')
-        prenom = request.POST.get('prenom')
-        email = request.POST.get('email')
-        telephone = request.POST.get('telephone')
-        mdp = request.POST.get('mdp')
-        
-        # Create a new patient entry in the database using the Patient model
-        patient = Utilisateur(prenom=prenom, nom=nom, email=email, telephone=telephone, mdp=mdp)
-        patient.save()
-
-
-
-        return HttpResponse("Data successfully inserted!")
-    # Apres il faudra redirect to user_page
-    else:
-        return HttpResponse("Invalid request method.")
-
 
 # Pour le Logout
 
 # def logout_user(request):
 #     logout(request)
 #     return redirect("jobfinder_app:home_page")
+# def user_form(request):
+#     return render(request,'user_form.html')
+def user_form(request):
+    if request.method == 'POST':
+        nom = request.POST.get('nom')
+        prenom = request.POST.get('prenom')
+        username = request.POST.get('username')
+        telephone = request.POST.get('telephone')
+        password = request.POST.get('password')
+        cmdp = request.POST.get('cmdp')
+        if(cmdp == password):
+            patient = Utilisateur(prenom=prenom, nom=nom, username=username, telephone=telephone, password=password)
+            patient.save()
+            return HttpResponse("Data successfully inserted!")
+        elif(cmdp != password):
+            messages.info(request,'Mot de Passe Incorect')
+            return redirect('/compte/user_form/')
+    return render(request,'user_form.html')
