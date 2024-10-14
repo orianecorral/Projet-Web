@@ -17,11 +17,11 @@
 </style>
 
 <body>
-    <h2 style="text-align:center"> Annonces Information </h2>
+    <h2 style="text-align:center"> Entreprise Information </h2>
     <table align="center" style="margin: 0px auto;">
         <thead>
             <tr>
-                <th>Annonce ID</th>
+                <th>Nom entreprises</th>
                 <th>Titre</th>
                 <th>Adresse</th>
                 <th>Start Date</th>
@@ -31,21 +31,21 @@
             </tr>
         </thead>
         <tbody>
-            {% for annonce in annonces %}
+            {% for entreprise in entreprises %}
             <tr>
-                <td>{{Annonce.titre}}</td>
-                <td>{{annonce.adresse}}</td>
-                <td>{{annonce.salaire}}</td>
-                <td>{{annonce.contrat}}</td>
-                <td>{{annonce.date}}</td>
-                <td>{{annonce.short_description}}</td>
-                <td>{{annonce.long_description}}</td>
+                <td>{{entreprise.nom_entreprise}}</td>
+                <td>{{entreprise.pageweb}}</td>
+                <td>{{entreprise.adresse}}</td>
+                <td>{{entreprise.taille}}</td>
+                <td>{{entreprise.description}}</td>
+                <td>{{entreprise.email}}</td>
+                <td>{{entreprise.mdp}}</td>
 
                 <td>
-                    <a href="/update/{{annonce.pk}}">Update</a>
+                    <a href="/update-entreprise/{{entreprise.pk}}">Update</a>
                 </td>
                 <td>
-                    <a href="/delete/{{annonce.pk}}">Delete</a>
+                    <a href="/delete/{{entreprise.pk}}">Delete</a>
                 </td>
             </tr>
             {% endfor %}

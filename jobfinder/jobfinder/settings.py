@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'jobfinder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'database',
+        'NAME': 'Database',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',
