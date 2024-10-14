@@ -18,15 +18,22 @@
         </header>
         <main>
             <h1>Connection Particulier</h1>
-
-            <form action="{% url 'process_connexion_user'%}">
+            {%for message in messages%}
+                <p>{{ message }} </p>
+            {%endfor%}
+            <form method="POST">
+            {% csrf_token %}
                 <div>
-                    <label for="email"></label>
-                    <input type="email" name="email"/>
+                    <label for="username">Email</label><br>
+                    <input type="email" name="username" required/>
                 </div>
                 <div>
-                    <label for="mdp"></label>
-                    <input type="password" name="mdp"/>
+                    <label for="password">Mot de passe</label><br>
+                    <input type="password" name="password" required/>
+                </div>
+                <div>
+                    <label for="submit"></label><br>
+                    <input type="submit" name="submit">
                 </div>
             </form>
 

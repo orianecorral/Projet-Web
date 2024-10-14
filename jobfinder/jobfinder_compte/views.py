@@ -9,10 +9,10 @@ from django.contrib import messages
 
 def connexion_entreprise(request):
     if request.method =="POST":
-        email = request.POST["email"]
-        mdp = request.POST["mdp"]
+        username = request.POST["username"]
+        password = request.POST["password"]
 
-        user = authenticate(request, email = email, mdp = mdp)
+        user = authenticate(request, username = username, password = password)
 
         if user is not None:
             login(request, user)
@@ -21,21 +21,23 @@ def connexion_entreprise(request):
             messages.info(request, "Identifiant ou mot de passe incorect")
     
 
+# def connexion_user(request):
+#     return render(request,'connexion_user.html')
+
 def connexion_user(request):
-    return render(request,'connexion_user.html')
-
-def process_connexion_user(request):
     if request.method =="POST":
-        email = request.POST["email"]
-        mdp = request.POST["mdp"]
+        username = request.POST["username"]
+        password = request.POST["password"]
 
-        user = authenticate(request, email = email, mdp = mdp)
+        user = authenticate( username = username, password = password)
 
         if user is not None:
             login(request, user)
-            return redirect("entreprise_page")
+            return redirect("home_page.html")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
+    
+    return render(request, 'connexion_user.html')
 
 
 
@@ -48,52 +50,45 @@ def user_page(request):
 
 
 def entreprise_form(request):
-    return render(request,'entreprise_form.html')
-
-def process_entreprise_form(request):
     if request.method == 'POST':
         nom_entreprise = request.POST.get('nom_entreprise')
         pageweb = request.POST.get('pageweb')
         adresse = request.POST.get('adresse')
         taille = request.POST.get('taille')
         description = request.POST.get('description')
-        email = request.POST.get('email')
-        mdp = request.POST.get('mdp')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         
         # Create a new patient entry in the database using the Patient model
-        patient = Entreprises(nom_entreprise=nom_entreprise, pageweb=pageweb, adresse=adresse, taille=taille, description=description, email=email, mdp=mdp)
+        patient = Entreprises(nom_entreprise=nom_entreprise, pageweb=pageweb, adresse=adresse, taille=taille, description=description, username=username, password=password)
         patient.save()
 
 
 
         return HttpResponse("Data successfully inserted!")
     # Apres il faudra redirect to user_page
-    else:
-        return HttpResponse("Invalid request method.")
+    return render(request,'entreprise_form.html')
+
 
 
 def user_form(request):
-    return render(request,'user_form.html')
-
-
-def process_user_form(request):
     if request.method == 'POST':
         nom = request.POST.get('nom')
         prenom = request.POST.get('prenom')
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         telephone = request.POST.get('telephone')
-        mdp = request.POST.get('mdp')
+        password = request.POST.get('password')
         
         # Create a new patient entry in the database using the Patient model
-        patient = Utilisateurs(prenom=prenom, nom=nom, email=email, telephone=telephone, mdp=mdp)
+        patient = Utilisateurs(prenom=prenom, nom=nom, username=username, telephone=telephone, password=password)
         patient.save()
 
 
 
         return HttpResponse("Data successfully inserted!")
+    
     # Apres il faudra redirect to user_page
-    else:
-        return HttpResponse("Invalid request method.")
+    return render(request,'user_form.html')
 
 
 # Pour le Logout

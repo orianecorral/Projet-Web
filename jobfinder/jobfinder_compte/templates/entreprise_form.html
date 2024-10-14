@@ -17,7 +17,7 @@
         </nav>
     </header>
         <main>
-          <form method="POST" action="{% url 'jobfinder_compte:process_entreprise_form' %}">
+          <form method="POST">
             {% csrf_token %}
             <!-- nom entreprise -->
             <div>
@@ -51,8 +51,8 @@
             </div>
             <!-- email -->
             <div>
-              <label for="email">Votre email</label><br>
-              <input type="email" name="email" required>
+              <label for="username">Votre email</label><br>
+              <input type="email" name="username" required>
             </div>
             <!-- mot de passe -->
             <div>
@@ -61,8 +61,8 @@
             </div>
             <!-- confirmation de mot de passe -->
             <div>
-              <label for="mdp">Confirmez votre mot de passe</label><br>
-              <input type="password" name="mdp" required >
+              <label for="password">Confirmez votre mot de passe</label><br>
+              <input type="password" name="password" required >
             </div>
             <!-- boutton envoyer -->
             <div>
