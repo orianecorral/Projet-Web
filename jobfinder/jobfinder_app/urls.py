@@ -11,8 +11,16 @@ from .views import *
 urlpatterns = [
     path('', home_page, name='home_page'),
     path('recherche_page/', recherche_page, name='recherche_page'),
+    path('connexion_page/', connexion_page, name='connexion_page'),
+    path('inscription_page/', inscription_page, name='inscription_page'),
     path('annonce_form/', annonce_entry, name='annonce_form'),
     path('process_annonce_entry/', process_annonce_entry, name='process_annonce_entry'),
+<<<<<<< HEAD
     path('user_form/', user_form, name='user_form'),
     path('process_user_form/', process_user_form, name='process_user_form'),
+=======
+    # path('user_form/', user_form, name='user_form'),
+    path('candidature_form/', candidature_entry, name='candidature_form'),
+    
+>>>>>>> origin/anto
 ]

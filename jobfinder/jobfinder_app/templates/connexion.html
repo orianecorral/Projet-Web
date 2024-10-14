@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Connexion</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/co-inscr.css' %}">
+    </head>
+    <body>
+        <header>
+            <nav>
+              <!-- logo -->
+              <div class="logo">
+                <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+              </div>
+            </nav>
+        </header>
+        <main>
+            <center class="choixlog">
+                <h2>Sélectionnez le compte que vous possédez</h2>
+                <div>
+                    <a class="entrepriseLog" href="{% url 'jobfinder_compte:connexion_entreprise' %}">Entreprise</a> <br>
+                    <a class="utilisateurLog" href="{% url 'jobfinder_compte:connexion_user' %}">Utilisateur</a>
+                </div>
+            </center>
+        </main>
+        <footer>
+            <h4>Contactez-nous</h4>
+            <p>Email : x </p>
+            <p>Telephone : 06-</p>
+            <p>adresse</p>
+          </footer>
+    </body>
+</html>

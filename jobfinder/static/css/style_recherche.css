@@ -3,18 +3,11 @@
     src: url(../font/Quantify.ttf);
 }
 
-@font-face {
-    font-family: ITC_book;
-    src: url(../font/ITC/ITCAvantGardeStd-BkCn.otf);
-}
-/* django a as l'air d'aimer les otf font mais les ttf c'est ok */
-
 
 body{
     display: flex;
     flex-direction: column;
     height: 100vh;
-    font-family: ITC_book;
 }
 
 header{
@@ -49,7 +42,7 @@ nav{
 }
 
 /* CSS - Bouton connexion*/
-.connexion{
+.connexion {
   align-items: center;
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -127,63 +120,152 @@ nav{
 /* Fin Header */
 
 /* Main */
+
 main{
-    flex:6;
-    display: flex;
-    flex-direction: column;
-    justify-content : center;
-    align-items: center;
+  flex: 6;
+}
+.rechercheFrom{
+  display: flex;
+  flex-direction: column;
+  justify-content : center;
+  align-items: center;
 }
 
-/* Home page form */
+/* RECHERCHE page form */
 
 form{
-    text-align: center;
-    flex: 4;
-}
-
-.find{
-    font-size: x-large;
+  text-align: center;
+  flex: 4;
 }
 
 .searchBar{
-    border: solid black;
-    border-radius: 30px;
-    height: 30px;
-    display: flex;
-    padding: 5px;
+  border: solid black;
+  border-radius: 30px;
+  height: 30px;
+  display: flex;
+  padding: 5px;
 }
 
 .recherche{
-    outline: none;
-    border: none;
-    border-radius: 30px;
-    padding-left: 5px;
-    font-size: larger;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  padding-left: 5px;
+  font-size: larger;
 }
 
 .searchBut{
-    max-width: 99%;
-    max-height: 99%;
-    border-radius: 40px;
+  max-width: 99%;
+  max-height: 99%;
+  border-radius: 40px;
 }
 
-/* catch phrase */
 
-.divCatch{
-    flex: 1;
+/* Encart pour Annonce */
+
+.jobEncart{
+  border: solid black;
+  border-radius: 15px;
+  margin: 2%;
+
+  display: flex;
+  height: min-content;
+  flex-direction: column;
 }
 
-.catchPhrase{
-    font-family: Quantify;
-    text-align: center;
-    font-size: 130px;
+.jobTitle{
+  margin: 1%;
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
 }
 
+.annonceTitre{
+  flex: 1 99%;
+  font-size: x-large;
+  margin: 3px;
+}
+
+.annonceElement{
+  flex: 1 23%;
+  margin: 5px;
+}
+
+.short_description{
+  margin: 1%;
+  flex: 2;
+}
+
+.long_description{
+  margin: 1%;
+  flex: 2;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+  justify-content: space-between;
+}
+
+.learnMore{
+  margin: 2%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 150px;
+}
+
+.postuler{
+  margin: 2%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 150px;
+}
 
 /* Footer */
 footer{
-    flex: 3;
-    border: solid black;
+  flex: 3;
+  border: solid black;
 }
-
