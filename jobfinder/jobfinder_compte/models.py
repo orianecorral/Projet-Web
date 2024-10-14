@@ -5,9 +5,9 @@ from django.db import models
 class Utilisateurs(models.Model):
     prenom = models.CharField(max_length=200)
     nom = models.CharField(max_length=300)
-    email = models.CharField(max_length=300)
+    username = models.CharField(max_length=150)
     telephone = models.CharField(max_length=300)
-    mdp = models.TextField()
+    password = models.TextField()
 
     class Meta:
         db_table = 'Utilisateurs'
@@ -27,7 +27,7 @@ class Entreprises(models.Model):
     adresse = models.CharField(max_length=300)
     taille = models.CharField(max_length=100, choices=SIZE_CHOICES)
     description = models.TextField()
-    email = models.CharField(max_length=200)
+    username = models.CharField(max_length=150)
     password = models.TextField()
 
     class Meta:
