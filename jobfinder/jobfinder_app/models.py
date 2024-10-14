@@ -15,13 +15,13 @@ class Annonces(models.Model):
         ('Alternance', 'Alternance'),
     ]
 
-    titre = models.CharField(max_length=200)
-    adresse = models.CharField(max_length=300)
+    titre = models.CharField(max_length=400)
+    adresse = models.CharField(max_length=500)
     nom_entreprise = models.CharField(max_length=300)
     salaire = models.CharField(max_length=300)
     contrat = models.CharField(max_length=300, choices=CONTRAT_CHOICES)
     date = models.DateField()
-    short_description = models.CharField(max_length=100)
+    short_description = models.CharField(max_length=150)
     long_description = models.TextField()
 
 

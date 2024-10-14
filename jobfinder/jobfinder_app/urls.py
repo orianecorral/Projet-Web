@@ -15,7 +15,6 @@ urlpatterns = [
     path('inscription_page/', inscription_page, name='inscription_page'),
     path('annonce_form/', annonce_entry, name='annonce_form'),
     path('process_annonce_entry/', process_annonce_entry, name='process_annonce_entry'),
-    # path('user_form/', user_form, name='user_form'),
     path('candidature_form/', candidature_entry, name='candidature_form'),
     
 ]
