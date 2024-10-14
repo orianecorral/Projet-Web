@@ -8,18 +8,19 @@ from django.contrib import messages
 
 
 def connexion_entreprise(request):
+    if request.method =="POST":
+        email = request.POST["email"]
+        password = request.POST["password"]
+
+        user = authenticate(request, email = email, password = password)
+
+        if user is not None and user.is_active:
+            login(request, user)
+            return redirect("entreprise_page.html")
+        else:
+            messages.info(request, "Identifiant ou mot de passe incorrect")
+
     return render(request,"connexion_entreprise.html")
-    # if request.method =="POST":
-    #     email = request.POST["email"]
-    #     mdp = request.POST["mdp"]
-
-    #     user = authenticate(request, email = email, mdp = mdp)
-
-    #     if user is not None:
-    #         login(request, user)
-    #         return render(redirect("entreprise_page"))
-    #     else:
-    #         messages.info(request, "Identifiant ou mot de passe incorect")
 
 
 def connexion_user(request):
@@ -47,7 +48,7 @@ def entreprise_page(request):
 def user_page(request):
     return render(request,'user_page.html')
 
-
+# Inscription
 def entreprise_form(request):
     return render(request,'entreprise_form.html')
 
@@ -60,7 +61,7 @@ def process_entreprise_form(request):
         description = request.POST.get('description')
         email = request.POST.get('email')
         mdp = request.POST.get('mdp')
-        
+
         # Create a new patient entry in the database using the Patient model
         patient = Entreprises(nom_entreprise=nom_entreprise, pageweb=pageweb, adresse=adresse, taille=taille, description=description, email=email, mdp=mdp)
         patient.save()
@@ -99,6 +100,6 @@ def process_user_form(request):
 
 # Pour le Logout
 
-# def logout_user(request):
-#     logout(request)
-#     return redirect("jobfinder_app:home_page")
+def logout_user(request):
+    logout(request)
+    return redirect("jobfinder_app:home_page")

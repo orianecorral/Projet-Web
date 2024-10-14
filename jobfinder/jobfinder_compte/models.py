@@ -28,7 +28,7 @@ class Entreprises(models.Model):
     taille = models.CharField(max_length=100, choices=SIZE_CHOICES)
     description = models.TextField()
     email = models.CharField(max_length=200)
-    mdp = models.TextField()
+    password = models.TextField()
 
     class Meta:
         db_table = 'Entreprises'

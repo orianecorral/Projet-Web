@@ -6,22 +6,21 @@ app_name = "jobfinder_compte"
 urlpatterns = [
     # Connexion-Log in
     path('connexion_entreprise/', connexion_entreprise, name='connexion_entreprise'),
-
     path('connexion_user/', connexion_user, name='connexion_user'),
     path('process_connexion_user/', process_connexion_user, name='process_connexion_user'),
-
+    # Inscription
     path('entreprise_form/', entreprise_form, name='entreprise_form'),
     path('process_entreprise_form/', process_entreprise_form, name='process_entreprise_form'),
 
     path('user_form/', user_form, name='user_form'),
     path('process_user_form/', process_user_form, name='process_user_form'),
-
+    # Profil
     path('entreprise_page/', entreprise_page, name='entreprise_page'),
     path('user_page/', user_page, name='user_page'),
 
     # Logout
-    path('logout_entreprise/', logout_entreprise, name='logout_entreprise'),
-    path('logout_user/', logout_user, name='logout_user'),
+    # path('logout_entreprise/', logout_entreprise, name='logout_entreprise'),
+    # path('logout_user/', logout_user, name='logout_user'),
 
 
 
