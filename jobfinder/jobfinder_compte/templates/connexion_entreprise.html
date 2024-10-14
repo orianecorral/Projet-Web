@@ -14,23 +14,10 @@
               <div class="logo">
                 <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
               </div>
-              {% if user.authentificated %}
-
               <div class="log">
                 <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> {{utilisateur.prenom}} </a>
-                
               </div>
 
-              {% else %}
-
-              <div class="log">
-                <!-- Connexion -->
-                <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
-                <!-- Inscription-->
-                <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
-              </div>
-
-              {% endif %}
             </nav>
         </header>
         <main>

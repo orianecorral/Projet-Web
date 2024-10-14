@@ -8,18 +8,19 @@ from django.contrib import messages
 
 
 def connexion_entreprise(request):
-    if request.method =="POST":
-        email = request.POST["email"]
-        mdp = request.POST["mdp"]
+    return render(request,"connexion_entreprise.html")
+    # if request.method =="POST":
+    #     email = request.POST["email"]
+    #     mdp = request.POST["mdp"]
 
-        user = authenticate(request, email = email, mdp = mdp)
+    #     user = authenticate(request, email = email, mdp = mdp)
 
-        if user is not None:
-            login(request, user)
-            return redirect("user_page")
-        else:
-            messages.info(request, "Identifiant ou mot de passe incorect")
-    
+    #     if user is not None:
+    #         login(request, user)
+    #         return render(redirect("entreprise_page"))
+    #     else:
+    #         messages.info(request, "Identifiant ou mot de passe incorect")
+
 
 
 def connexion_user(request):
@@ -31,7 +32,7 @@ def connexion_user(request):
 
         if user is not None:
             login(request, user)
-            return redirect("entreprise_page")
+            return render(redirect("user_page"))
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
 
@@ -59,7 +60,7 @@ def process_user_form(request):
         email = request.POST.get('email')
         telephone = request.POST.get('telephone')
         mdp = request.POST.get('mdp')
-        
+
         # Create a new patient entry in the database using the Patient model
         patient = Utilisateur(prenom=prenom, nom=nom, email=email, telephone=telephone, mdp=mdp)
         patient.save()
