@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Utilisateur
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth.hashers import make_password, is_password_usable
 
 # Create your views here.
 
@@ -65,6 +66,7 @@ def user_form(request):
         password = request.POST.get('password')
         cmdp = request.POST.get('cmdp')
         if(cmdp == password):
+            password =make_password(password)
             patient = Utilisateur(prenom=prenom, nom=nom, username=username, telephone=telephone, password=password)
             patient.save()
             return HttpResponse("Data successfully inserted!")
