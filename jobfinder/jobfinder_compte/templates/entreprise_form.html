@@ -1,29 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>Entreprise form</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
     </head>
     <body>
       <header>
         <nav>
           <!-- logo -->
-          <div>
-            <a href="home_page.html">LOGO</a>
+          <div class="logo">
+            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
           </div>
-          <!-- connexion -->
-           <div>
-            <a href="">Connexion</a>
-           </div>
-           <!-- Inscription-->
-            <div>
-              <a href="user_form.html">Inscription</a>
-            </div>
         </nav>
     </header>
         <main>
-          <form>
+          <form method="POST" action="{% url 'jobfinder_compte:process_entreprise_form' %}">
+            {% csrf_token %}
             <!-- nom entreprise -->
             <div>
               <label for="nom_entreprise">Nom de votre entreprise</label><br>
@@ -32,7 +27,7 @@
             <!-- pageweb -->
             <div>
               <label for="pageweb">Votre page web</label><br>
-              <input type="url" name="pagweb" required>
+              <input type="url" name="pageweb" required>
             </div>
             <!-- adresse -->
             <div>
@@ -52,7 +47,7 @@
             <!-- description de l'entreprise -->
             <div>
               <label for="description">Description de votre entreprise</label><br>
-              <textarea name="description" id="" required>Votre description</textarea>
+              <textarea name="description" placeholder="Votre description" required></textarea>
             </div>
             <!-- email -->
             <div>
@@ -61,13 +56,13 @@
             </div>
             <!-- mot de passe -->
             <div>
-              <label for="mdp">Choisissez un mot de passe</label><br>
-              <input type="password" name="password" required>
+              <label>Choisissez un mot de passe</label><br>
+              <input type="password" required>
             </div>
             <!-- confirmation de mot de passe -->
             <div>
               <label for="mdp">Confirmez votre mot de passe</label><br>
-              <input type="password" name="password" required >
+              <input type="password" name="mdp" required >
             </div>
             <!-- boutton envoyer -->
             <div>

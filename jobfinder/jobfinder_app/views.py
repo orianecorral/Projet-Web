@@ -12,7 +12,7 @@ def home_page(request):
 def recherche_page(request):
     if request.method == "POST":
         recherche = request.POST['recherche']
-        annonces = Annonces.objects.filter(Q(titre__contains=recherche) | Q(nom_entreprise__contains=recherche) | Q(nom_entreprise__contains=recherche)| Q(short_description__contains=recherche)| Q(long_description__contains=recherche))
+        annonces = Annonces.objects.filter(Q(titre__contains=recherche) | Q(nom_entreprise__contains=recherche) | Q(contrat__contains=recherche)| Q(short_description__contains=recherche)| Q(long_description__contains=recherche))
         return render(request,'recherche_page.html',{'annonces':annonces})
     else:
         annonces = Annonces.objects.all()

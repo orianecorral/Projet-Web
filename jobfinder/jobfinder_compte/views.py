@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import Utilisateur
+from .models import Utilisateurs, Entreprises
 from django.http import HttpResponse
 from django.contrib import messages
 
@@ -21,8 +21,10 @@ def connexion_entreprise(request):
             messages.info(request, "Identifiant ou mot de passe incorect")
     
 
-
 def connexion_user(request):
+    return render(request,'connexion_user.html')
+
+def process_connexion_user(request):
     if request.method =="POST":
         email = request.POST["email"]
         mdp = request.POST["mdp"]
@@ -48,6 +50,28 @@ def user_page(request):
 def entreprise_form(request):
     return render(request,'entreprise_form.html')
 
+def process_entreprise_form(request):
+    if request.method == 'POST':
+        nom_entreprise = request.POST.get('nom_entreprise')
+        pageweb = request.POST.get('pageweb')
+        adresse = request.POST.get('adresse')
+        taille = request.POST.get('taille')
+        description = request.POST.get('description')
+        email = request.POST.get('email')
+        mdp = request.POST.get('mdp')
+        
+        # Create a new patient entry in the database using the Patient model
+        patient = Entreprises(nom_entreprise=nom_entreprise, pageweb=pageweb, adresse=adresse, taille=taille, description=description, email=email, mdp=mdp)
+        patient.save()
+
+
+
+        return HttpResponse("Data successfully inserted!")
+    # Apres il faudra redirect to user_page
+    else:
+        return HttpResponse("Invalid request method.")
+
+
 def user_form(request):
     return render(request,'user_form.html')
 
@@ -61,7 +85,7 @@ def process_user_form(request):
         mdp = request.POST.get('mdp')
         
         # Create a new patient entry in the database using the Patient model
-        patient = Utilisateur(prenom=prenom, nom=nom, email=email, telephone=telephone, mdp=mdp)
+        patient = Utilisateurs(prenom=prenom, nom=nom, email=email, telephone=telephone, mdp=mdp)
         patient.save()
 
 
