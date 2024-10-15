@@ -73,7 +73,7 @@ def entreprise_form(request):
             messages.info(request,'Mot de Passe Incorect')
             return redirect('/compte/entreprise_form/')
             
-        if Utilisateurs.objects.filter(email=email).exist():
+        if Utilisateurs.objects.filter(email=email).exists():
             messages.info(request,'Un compte avec cet email existe déjà')
             return redirect('/compte/user_form/')
         
@@ -118,20 +118,12 @@ def connexion_user(request):
 
         if user is not None:
             login(request, user)
-            return redirect("/user_page.html")
+            return redirect("jobfinder_compte:user_page")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
             
     return render(request, 'connexion_user.html')
-    #     verif_user = Utilisateurs.objects.filter(email=email, password=password).exists()
-    #     print(verif_user)
-    #     if verif_user is True:
-    #         # login(request, verif_user)
-    #         return redirect("http://127.0.0.1:8000/jobfinder/")
-    #     else:
-    #         messages.info(request, "Identifiant ou mot de passe incorect")
-    
-    # return render(request, 'connexion_user.html')
+
 
 # Connection au compte Entreprises
 
