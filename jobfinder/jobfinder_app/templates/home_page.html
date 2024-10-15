@@ -14,22 +14,33 @@
               <div class="logo">
                 <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
               </div>
-              {% if user.authentificated %}
-              
-              <div class="log">
-                <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> {{Particuliers.prenom}} </a>
-              </div>
 
+              <!-- Vérifié si l'utilisateur est connecté -->
+
+            {% if utilisateur.is_authenticated %}
+
+              {% if user.is_particulier == True%}
+
+              <div class="log">
+                <a href="{% url 'jobfinder_compte:user_page'%}"> Compte </a>
+              </div>
               {% else %}
 
               <div class="log">
-                <!-- Connexion -->
-                <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
-                <!-- Inscription-->
-                <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
+                <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Compte </a>
               </div>
-
               {% endif %}
+
+            {% else %}
+
+            <div class="log">
+              <!-- Connexion -->
+              <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
+              <!-- Inscription-->
+              <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
+            </div>
+
+            {% endif %}
             </nav>
         </header>
         <main>
