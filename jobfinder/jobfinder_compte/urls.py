@@ -12,6 +12,7 @@ urlpatterns = [
     path('user_form/', user_form, name='user_form'),
     path('entreprise_page/', entreprise_page, name='entreprise_page'),
     path('user_page/', user_page, name='user_page'),
+    path('update_user/<int:pk>', update_user, name='update_user'),
 
 
 

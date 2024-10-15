@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from .models import Utilisateurs, Entreprises, Particuliers
 from django.http import HttpResponse
 from django.contrib import messages
@@ -158,6 +158,59 @@ def user_page(request):
 def entreprise_page(request):
     entreprises = Entreprises.objects.all()
     return render(request,'entreprise_page.html',{'entreprises':entreprises})
+
+def update_user(request,pk):
+    particuliers = Particuliers.objects.get(id=pk)
+    if request.method == 'POST':
+        user_form(request.POST,instance = particuliers)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect("user_page")
+        context = {
+            'particuliers': particuliers,
+        }
+        return render(request, '/compte/update_user',context)
+            # email = request.POST.get('email')
+    #         nom = request.POST.get('nom')
+    #         prenom = request.POST.get('prenom')
+    #         telephone = request.POST.get('telephone')
+    #         password = request.POST.get('password')
+    #         cmdp = request.POST.get('cmdp')
+
+    #         # Vérification de l'unicité des mdp
+    #         if (cmdp != password):
+    #             messages.info(request,'Mot de Passe Incorect')
+    #             return redirect('/compte/user_form/')
+
+
+    #         # hash_password = make_password(password)
+    #         # Ajout du email et mdp a Utilisateurs
+    #         # utilisateur = Utilisateurs.objects.get(user.id)
+    #         # utilisateur.username = email,
+    #         # utilisateur.email= email,
+    #         # utilisateur.password = password,
+
+    #         utilisateur = Utilisateurs.objects.update(
+    #             password = password,
+    #             is_particulier = True,
+    #         )
+
+    #         utilisateur.save()
+
+    #         # Ajout du reste a Particuliers
+    #         particulier = Particuliers.objects.update(
+    #             user = utilisateur,
+    #             nom = nom,
+    #             prenom = prenom,
+    #             telephone = telephone
+    #         )
+    #         particulier.save()
+
+    #         return HttpResponse("Data successfully inserted!")
+
+    # return render(request,'update_user.html')
+
+
 
 
 # Pour le Logout

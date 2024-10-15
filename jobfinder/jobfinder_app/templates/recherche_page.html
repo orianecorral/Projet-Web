@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Recherche page</title>
+        <title>Recherche</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_recherche.css' %}">
@@ -18,14 +18,14 @@
 
           <div class="log">
             <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> {{utilisateur.prenom}} </a>
-            
+
           </div>
 
           {% else %}
 
           <div class="log">
             <!-- Connexion -->
-            <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
+            <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connection</a>
             <!-- Inscription-->
             <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
           </div>
@@ -44,7 +44,7 @@
         <!-- Ici doit y avoir les annonces -->
         {% for annonce in annonces %}
         <div class="jobEncart">
-          
+
           <div class="jobTitle">
             <h3 class="annonceTitre">{{annonce.titre}}</h3>
             <h6 class="annonceElement">Adresse : <br>{{annonce.adresse}}</h6>
@@ -97,9 +97,9 @@
               shortDescription.style.display = "block"
               button.textContent = "Learn More"
             }
-          });          
+          });
         })
-      
+
       </script>
     </body>
 </html>
