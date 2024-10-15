@@ -1,9 +1,10 @@
 # Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 # from .forms import AnnoncesForm
 from django.http import HttpResponse
 from .models import Annonces
 from django.db.models import Q
+from django.contrib.auth import authenticate, login, logout
 
 
 def home_page(request):
@@ -38,7 +39,7 @@ def process_annonce_entry(request):
         date = request.POST.get('date')
         short_description = request.POST.get('short_description')
         long_description = request.POST.get('long_description')
-        
+
         # Create a new patient entry in the database using the Patient model
         patient = Annonces(titre=titre, adresse=adresse, nom_entreprise=nom_entreprise, salaire=salaire, contrat=contrat, date=date, short_description=short_description, long_description=long_description)
         patient.save()
@@ -48,7 +49,7 @@ def process_annonce_entry(request):
         return HttpResponse("Data successfully inserted!")
     else:
         return HttpResponse("Invalid request method.")
-    
+
 
 
 
@@ -72,3 +73,11 @@ def candidature_entry(request):
 # def retrieve_jobfinder(request):
 #     annonces = Annonces.objects.all()
 #     return render(request,'search.html',{'annonces':annonces})
+
+def logout_user(request):
+    logout(request)
+    return redirect("home_page")
+
+def logout_entreprise(request):
+    logout(request)
+    return redirect("home_page")

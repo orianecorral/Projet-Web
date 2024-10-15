@@ -24,6 +24,10 @@
               <div class="log">
                 <a href="{% url 'jobfinder_compte:user_page'%}"> Compte </a>
               </div>
+              <form action="{% url 'jobfinder_compte:logout_user' %}" method="post">
+                <button type="submit">Log Out</button>
+              </form>
+
               {% else %}
 
               <div class="log">

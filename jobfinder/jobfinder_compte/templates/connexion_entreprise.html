@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home page</title>
+        <title>Connexion entreprise</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
@@ -15,7 +15,7 @@
                 <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
               </div>
               <div class="log">
-                <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> {{utilisateur.prenom}} </a>
+                <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> {{utilisateur.prenom}} </a>
               </div>
 
             </nav>

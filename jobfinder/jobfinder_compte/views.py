@@ -75,7 +75,7 @@ def entreprise_form(request):
 
         if Utilisateurs.objects.filter(email=email).exists():
             messages.info(request,'Un compte avec cet email existe déjà')
-            return redirect('/compte/user_form/')
+            return redirect('/compte/entrepise_form/')
 
         utilisateur = Utilisateurs.objects.create_user(
             username=email,
@@ -88,7 +88,7 @@ def entreprise_form(request):
         # Ajout du reste a Particuliers
 
         entreprise = Entreprises.objects.create(
-            user = entreprise,
+            user = utilisateur,
             nom_entreprise = nom_entreprise,
             pageweb = pageweb,
             adresse = adresse,
@@ -135,7 +135,7 @@ def connexion_entreprise(request):
 
         if user is not None:
             login(request, user)
-            return redirect("user_page")
+            return redirect("entreprise_page")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
 
@@ -154,10 +154,3 @@ def user_page(request):
 
 def entreprise_page(request):
     return render(request,'entreprise_page.html')
-
-
-# Pour le Logout
-
-def logout_user(request):
-    logout(request)
-    return redirect("jobfinder_app:home_page")

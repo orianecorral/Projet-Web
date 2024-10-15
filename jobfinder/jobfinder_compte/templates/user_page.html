@@ -21,8 +21,10 @@
           {% if user.is_particulier == True%}
 
           <div class="log">
-            <a href="{% url 'jobfinder_compte:user_page'%}"> Mon compte particulier </a>
+            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">Mon compte particulier </a>
           </div>
+          <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Log out</a>
+
           {% else %}
 
           <div class="log">

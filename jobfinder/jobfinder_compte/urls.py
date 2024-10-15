@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
 
 app_name = "jobfinder_compte"
@@ -12,10 +12,6 @@ urlpatterns = [
     path('user_form/', user_form, name='user_form'),
     path('entreprise_page/', entreprise_page, name='entreprise_page'),
     path('user_page/', user_page, name='user_page'),
-
-    # Logout
-    # path('logout_entreprise/', logout_entreprise, name='logout_entreprise'),
-    # path('logout_user/', logout_user, name='logout_user'),
 
 
 
