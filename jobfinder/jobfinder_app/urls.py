@@ -16,8 +16,7 @@ urlpatterns = [
     path('annonce_form/', annonce_entry, name='annonce_form'),
     path('process_annonce_entry/', process_annonce_entry, name='process_annonce_entry'),
     path('candidature_form/', candidature_entry, name='candidature_form'),
-    # Logout
-    path('logout_entreprise/', logout_entreprise, name='logout_entreprise'),
+    # Pour logout user
     path('logout_user/', logout_user, name='logout_user'),
-
+    path('logout_entreprise/', logout_entreprise, name='logout_entreprise'),
 ]

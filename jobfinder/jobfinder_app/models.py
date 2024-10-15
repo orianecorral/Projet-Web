@@ -1,4 +1,5 @@
 from django.db import models
+# from jobfinder_compte.models import Utilisateurs, Entreprises, Particuliers
 
 
 # Create your models here.
@@ -23,6 +24,7 @@ class Annonces(models.Model):
     date = models.DateField()
     short_description = models.CharField(max_length=150)
     long_description = models.TextField()
+    # company_id = models.ForeignKey(Entreprises, on_delete=models.CASCADE, default=None)
 
 
     class Meta:

@@ -2,20 +2,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Profil entreprise</title>
+    <title>Home page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
-</head>
-<body>
-    <header>
+  </head>
+    <body>
+      <header>
         <nav>
           <!-- logo -->
           <div class="logo">
             <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
           </div>
-
-          <!-- Vérifié si l'utilisateur est connecté -->
           {% if user.is_authenticated %}
 
           {% if user.is_entreprise == True%}
@@ -42,7 +40,6 @@
         </div>
 
         {% endif %}
-
         </nav>
     </header>
         <main>

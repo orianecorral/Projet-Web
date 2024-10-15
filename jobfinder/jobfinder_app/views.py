@@ -1,8 +1,9 @@
 # Create your views here.
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 # from .forms import AnnoncesForm
 from django.http import HttpResponse
 from .models import Annonces
+from django.contrib.auth import logout
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 

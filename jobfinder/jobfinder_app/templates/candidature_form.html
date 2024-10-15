@@ -23,6 +23,13 @@
         </nav>
       </header>
       <main>
+
+        <!-- Si l'utilisateur est authentifié les champs sont rempli automatiquement-->
+
+        {% if user.is_authenticated %}
+
+        {% else %}
+
         <form method="POST" action="">
           {% csrf_token %}
           <div class="element">

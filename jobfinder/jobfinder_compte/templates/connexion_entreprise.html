@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Connexion entreprise</title>
+        <title>Connection Entreprise</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
@@ -14,32 +14,29 @@
               <div class="logo">
                 <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
               </div>
-              <div class="log">
-                <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> {{utilisateur.prenom}} </a>
-              </div>
-
             </nav>
         </header>
         <main>
-            <h1>Connection entreprise</h1>
-            {% for message in messages%}
-            <p>{{message}}</p>
-            {% endfor%}
+            <h1>Connection Entreprise</h1>
+            {%for message in messages%}
+                <p>{{ message }} </p>
+            {%endfor%}
             <form method="POST">
-              {% csrf_token %}
-              <div class="element">
-                <label for="username">Email</label><br>
-                <input type="email" name="username" class="input" required>
-              </div>
-              <div>
-                <label for="password">Mot de passe</label><br>
-                <input type="password" name="password" required>
-              </div>
-              <div>
-                <label for="submit"></label><br>
-                <input type="submit" name="submit">
-            </div>
+            {% csrf_token %}
+                <div>
+                    <label for="email">Email</label><br>
+                    <input type="email" name="email" required/>
+                </div>
+                <div>
+                    <label for="password">Mot de passe</label><br>
+                    <input type="password" name="password" required/>
+                </div>
+                <div>
+                    <label for="submit"></label><br>
+                    <input type="submit" name="submit">
+                </div>
             </form>
+
         </main>
     </body>
 </html>
