@@ -24,7 +24,7 @@ def user_form(request):
         if (cmdp != password):
             messages.info(request,'Mot de Passe Incorect')
             return redirect('/compte/user_form/')
-        
+
         # Vérification que l'email est unique
         if Utilisateurs.objects.filter(email=email).exists():
             messages.info(request,'Un compte avec cet email existe déjà')
@@ -72,11 +72,11 @@ def entreprise_form(request):
         if (cmdp != password):
             messages.info(request,'Mot de Passe Incorect')
             return redirect('/compte/entreprise_form/')
-            
+
         if Utilisateurs.objects.filter(email=email).exist():
             messages.info(request,'Un compte avec cet email existe déjà')
             return redirect('/compte/user_form/')
-        
+
         utilisateur = Utilisateurs.objects.create_user(
             username=email,
             email=email,
@@ -96,7 +96,7 @@ def entreprise_form(request):
             description=description,
         )
         entreprise.save()
- 
+
 
 
         return HttpResponse("Data successfully inserted!")
@@ -118,18 +118,10 @@ def connexion_user(request):
 
         if user is not None and user.is_active:
             login(request, user)
-<<<<<<< HEAD
-            return redirect("entreprise_page.html")
-        else:
-            messages.info(request, "Identifiant ou mot de passe incorrect")
-
-    return render(request,"connexion_entreprise.html")
-
-=======
-            return redirect("/user_page.html")
+            return redirect("jobfinder_compte:user_page")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
-            
+
     return render(request, 'connexion_user.html')
     #     verif_user = Utilisateurs.objects.filter(email=email, password=password).exists()
     #     print(verif_user)
@@ -138,9 +130,8 @@ def connexion_user(request):
     #         return redirect("http://127.0.0.1:8000/jobfinder/")
     #     else:
     #         messages.info(request, "Identifiant ou mot de passe incorect")
-    
+
     # return render(request, 'connexion_user.html')
->>>>>>> ac138231eb92e4e9a8e0fd2cb692a34adf43c933
 
 # Connection au compte Entreprises
 
@@ -156,15 +147,10 @@ def connexion_entreprise(request):
             return redirect("user_page")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
-<<<<<<< HEAD
 
-    return render(request, 'connexion_user.html')
-=======
-    
 
 # def connexion_user(request):
 #     return render(request,'connexion_user.html')
->>>>>>> ac138231eb92e4e9a8e0fd2cb692a34adf43c933
 
 
 # Fin de connection
@@ -175,52 +161,8 @@ def connexion_entreprise(request):
 def user_page(request):
     return render(request,'user_page.html')
 
-<<<<<<< HEAD
-# Inscription
-def entreprise_form(request):
-    if request.method == 'POST':
-        nom_entreprise = request.POST.get('nom_entreprise')
-        pageweb = request.POST.get('pageweb')
-        adresse = request.POST.get('adresse')
-        taille = request.POST.get('taille')
-        description = request.POST.get('description')
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        # Create a new patient entry in the database using the Patient model
-        patient = Entreprises(nom_entreprise=nom_entreprise, pageweb=pageweb, adresse=adresse, taille=taille, description=description, username=username, password=password)
-        patient.save()
-
-
-
-        return HttpResponse("Data successfully inserted!")
-    # Apres il faudra redirect to user_page
-    return render(request,'entreprise_form.html')
-
-
-
-def user_form(request):
-    if request.method == 'POST':
-        nom = request.POST.get('nom')
-        prenom = request.POST.get('prenom')
-        username = request.POST.get('username')
-        telephone = request.POST.get('telephone')
-        password = request.POST.get('password')
-
-        # Create a new patient entry in the database using the Patient model
-        patient = Utilisateurs(prenom=prenom, nom=nom, username=username, telephone=telephone, password=password)
-        patient.save()
-
-
-
-        return HttpResponse("Data successfully inserted!")
-
-    # Apres il faudra redirect to user_page
-    return render(request,'user_form.html')
-=======
 def entreprise_page(request):
     return render(request,'entreprise_page.html')
->>>>>>> ac138231eb92e4e9a8e0fd2cb692a34adf43c933
 
 
 # Pour le Logout
