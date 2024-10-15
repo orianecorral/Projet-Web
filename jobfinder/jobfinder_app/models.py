@@ -29,3 +29,13 @@ class Annonces(models.Model):
 
     class Meta:
         db_table = 'Annonces'
+
+
+class Candidatures(models.Model):
+    prenom = models.CharField(max_length=100)
+    nom = models.CharField(max_length=100)
+    email = models.EmailField()
+    telephone = models.CharField(max_length=15)
+    
+    class Meta:
+        db_table = 'Candidatures'

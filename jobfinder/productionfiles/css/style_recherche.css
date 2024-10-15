@@ -1,0 +1,271 @@
+@font-face {
+    font-family: Quantify;
+    src: url(../font/Quantify.ttf);
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header{
+    flex: 1;
+    display: flex;
+}
+
+
+nav{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo{
+    flex: 3;
+
+}
+
+.logo_img{
+    max-width: 20%;
+    max-height: 99%;
+    margin: 10px;
+}
+
+.log{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    height: min-content;
+    align-content: flex-end;
+}
+
+/* CSS - Bouton connexion*/
+.connexion {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.inscription {
+    align-items: center;
+    background-color: #828dc4;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+
+.button-1:hover,
+.button-1:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button-1:hover {
+  transform: translateY(-1px);
+}
+
+.button-1:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+/* Fin Header */
+
+/* Main */
+
+main{
+  flex: 6;
+}
+.rechercheFrom{
+  display: flex;
+  flex-direction: column;
+  justify-content : center;
+  align-items: center;
+}
+
+/* RECHERCHE page form */
+
+form{
+  text-align: center;
+  flex: 4;
+}
+
+.searchBar{
+  border: solid black;
+  border-radius: 30px;
+  height: 30px;
+  display: flex;
+  padding: 5px;
+}
+
+.recherche{
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  padding-left: 5px;
+  font-size: larger;
+}
+
+.searchBut{
+  max-width: 99%;
+  max-height: 99%;
+  border-radius: 40px;
+}
+
+
+/* Encart pour Annonce */
+
+.jobEncart{
+  border: solid black;
+  border-radius: 15px;
+  margin: 2%;
+
+  display: flex;
+  height: min-content;
+  flex-direction: column;
+}
+
+.jobTitle{
+  margin: 1%;
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.annonceTitre{
+  flex: 1 99%;
+  font-size: x-large;
+  margin: 3px;
+}
+
+.annonceElement{
+  flex: 1 23%;
+  margin: 5px;
+}
+
+.short_description{
+  margin: 1%;
+  flex: 2;
+}
+
+.long_description{
+  margin: 1%;
+  flex: 2;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+  justify-content: space-between;
+}
+
+.learnMore{
+  margin: 2%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 150px;
+}
+
+.postuler{
+  margin: 2%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 150px;
+}
+
+/* Footer */
+footer{
+  flex: 3;
+  border: solid black;
+}
