@@ -1,8 +1,9 @@
 # Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # from .forms import AnnoncesForm
 from django.http import HttpResponse
 from .models import Annonces
+from django.contrib.auth import logout
 from django.db.models import Q
 
 
@@ -72,3 +73,11 @@ def candidature_entry(request):
 # def retrieve_jobfinder(request):
 #     annonces = Annonces.objects.all()
 #     return render(request,'search.html',{'annonces':annonces})
+
+def logout_user(request):
+    logout(request)
+    return redirect("home_page")
+
+def logout_entreprise(request):
+    logout(request)
+    return redirect("home_page")

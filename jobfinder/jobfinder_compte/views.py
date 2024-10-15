@@ -75,7 +75,7 @@ def entreprise_form(request):
             
         if Utilisateurs.objects.filter(email=email).exists():
             messages.info(request,'Un compte avec cet email existe déjà')
-            return redirect('/compte/user_form/')
+            return redirect('/compte/entreprise_form/')
         
         utilisateur = Utilisateurs.objects.create_user(
             username=email,
@@ -85,10 +85,10 @@ def entreprise_form(request):
         )
         utilisateur.save()
 
-        # Ajout du reste a Particuliers
+        # Ajout du reste a Entreprise
 
         entreprise = Entreprises.objects.create(
-            user = entreprise,
+            user = utilisateur,
             nom_entreprise = nom_entreprise,
             pageweb = pageweb,
             adresse = adresse,
@@ -97,7 +97,6 @@ def entreprise_form(request):
         )
         entreprise.save()
  
-
 
         return HttpResponse("Data successfully inserted!")
     # Apres il faudra redirect to user_page
@@ -129,16 +128,18 @@ def connexion_user(request):
 
 def connexion_entreprise(request):
     if request.method =="POST":
-        email = request.POST["email"]
+        username = request.POST["email"]
         password = request.POST["password"]
 
-        user = authenticate(request, email = email, password = password)
+        user = authenticate(request, username = username, password = password)
 
         if user is not None:
             login(request, user)
-            return redirect("user_page")
+            return redirect("jobfinder_compte:entreprise_page")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
+            
+    return render(request, 'connexion_entreprise.html')
     
 
 # def connexion_user(request):
@@ -151,10 +152,13 @@ def connexion_entreprise(request):
 
 
 def user_page(request):
-    return render(request,'user_page.html')
+
+    particuliers = Particuliers.objects.all()
+    return render(request,'user_page.html',{'particuliers':particuliers})
 
 def entreprise_page(request):
-    return render(request,'entreprise_page.html')
+    entreprises = Entreprises.objects.all()
+    return render(request,'entreprise_page.html',{'entreprises':entreprises})
 
 
 # Pour le Logout

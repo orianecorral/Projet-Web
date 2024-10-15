@@ -21,12 +21,18 @@
           {% if user.is_particulier == True%}
 
           <div class="log">
-            <a href="{% url 'jobfinder_compte:user_page'%}"> Mon compte particulier </a>
+            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
+          </div>
+          <div class="log">
+            <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Log out</a>
           </div>
           {% else %}
 
           <div class="log">
             <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte pro </a>
+          </div>
+          <div class="log">
+            <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Log out</a>
           </div>
           {% endif %}
 
@@ -43,14 +49,22 @@
 
         </nav>
     </header>
-        <main>
-          <h1>GG</h1>
-        </main>
-        <footer>
-          <h4>Contactez-nous</h4>
-          <p>Email : x </p>
-          <p>Télephone : 06-</p>
-          <p>adresse</p>
-        </footer>
+    <main>
+      <!-- Montrer les informations utilisateurs -->
+      {% for particulier in particuliers %}
+        {% if user.id == particulier.user_id%}
+          <h1> {{particulier.prenom}} </h1>
+          <h2> {{particulier.nom}} </h2>
+          <p>Telephone : {{particulier.telephone}} </p>
+          <p>Email : {{user.email}} </p>
+        {% endif %}
+      {% endfor %}
+    </main>
+    <footer>
+        <h4>Contactez-nous</h4>
+        <p>Email : x </p>
+        <p>Télephone : 06-</p>
+        <p>adresse</p>
+    </footer>
     </body>
 </html>
