@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mise à jour profil particuliers</title>
+        <title>Mise à jour profil Entreprises</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
@@ -14,12 +14,12 @@
               <div class="logo">
                 <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
               </div>
-              
+
             </nav>
         </header>
         <main>
           {% if user.is_authenticated %}
-          {% if user.is_particulier == True%}
+          {% if user.is_entreprise == True%}
             <form method="POST">
               {% csrf_token %}
               {{form1.as_p}}
@@ -30,7 +30,7 @@
           {% else %}
 
           <div class="log">
-            <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte pro </a>
+            <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte particulier </a>
           </div>
           {% endif %}
 
