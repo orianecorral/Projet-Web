@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Candidature form</title>
+        <title>Formulaire candidature</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
@@ -27,8 +27,10 @@
           {% else %}
 
           <div class="log">
-            <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte pro </a>
-            <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Log out</a>
+            <!-- Connexion -->
+            <a href="" class="button-1 connexion">Connexion</a>
+            <!-- Inscription-->
+            <a href="/user_form" class="button-1 inscription">Inscription</a>
           </div>
           {% endif %}
 
@@ -47,40 +49,9 @@
       <main>
 
         <!-- Si l'utilisateur est authentifié les champs sont rempli automatiquement-->
-
         {% if user.is_authenticated %}
 
-          {% for particulier in particuliers %}
-
-            {% if user.id == particulier.user_id %}
-              <form method="POST" action="">
-              {% csrf_token %}
-                <div class="element">
-                  <label for="nom">Nom</label><br>
-                  <input type="text" name="nom" class="input" value="{{ particulier.nom }}" required>
-                </div>
-                <div class="element">
-                  <label for="prenom">Prénom</label><br>
-                  <input type="text" name="prenom" class="input" value="{{ particulier.prenom }}" required>
-                </div>
-                <div class="element">
-                  <label for="email">Email</label><br>
-                  <input type="email" name="email" class="input" value="{{ user.email }}" required>
-                </div>
-                <div class="element">
-                  <label for="telephone">Téléphone</label><br>
-                  <input type="text" name="telephone" class="input" value="{{ particulier.telephone }}">
-                </div>
-                <div class="element">
-                  <label for="submit"></label>
-                  <input type="submit" name="submit" class="button-1 connexion">
-                </div>
-              </form>
-            {% endif %}
-
-          {% endfor %}
-
-        {% else %}
+            {% else %}
 
           <form method="POST" action="">
             {% csrf_token %}

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Entreprise form</title>
+        <title>Formulaire entreprise</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
@@ -70,6 +70,9 @@
             </div>
 
           </form>
+          {%for message in messages%}
+                <p>{{ message }} </p>
+            {%endfor%}
         </main>
         <footer>
           <h4>Contactez-nous</h4>

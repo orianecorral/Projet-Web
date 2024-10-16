@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Formulaire particuliers</title>
+        <title>Mise à jour profil particuliers</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
@@ -28,10 +28,6 @@
                     <input type="text" name="prenom" required>
                 </div>
                 <div>
-                    <label for="email">Email</label><br>
-                    <input type="email" name="email" required>
-                </div>
-                <div>
                     <label for="telephone">Téléphone</label><br>
                     <input type="text" name="telephone">
                 </div>
@@ -45,8 +41,9 @@
                 </div>
                 <div>
                     <label for="submit"></label><br>
-                    <input type="submit" name="submit" value="Envoyer">
+                    <input type="submit" name="submit" value="Mise à jour">
                 </div>
+
             </form>
             {%for message in messages%}
                 <p>{{ message }} </p>

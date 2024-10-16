@@ -20,32 +20,29 @@
               {% if user.is_authenticated %}
 
               {% if user.is_particulier == True%}
-    
+
               <div class="log">
                 <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
+                <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Se déconnecter</a>
               </div>
-              <div class="log">
-                <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Log out</a>
-              </div>
+
               {% else %}
-    
+
               <div class="log">
                 <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte pro </a>
-              </div>
-              <div class="log">
-                <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Log out</a>
+                <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Se déconnecter</a>
               </div>
               {% endif %}
-    
+
             {% else %}
-    
+
             <div class="log">
               <!-- Connexion -->
-              <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
+              <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connection</a>
               <!-- Inscription-->
               <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
             </div>
-    
+
             {% endif %}
             </nav>
         </header>

@@ -13,4 +13,6 @@ urlpatterns = [
     # Pour logout user
     path('logout_user/', logout_user, name='logout_user'),
     path('logout_entreprise/', logout_entreprise, name='logout_entreprise'),
+    # delete compte
+    
 ]

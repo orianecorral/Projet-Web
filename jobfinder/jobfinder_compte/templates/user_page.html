@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home page</title>
+    <title>Profil particuliers</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
@@ -21,18 +21,21 @@
           {% if user.is_particulier == True%}
 
           <div class="log">
-            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
+            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
+            {% for particulier in particuliers %}
+              {% if user.id == particulier.user_id%}
+                {{particulier.prenom}}
+                {% endif %}
+            {% endfor %}</a>
           </div>
           <div class="log">
-            <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Log out</a>
+            <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Se déconnecter</a>
           </div>
+
           {% else %}
 
           <div class="log">
             <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte pro </a>
-          </div>
-          <div class="log">
-            <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Log out</a>
           </div>
           {% endif %}
 
@@ -40,7 +43,7 @@
 
         <div class="log">
           <!-- Connexion -->
-          <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
+          <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connection</a>
           <!-- Inscription-->
           <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
         </div>
@@ -59,6 +62,10 @@
           <p>Email : {{user.email}} </p>
         {% endif %}
       {% endfor %}
+        <div class="log">
+        <a href="/compte/update_user/{{particulier.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
+      </div>
+
     </main>
     <footer>
         <h4>Contactez-nous</h4>

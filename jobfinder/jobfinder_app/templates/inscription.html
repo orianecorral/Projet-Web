@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Connexion</title>
+        <title>Inscription</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/co-inscr.css' %}">
@@ -18,10 +18,10 @@
         </header>
         <main>
             <center class="choixlog">
-                <h2>Sélectionnez le compte que vous possédez</h2>
+                <h2>Sélectionnez le type de compte</h2>
                 <div>
                     <a class="entrepriseLog" href="{% url 'jobfinder_compte:entreprise_form' %}">Entreprise</a> <br>
-                    <a class="utilisateurLog" href="{% url 'jobfinder_compte:user_form' %}">Utilisateur</a>
+                    <a class="utilisateurLog" href="{% url 'jobfinder_compte:user_form' %}">Particulier</a>
                 </div>
             </center>
         </main>
