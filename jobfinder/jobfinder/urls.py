@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jobfinder/', include("jobfinder_app.urls")),
     path('compte/', include("jobfinder_compte.urls")),
+    path('jobfinder/admin/', include("jobfinder_admin.urls")),
 ]
