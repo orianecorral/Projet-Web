@@ -5,9 +5,14 @@
         <title>Liste Utilisateur</title>
     </head>
     <body>
-        testttt
-        {%for us in groupe%}
-        <li><p>{{us}}</p></li>
+        {%for us in particulier%}
+        <li> Nom<p> {{us.nom}}</p> Prenom <p>{{us.prenom}}</p> Telephone <p>{{us.telephone}}</p> Mail <p>{{us.user}}</p></li>
+        {%endfor%}
+        {%for x in entreprises%}
+        <li> Mail <p> {{x.user}}</p> nom <p>{{x.nom_entreprise}}</p> Telephone <p>{{x.pageweb}}</p> adresse <p>{{x.adresse}}</p> taille <p>{{x.taille}}</p>description <p>{{x.description}}</p></li>
+        {%endfor%}
+        {%for y in annonces%}
+        <li> titre<p> {{y.titre}}</p> adresse <p>{{y.adresse}}</p> nom_entreprise <p>{{y.nom_entreprise}}</p> salaire <p>{{y.salaire}}</p>contrat <p>{{y.contrat}}</p>date <p>{{y.date}}</p>short_description <p>{{y.short_description}}</p></li>
         {%endfor%}
     </body>
 </html>
