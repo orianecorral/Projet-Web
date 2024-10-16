@@ -10,20 +10,40 @@
     <body>
         <header>
             <nav>
-              <!-- logo -->
-              <div class="logo">
-                <a href="http://127.0.0.1:8000/"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
-              </div>
-              <!-- connexion -->
+                <!-- logo -->
+                <div class="logo">
+                  <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+                </div>
+                {% if user.is_authenticated %}
+      
+                {% if user.is_entreprise == True %}
+      
+                <div class="log">
+                  <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion">Mon compte pro </a>
+                </div>
+                <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Se déconnecter</a>
+      
+                {% else %}
+      
+                <div class="log">
+                  <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
+                </div>
+                {% endif %}
+      
+              {% else %}
+      
               <div class="log">
-                <a href="" class="button-1 connexion">Connection</a>
-               <!-- Inscription-->
-                <a href="user_form.html " class="button-1 inscription">Inscription</a>
+                <!-- Connexion -->
+                <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connection</a>
+                <!-- Inscription-->
+                <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
               </div>
-            </nav>
+      
+              {% endif %}
+              </nav>
         </header>
         <main>
-            <form method="post">
+            <form method="POST">
                 {% csrf_token %}
                 <div class="element">
                     <label for="titre">Titre de l'annonce</label><br>

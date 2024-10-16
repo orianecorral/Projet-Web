@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# from jobfinder_app.models import Annonces
+# from jobfinder_app.models import Annonces, Candidatures
 
 # Create your models here.
 
@@ -29,6 +29,7 @@ class Particuliers(models.Model):
     prenom = models.CharField(max_length=200, null=True)
     nom = models.CharField(max_length=300, null=True)
     telephone = models.CharField(max_length=300, null=True)
+    # candidature = models.ForeignKey(Candidatures, on_delete=models.CASCADE, default=None)
 
     class Meta:
         db_table = 'Particuliers'
@@ -51,7 +52,7 @@ class Entreprises(models.Model):
     adresse = models.CharField(max_length=300, null=True)
     taille = models.CharField(max_length=100, choices=SIZE_CHOICES, null=True)
     description = models.TextField()
-
+    # annonce = models.ForeignKey(Annonces, on_delete=models.CASCADE, default=None)
 
     class Meta:
         db_table = 'Entreprises'

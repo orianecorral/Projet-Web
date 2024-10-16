@@ -14,6 +14,6 @@ urlpatterns = [
     path('user_page/', user_page, name='user_page'),
     path('update_user/<int:pk>', update_user, name='update_user'),
 
-
+    
 
 ]

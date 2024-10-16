@@ -2,10 +2,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Annonces, Candidatures
-from jobfinder_compte.models import Utilisateurs, Particuliers, Entreprises
+from jobfinder_compte.models import Particuliers, Utilisateurs, Entreprises
 from django.contrib.auth import logout
 from django.db.models import Q
-from django.contrib.auth import authenticate, login, logout
 
 
 def home_page(request):
@@ -16,14 +15,6 @@ def home_page(request):
     
     return render(request,'home_page.html')
 
-# def recherche_page(request):
-#     if request.method == "POST":
-#         recherche = request.POST['recherche']
-#         annonces = Annonces.objects.filter(Q(titre__contains=recherche) | Q(nom_entreprise__contains=recherche) | Q(contrat__contains=recherche)| Q(short_description__contains=recherche)| Q(long_description__contains=recherche))
-#         return render(request,'recherche_page.html',{'annonces':annonces})
-#     else:
-#         annonces = Annonces.objects.all()
-#         return render(request,'recherche_page.html',{'annonces':annonces})
 
 def connexion_page(request):
     return render(request,'connexion.html')
@@ -32,7 +23,8 @@ def inscription_page(request):
     return render(request,'inscription.html')
 
 
-def annonce_entry(request):
+def annonce_entry(request, pk):
+    user = Entreprises.objects.get(user_id=pk)
     if request.method == 'POST':
         titre = request.POST.get('titre')
         adresse = request.POST.get('adresse')
@@ -43,26 +35,29 @@ def annonce_entry(request):
         short_description = request.POST.get('short_description')
         long_description = request.POST.get('long_description')
 
+
         # Create a new patient entry in the database using the Patient model
-        annonce = Annonces(titre=titre, adresse=adresse, nom_entreprise=nom_entreprise, salaire=salaire, contrat=contrat, date=date, short_description=short_description, long_description=long_description)
+        annonce = Annonces(titre=titre, adresse=adresse, nom_entreprise=nom_entreprise, salaire=salaire, contrat=contrat, date=date, short_description=short_description, long_description=long_description, entreprise_id=user.id)
         annonce.save()
 
-        return HttpResponse("Data successfully inserted!")
-    else:
-        return HttpResponse("Invalid request method.")
+        return redirect('jobfinder_compte:entreprise_page')
+    
+    return render(request, 'annonce_form.html')
     
 
 
 
-def candidature_entry(request):
+def candidature_entry(request,pk):
+    utilisateur = Utilisateurs.objects.get(id=pk)
     if request.method == 'POST':
         prenom = request.POST.get('prenom')
         nom = request.POST.get('nom')
         email = request.POST.get('email')
         telephone = request.POST.get('telephone')
+        user = request.POST.get('user')
         
         # Create a new patient entry in the database using the Patient model
-        candidatures = Candidatures(prenom=prenom, nom=nom, email=email, telephone=telephone)
+        candidatures = Candidatures(prenom=prenom, nom=nom, email=email, telephone=telephone, user=user)
         candidatures.save()
 
         return redirect(request, 'home_page.html')

@@ -41,23 +41,28 @@
 
         {% endif %}
         </nav>
-    </header>
-        <main>
-          {% for entreprise in entreprises %}
-        {% if user.id == entreprise.user_id%}
-          <h1> {{entreprise.nom_entreprise}} </h1>
-          <h2> {{entreprise.pageweb}} </h2>
-          <p>Adresse : {{entreprise.adresse}} </p>
-          <p>Taille: {{entreprise.taille}} </p>
-          <p>Description: {{entreprise.description}} </p>
-        {% endif %}
-      {% endfor %}
-        </main>
-        <footer>
-          <h4>Contactez-nous</h4>
-          <p>Email : x </p>
-          <p>Télephone : 06-</p>
-          <p>adresse</p>
-        </footer>
+      </header>
+      <main>
+        {% for entreprise in entreprises %}
+          {% if user.id == entreprise.user_id%}
+            <h1> {{entreprise.nom_entreprise}} </h1>
+            <h2> {{entreprise.pageweb}} </h2>
+            <p>Adresse : {{entreprise.adresse}} </p>
+            <p>Taille: {{entreprise.taille}} </p>
+            <p>Description: {{entreprise.description}} </p>
+          {% endif %}
+        {% endfor %}
+
+        <div class="log">
+          <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
+          <a href="/jobfinder/annonce_form/{{user.pk}}" class="button-1 inscription"> Créer une nouvelle annonce </a>
+        </div>
+      </main>
+      <footer>
+        <h4>Contactez-nous</h4>
+        <p>Email : x </p>
+        <p>Télephone : 06-</p>
+        <p>adresse</p>
+      </footer>
     </body>
 </html>

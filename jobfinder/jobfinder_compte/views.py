@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from .models import Utilisateurs, Entreprises, Particuliers
 from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password, is_password_usable
+# from django.contrib.auth.hashers import make_password, is_password_usable
 
 # Create your views here.
 
@@ -51,7 +51,7 @@ def user_form(request):
         )
         particulier.save()
 
-        return HttpResponse("Data successfully inserted!")
+        return redirect('http://127.0.0.1:8000/jobfinder')
 
     return render(request,'user_form.html')
 
@@ -98,7 +98,7 @@ def entreprise_form(request):
         entreprise.save()
 
 
-        return HttpResponse("Data successfully inserted!")
+        return redirect('http://127.0.0.1:8000/jobfinder')
     # Apres il faudra redirect to user_page
     return render(request,'entreprise_form.html')
 
@@ -161,15 +161,11 @@ def entreprise_page(request):
 
 def update_user(request,pk):
     particuliers = Particuliers.objects.get(id=pk)
-    if request.method == 'POST':
-        user_form(request.POST,instance = particuliers)
-        if user_form.is_valid():
-            user_form.save()
-            return redirect("user_page")
-        context = {
-            'particuliers': particuliers,
-        }
-        return render(request, '/compte/update_user',context)
+    # if request.method == 'POST':
+
+    return render(request, 'update_user.html')
+
+
             # email = request.POST.get('email')
     #         nom = request.POST.get('nom')
     #         prenom = request.POST.get('prenom')
