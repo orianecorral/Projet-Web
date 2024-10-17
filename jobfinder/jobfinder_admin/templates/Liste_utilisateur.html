@@ -14,12 +14,14 @@
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Telephone</th>
+                    <th>id</th>
                     <th>action</th>
                 </tr>
             </thead>
             {%for field in TabPar%}
             <td>{{field}}</td>
             {%endfor%}
+            <td></td>
             <td><button name="sauvegarder">sauvegarder</button></td>
             <tbody>
                 {%for us in particulier%}
@@ -28,7 +30,8 @@
                     <td>{{us.nom}}</td>
                     <td>{{us.prenom}}</td>
                     <td>{{us.telephone}}</td>
-                    <td><button name="editer">editer</button><button name="supprimer">supprimer</button></td>
+                    <td>{{us.id}}</td>
+                    <td><button name="editer"value="{{us.id}}">editer</button><button name="supprimer"value="{{us.id}}">supprimer</button></td>
                 </tr>
                 {% endfor %}
             </tbody>

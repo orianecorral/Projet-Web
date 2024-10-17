@@ -7,15 +7,19 @@ from .forms import *
 from django.contrib.auth import authenticate
 # Create your views here.
 def tab_Particulier(request):
-    if request.method =='POST':
+    particulierform = particulierForm()
+    Particulier =Particuliers.objects.all()
+    if request.method =='POST': 
         if 'sauvegarder' in request.POST:
+            particulierform = particulierForm(request.POST)
+            particulierform.save()
             print('bouton sauvegarde')
         if 'editer' in request.POST:
             print('bouton editer')
         if 'supprimer' in request.POST:
-            print('bouton supprimer')
-    particulierform = particulierForm()
-    Particulier =Particuliers.objects.all()
+            ide = request.POST.get('supprimer')
+            jul = Particuliers.objects.get(id=ide)
+            jul.delete()
     return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'TabPar':particulierform},)
 
 def tab_entreprise(request):
