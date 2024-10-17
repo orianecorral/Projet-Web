@@ -2,6 +2,8 @@ from django import forms
 from .models import Particuliers
 from .models import Utilisateurs
 from .models import Entreprises
+from  jobfinder_app.models import Annonces
+
 
 
 class ParticuliersForm(forms.ModelForm):
@@ -11,10 +13,15 @@ class ParticuliersForm(forms.ModelForm):
         fields = ["nom","prenom","telephone"]
 
 class EntreprisesForm(forms.ModelForm):
-    class Meta: 
+    class Meta:
         model = Entreprises
         exclude = ["user_id","id"]
         fields = ["nom_entreprise","pageweb","adresse","taille","description"]
+
+class AnnoncesForm(forms.ModelForm):
+    class Meta:
+        model = Annonces
+        exclude = ["entreprise_id","id"]
 
 class UtilisateursForm(forms.ModelForm):
     class Meta:

@@ -4,7 +4,7 @@ from .models import Utilisateurs, Entreprises, Particuliers
 from jobfinder_app.models import Annonces, Candidatures
 from django.contrib import messages
 
-from .forms import ParticuliersForm, UtilisateursForm, EntreprisesForm
+from .forms import ParticuliersForm, UtilisateursForm, EntreprisesForm, AnnoncesForm
 
 # Create your views here.
 
@@ -201,5 +201,70 @@ def update_entreprise(request,pk):
     }
     return render(request,'update_entreprise.html',context)
 
-# Pour le Logout
 
+def update_annonce(request,pk):
+    # entreprise = Entreprises.objects.get(user_id=pk)
+    annonce = Annonces.objects.get(id=pk)
+    # form1 = EntreprisesForm(instance = entreprise)
+    form2 = AnnoncesForm(instance = annonce)
+    if request.method == 'POST':
+        # form1 = EntreprisesForm(request.POST, instance=entreprise)
+        # form1.save()
+        form2 = AnnoncesForm(request.POST, instance=annonce)
+        form2.save()
+        return redirect('/compte/entreprise_page')
+
+    context = {
+        # 'entreprise': entreprise,
+        'annonce' : annonce,
+        # 'form1': form1,
+        'form2': form2,
+    }
+    return render(request,'update_annonce.html',context)
+
+# Delete
+
+def delete_particulier(request, pk):
+    utilisateur = Utilisateurs.objects.get(id=pk)
+    particulier = Particuliers.objects.get(user_id = pk)
+
+    if request.method == 'POST':
+        utilisateur.delete()
+        particulier.delete()
+        return redirect('jobfinder/home_page')
+
+    context = {
+        'utilisateur': utilisateur,
+        'particulier': particulier,
+    }
+    return render(request, 'remove-particulier.html', context)
+
+def delete_entreprise(request, pk):
+    utilisateur = Utilisateurs.objects.get(id=pk)
+    entreprise =  Entreprises.objects.get(user_id = pk)
+
+    if request.method == 'POST':
+        utilisateur.delete()
+        entreprise.delete()
+        return redirect('entreprise_page')
+
+    context = {
+        'utilisateur': utilisateur,
+        'entreprise': entreprise,
+    }
+    return render(request, 'remove-entreprise.html', context)
+
+def delete_annonce(request, pk):
+    # entreprise = Entreprises.objects.get(user_id=pk)
+    annonce =  Annonces.objects.get(id = pk)
+
+    if request.method == 'POST':
+        annonce.delete()
+        # entreprise.delete()
+        return redirect('compte/entreprise_page')
+
+    context = {
+        'annonce': annonce,
+        # 'entreprise': entreprise,
+    }
+    return render(request, 'remove-annonce.html', context)
