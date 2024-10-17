@@ -8,22 +8,25 @@
         <table align="center" style="margin: 0px auto;">
             <thead>
                 <tr>
+                    <th>Email</th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Telephone</th>
-                    <th>Email</th>
+                    <th>action</th>
                 </tr>
             </thead>
             {%for field in part%}
             <td>{{field}}</td>
             {%endfor%}
+            <td><button name="sauvegarder">sauvegarder</button></td>
             <tbody>
                 {%for us in particulier%}
                 <tr>
+                    <td>{{us.user}}</td>
                     <td>{{us.nom}}</td>
                     <td>{{us.prenom}}</td>
                     <td>{{us.telephone}}</td>
-                    <td>{{us.user}}</td>
+                    <td><button name="editer">editer</button><button name="suprimer">supprimer</button></td>
                 </tr>
                 {% endfor %}
             </tbody>
