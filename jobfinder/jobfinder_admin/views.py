@@ -7,12 +7,16 @@ from .forms import *
 from django.contrib.auth import authenticate
 # Create your views here.
 def tab_Particulier(request):
-    #context = {}
+    if request.method =='POST':
+        if 'sauvegarder' in request.POST:
+            print('bouton sauvegarde')
+        if 'editer' in request.POST:
+            print('bouton editer')
+        if 'supprimer' in request.POST:
+            print('bouton supprimer')
     particulierform = particulierForm()
     Particulier =Particuliers.objects.all()
-    #context['Particulier'] = Particulier
-    #context['form'] = particulierform
-    return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'part':particulierform},)
+    return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'TabPar':particulierform},)
 
 def tab_entreprise(request):
     Entreprise =Entreprises.objects.all()
@@ -29,3 +33,10 @@ def CoAdmin(request):
     else:
         print('jesuis pasco')
         return render(request,'Liste_utilisateur.html')
+    
+def suprimmer(request):
+    print('placeholder')
+def editer(request):
+    print('placeholder update')
+def sauvegarder(request):
+    print('placeholder sauvegarde')

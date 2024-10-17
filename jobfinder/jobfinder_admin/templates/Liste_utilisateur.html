@@ -5,6 +5,8 @@
         <title>Liste Utilisateur</title>
     </head>
     <body>
+        <form method ='POST'>
+            {% csrf_token %}
         <table align="center" style="margin: 0px auto;">
             <thead>
                 <tr>
@@ -15,7 +17,7 @@
                     <th>action</th>
                 </tr>
             </thead>
-            {%for field in part%}
+            {%for field in TabPar%}
             <td>{{field}}</td>
             {%endfor%}
             <td><button name="sauvegarder">sauvegarder</button></td>
@@ -26,11 +28,12 @@
                     <td>{{us.nom}}</td>
                     <td>{{us.prenom}}</td>
                     <td>{{us.telephone}}</td>
-                    <td><button name="editer">editer</button><button name="suprimer">supprimer</button></td>
+                    <td><button name="editer">editer</button><button name="supprimer">supprimer</button></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+    </form>
         <table align="center" style="margin: 0px auto;">
             <thead>
                 <tr>
