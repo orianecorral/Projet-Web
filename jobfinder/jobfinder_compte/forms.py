@@ -2,6 +2,7 @@ from django import forms
 from .models import Particuliers
 from .models import Utilisateurs
 from .models import Entreprises
+# from django.forms import ModelForm
 
 
 class ParticuliersForm(forms.ModelForm):
@@ -11,6 +12,7 @@ class ParticuliersForm(forms.ModelForm):
         fields = ["nom","prenom","telephone"]
 
 class EntreprisesForm(forms.ModelForm):
+    class Meta:
         model = Entreprises
         exclude = ["user_id","id"]
         fields = ["nom_entreprise","pageweb","adresse","taille","description"]

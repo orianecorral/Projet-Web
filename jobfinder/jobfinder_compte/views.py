@@ -161,7 +161,7 @@ def entreprise_page(request):
     return render(request,'entreprise_page.html',{'entreprises':entreprises})
 
 def update_user_bis(request,pk):
-    particulier = Particuliers.objects.get(id=pk)
+    particulier = Particuliers.objects.get(user_id=pk)
     utilisateur = Utilisateurs.objects.get(id=pk)
     form1 = ParticuliersForm(instance = particulier)
     form2 = UtilisateursForm(instance = utilisateur)
@@ -181,7 +181,7 @@ def update_user_bis(request,pk):
     return render(request,'update_user.html',context)
 
 def update_entreprise(request,pk):
-    entreprise = Entreprises.objects.get(id=pk)
+    entreprise = Entreprises.objects.get(user_id=pk)
     utilisateur = Utilisateurs.objects.get(id=pk)
     form1 = EntreprisesForm(instance = entreprise)
     form2 = UtilisateursForm(instance = utilisateur)
@@ -201,4 +201,3 @@ def update_entreprise(request,pk):
     return render(request,'update_entreprise.html',context)
 
 # Pour le Logout
-

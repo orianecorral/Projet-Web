@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.forms import ModelForm
 # from jobfinder_app.models import Annonces
 
 # Create your models here.
