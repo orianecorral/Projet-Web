@@ -49,7 +49,6 @@
       <main>
 
         <!-- Si l'utilisateur est authentifié les champs sont rempli automatiquement-->
-        {% if user.is_authenticated %}
 
           {% for particulier in particuliers %}
 
@@ -82,34 +81,6 @@
             {% endif %}
             
           {% endfor %}
-
-        {% else %}
-
-          <form method="POST">
-            {% csrf_token %}
-            <div class="element">
-              <label for="nom">Nom</label><br>
-              <input type="text" name="nom" class="input" required>
-            </div>
-            <div class="element">
-              <label for="prenom">Prénom</label><br>
-              <input type="text" name="prenom" class="input" required>
-            </div>
-            <div class="element">
-              <label for="email">Email</label><br>
-              <input type="email" name="email" class="input" required>
-            </div>
-            <div class="element">
-              <label for="telephone">Téléphone</label><br>
-              <input type="text" name="telephone" class="input">
-            </div>
-            <div>
-              <label for="submit"></label>
-              <input type="submit" name="submit" class="input">
-            </div>
-          </form>
-
-        {% endif %}
         
       </main>
       <footer>

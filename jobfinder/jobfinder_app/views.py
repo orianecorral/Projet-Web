@@ -54,25 +54,52 @@ def annonce_entry(request, pk):
     
     return render(request, 'annonce_form.html')
     
-
-
-
-def candidature_entry(request,pk=0):
+# Candidature sans compte
+def no_compte_candidature_entry(request, pk):
+    annonces = Annonces.objects.get(id=pk)
     if request.method == 'POST':
         prenom = request.POST.get('prenom')
         nom = request.POST.get('nom')
         email = request.POST.get('email')
         telephone = request.POST.get('telephone')
-        user = request.POST.get('user')
         
         # Create a new patient entry in the database using the Patient model
-        candidatures = Candidatures(prenom=prenom, nom=nom, email=email, telephone=telephone, user=user)
+        candidatures = Candidatures(
+            prenom=prenom, 
+            nom=nom, 
+            email=email, 
+            telephone=telephone,
+            annonce_id=annonces.id)
         candidatures.save()
 
-        return redirect(request, 'home_page.html')
+        return redirect('http://127.0.0.1:8000/jobfinder')
+    
+    return render(request, 'no_compte_candidature_form.html')
+
+
+def compte_candidature_entry(request,pk,pz):
+    annonces = Annonces.objects.get(id=pk)
+    user = Utilisateurs.objects.get(id=pz)
+    if request.method == 'POST':
+        prenom = request.POST.get('prenom')
+        nom = request.POST.get('nom')
+        email = request.POST.get('email')
+        telephone = request.POST.get('telephone')
+        
+        # Create a new patient entry in the database using the Patient model
+        candidatures = Candidatures(
+            prenom=prenom, 
+            nom=nom, 
+            email=email, 
+            telephone=telephone, 
+            annonce_id=annonces.id,
+            user_id=user.id)
+        candidatures.save()
+
+        return redirect('http://127.0.0.1:8000/jobfinder')
     
     particuliers = Particuliers.objects.all()
-    return render(request, 'candidature_form.html', {'particuliers':particuliers})
+    return render(request, 'compte_candidature_form.html', {'particuliers':particuliers})
 
 
 

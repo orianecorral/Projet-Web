@@ -142,9 +142,6 @@ def connexion_entreprise(request):
     return render(request, 'connexion_entreprise.html')
 
 
-# def connexion_user(request):
-#     return render(request,'connexion_user.html')
-
 
 # Fin de connection
 
@@ -159,7 +156,8 @@ def user_page(request):
 def entreprise_page(request):
     entreprises = Entreprises.objects.all()
     annonces = Annonces.objects.all()
-    return render(request,'entreprise_page.html',{'entreprises':entreprises,'annonces':annonces})
+    candidatures = Candidatures.objects.all()
+    return render(request,'entreprise_page.html',{'entreprises':entreprises,'annonces':annonces,'candidatures':candidatures})
 
 def update_user_bis(request,pk):
     particulier = Particuliers.objects.get(user_id=pk)

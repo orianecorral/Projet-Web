@@ -82,14 +82,14 @@
 
             <div class="buttons">
               <button class="learnMore">Learn More</button>
-              <a href="candidature_form/{{user.pk}}"><button class="postuler">Postuler</button></a>
+              <a href="compte_candidature_form/{{annonce.pk}}/{{user.id}}"><button class="postuler">Postuler</button></a>
             </div>
 
             {% else %}
 
             <div class="buttons">
               <button class="learnMore">Learn More</button>
-              <a href="no_compte_candidature_form"><button class="postuler">Postuler</button></a>
+              <a href="no_compte_candidature_form/{{annonce.pk}}"><button class="postuler">Postuler</button></a>
             </div>
 
             {% endif %}
