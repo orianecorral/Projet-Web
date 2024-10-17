@@ -5,14 +5,79 @@
         <title>Liste Utilisateur</title>
     </head>
     <body>
-        {%for us in particulier%}
-        <li> Nom<p> {{us.nom}}</p> Prenom <p>{{us.prenom}}</p> Telephone <p>{{us.telephone}}</p> Mail <p>{{us.user}}</p></li>
-        {%endfor%}
-        {%for x in entreprises%}
-        <li> Mail <p> {{x.user}}</p> nom <p>{{x.nom_entreprise}}</p> Telephone <p>{{x.pageweb}}</p> adresse <p>{{x.adresse}}</p> taille <p>{{x.taille}}</p>description <p>{{x.description}}</p></li>
-        {%endfor%}
-        {%for y in annonces%}
-        <li> titre<p> {{y.titre}}</p> adresse <p>{{y.adresse}}</p> nom_entreprise <p>{{y.nom_entreprise}}</p> salaire <p>{{y.salaire}}</p>contrat <p>{{y.contrat}}</p>date <p>{{y.date}}</p>short_description <p>{{y.short_description}}</p></li>
-        {%endfor%}
+        <table align="center" style="margin: 0px auto;">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            {%for field in part%}
+            <td>{{field}}</td>
+            {%endfor%}
+            <tbody>
+                {%for us in particulier%}
+                <tr>
+                    <td>{{us.nom}}</td>
+                    <td>{{us.prenom}}</td>
+                    <td>{{us.telephone}}</td>
+                    <td>{{us.user}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table align="center" style="margin: 0px auto;">
+            <thead>
+                <tr>
+                    <th>mail</th>
+                    <th>nom entreprise</th>
+                    <th>page web</th>
+                    <th>adresse</th>
+                    <th>taille</th>
+                    <th>description</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {%for x in entreprises%}
+                <tr>
+                    <td>{{x.user}}</td>
+                    <td>{{x.nom_entreprise}}</td>
+                    <td>{{x.pageweb}}</td>
+                    <td>{{x.adresse}}</td>
+                    <td>{{x.taille}}</td>
+                    <td>{{x.description}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        <table align="center" style="margin: 0px auto;">
+            <thead>
+                <tr>
+                    <th>titre</th>
+                    <th>adresse</th>
+                    <th>nom entreprise</th>
+                    <th>salaise</th>
+                    <th>contrat</th>
+                    <th>date</th>
+                    <th>description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for y in annonces%}
+                <tr>
+                    <td>{{y.titre}}</td>
+                    <td>{{y.adresse}}</td>
+                    <td>{{y.nom_entreprise}}</td>
+                    <td>{{y.salaire}}</td>
+                    <td>{{y.contrat}}</td>
+                    <td>{{y.date}}</td>
+                    <td>{{y.short_description}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </body>
 </html>
