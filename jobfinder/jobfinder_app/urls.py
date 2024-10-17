@@ -7,12 +7,19 @@ urlpatterns = [
     # path('recherche_page/', recherche_page, name='recherche_page'),
     path('connexion_page/', connexion_page, name='connexion_page'),
     path('inscription_page/', inscription_page, name='inscription_page'),
+
+    # Annonce form 
     path('annonce_form/<int:pk>', annonce_entry, name='annonce_form'),
-    # path('process_annonce_entry/', process_annonce_entry, name='process_annonce_entry'),
+
+    # Candidature form pour les personnes sans compte
+    path('no_compte_candidature_form/', candidature_entry, name='candidature_form'),
+
+    # Candidature form pour les personnes avec compte
     path('candidature_form/', candidature_entry, name='candidature_form'),
+
     # Pour logout user
     path('logout_user/', logout_user, name='logout_user'),
     path('logout_entreprise/', logout_entreprise, name='logout_entreprise'),
     # delete compte
-    
+
 ]

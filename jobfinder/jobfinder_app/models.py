@@ -1,5 +1,5 @@
 from django.db import models
-from jobfinder_compte.models import Entreprises, Particuliers
+from jobfinder_compte.models import Utilisateurs
 
 
 
@@ -26,7 +26,7 @@ class Annonces(models.Model):
     date = models.DateField()
     short_description = models.CharField(max_length=150)
     long_description = models.TextField()
-    entreprise = models.ForeignKey(Entreprises, on_delete=models.CASCADE, default=None)
+    entreprise = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE, default=None)
 
 
     class Meta:
@@ -38,7 +38,7 @@ class Candidatures(models.Model):
     nom = models.CharField(max_length=100)
     email = models.EmailField()
     telephone = models.CharField(max_length=15)
-    user = models.ForeignKey(Particuliers, on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE, default=None, null=True)
     annonce = models.ForeignKey(Annonces, on_delete=models.CASCADE, default=None)
     
     

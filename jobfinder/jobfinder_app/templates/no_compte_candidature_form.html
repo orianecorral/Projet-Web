@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulaire candidature</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
+    </head>
+    <body>
+      <header>
+        <nav>
+          <!-- logo -->
+          <div class="logo">
+            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+          </div>
+          <!-- Vérifié si l'utilisateur est connecté -->
+
+          {% if user.is_authenticated %}
+
+          {% if user.is_particulier == True%}
+
+          <div class="log">
+            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
+            <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Log out</a>
+          </div>
+          {% else %}
+
+          <div class="log">
+            <!-- Connexion -->
+            <a href="" class="button-1 connexion">Connexion</a>
+            <!-- Inscription-->
+            <a href="/user_form" class="button-1 inscription">Inscription</a>
+          </div>
+          {% endif %}
+
+        {% else %}
+
+        <div class="log">
+          <!-- Connexion -->
+          <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
+          <!-- Inscription-->
+          <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
+        </div>
+
+        {% endif %}
+        </nav>
+      </header>
+      <main>
+
+        <!-- Si l'utilisateur est authentifié les champs sont rempli automatiquement-->
+        {% if user.is_authenticated %}
+
+          {% for particulier in particuliers %}
+
+            {% if particulier.user_id == user.id %}
+
+              <form method="POST">
+                {% csrf_token %}
+                <div class="element">
+                  <label for="nom">Nom</label><br>
+                  <input type="text" name="nom" class="input" value="{{particulier.nom}}" required>
+                </div>
+                <div class="element">
+                  <label for="prenom">Prénom</label><br>
+                  <input type="text" name="prenom" class="input" value="{{particulier.prenom}}" required>
+                </div>
+                <div class="element">
+                  <label for="email">Email</label><br>
+                  <input type="email" name="email" class="input" value="{{user.email}}" required>
+                </div>
+                <div class="element">
+                  <label for="telephone">Téléphone</label><br>
+                  <input type="text" name="telephone" class="input" value="{{particulier.telephone}}">
+                </div>
+                <div>
+                  <label for="submit"></label>
+                  <input type="submit" name="submit" class="input">
+                </div>
+              </form>
+            {% endif %}
+            
+          {% endfor %}
+
+        {% else %}
+
+          <form method="POST">
+            {% csrf_token %}
+            <div class="element">
+              <label for="nom">Nom</label><br>
+              <input type="text" name="nom" class="input" required>
+            </div>
+            <div class="element">
+              <label for="prenom">Prénom</label><br>
+              <input type="text" name="prenom" class="input" required>
+            </div>
+            <div class="element">
+              <label for="email">Email</label><br>
+              <input type="email" name="email" class="input" required>
+            </div>
+            <div class="element">
+              <label for="telephone">Téléphone</label><br>
+              <input type="text" name="telephone" class="input">
+            </div>
+            <div>
+              <label for="submit"></label>
+              <input type="submit" name="submit" class="input">
+            </div>
+          </form>
+        {% endif %}
+      </main>
+      <footer>
+        <h4>Contactez-nous</h4>
+        <p>Email : x </p>
+        <p>Télephone : 06-</p>
+        <p>adresse</p>
+      </footer>
+    </body>
+</html>

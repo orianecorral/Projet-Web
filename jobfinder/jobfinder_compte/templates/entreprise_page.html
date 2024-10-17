@@ -41,28 +41,95 @@
 
         {% endif %}
         </nav>
-      </header>
-      <main>
-        {% for entreprise in entreprises %}
-          {% if user.id == entreprise.user_id%}
-            <h1> {{entreprise.nom_entreprise}} </h1>
-            <h2> {{entreprise.pageweb}} </h2>
-            <p>Adresse : {{entreprise.adresse}} </p>
-            <p>Taille: {{entreprise.taille}} </p>
-            <p>Description: {{entreprise.description}} </p>
-          {% endif %}
+    </header>
+        <main>
+          {% for entreprise in entreprises %}
+        {% if user.id == entreprise.user_id%}
+          <h1> {{entreprise.nom_entreprise}} </h1>
+          <h2> {{entreprise.pageweb}} </h2>
+          <p>Adresse : {{entreprise.adresse}} </p>
+          <p>Taille: {{entreprise.taille}} </p>
+          <p>Description: {{entreprise.description}} </p>
+        {% endif %}
         {% endfor %}
 
         <div class="log">
-          <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
+          <a href="/compte/update_entreprise/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
           <a href="/jobfinder/annonce_form/{{user.pk}}" class="button-1 inscription"> Créer une nouvelle annonce </a>
         </div>
-      </main>
-      <footer>
-        <h4>Contactez-nous</h4>
-        <p>Email : x </p>
-        <p>Télephone : 06-</p>
-        <p>adresse</p>
-      </footer>
+
+        <!-- Section Annonces  -->
+
+        <div>
+
+          {% for annonce in annonces %}
+
+              {% if annonce.entreprise_id == user.id %}
+
+                <div class="jobEncart">
+              
+                  <div class="jobTitle">
+                    <h3 class="annonceTitre">{{annonce.titre}}</h3>
+                    <h6 class="annonceElement">Adresse : <br>{{annonce.adresse}}</h6>
+                    <h6 class="annonceElement">Entreprise : <br>{{annonce.nom_entreprise}}</h6>
+                    <h6 class="annonceElement">Type de contrat :<br>{{annonce.contrat}}</h6>
+                    <h6 class="annonceElement">Date de publication :<br>{{annonce.date}}</h6>
+                  </div>
+
+                  <div class="short_description">
+                    <p>{{annonce.short_description}}</p>
+                  </div>
+      
+                  <!-- Longue description cachée -->
+                  <div class="long_description">
+                    <p>{{ annonce.long_description }}</p>
+                  </div>
+
+                  <div class="buttons">
+                    <a href="annonce_update.html"><button class="postuler">Modifier l'annonce</button></a>
+                    <button class="learnMore">Voir les Candidatures</button>
+                    <a href="annonce_delete.html"><button class="postuler">Supprimer l'annonce</button></a>
+                  </div>
+                </div>
+              {% endif %}
+
+          {% endfor %}
+
+          
+           
+        </div>
+      
+        </main>
+        <footer>
+          <h4>Contactez-nous</h4>
+          <p>Email : x </p>
+          <p>Télephone : 06-</p>
+          <p>adresse</p>
+        </footer>
+        <script>
+
+          const learnMoreButton = document.querySelectorAll(".learnMore")
+  
+            learnMoreButton.forEach(button => {
+              button.addEventListener("click", function(){
+  
+              const jobEncart = button.closest(".jobEncart")
+  
+              const longDescription = jobEncart.querySelector(".long_description")
+              const shortDescription = jobEncart.querySelector(".short_description")
+  
+              if (longDescription.style.display == "none"){
+                longDescription.style.display = "block"
+                shortDescription.style.display = "none"
+                button.textContent = "Show Less"
+              }else{
+                longDescription.style.display = "none"
+                shortDescription.style.display = "block"
+                button.textContent = "Learn More"
+              }
+            });          
+          })
+        
+        </script>
     </body>
 </html>

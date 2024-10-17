@@ -24,7 +24,7 @@ def inscription_page(request):
 
 
 def annonce_entry(request, pk):
-    user = Entreprises.objects.get(user_id=pk)
+    user = Utilisateurs.objects.get(id=pk)
     if request.method == 'POST':
         titre = request.POST.get('titre')
         adresse = request.POST.get('adresse')
@@ -37,7 +37,17 @@ def annonce_entry(request, pk):
 
 
         # Create a new patient entry in the database using the Patient model
-        annonce = Annonces(titre=titre, adresse=adresse, nom_entreprise=nom_entreprise, salaire=salaire, contrat=contrat, date=date, short_description=short_description, long_description=long_description, entreprise_id=user.id)
+        annonce = Annonces(
+            titre=titre, 
+            adresse=adresse, 
+            nom_entreprise=nom_entreprise, 
+            salaire=salaire, 
+            contrat=contrat, 
+            date=date, 
+            short_description=short_description, 
+            long_description=long_description, 
+            entreprise_id=user.id
+            )
         annonce.save()
 
         return redirect('jobfinder_compte:entreprise_page')
@@ -47,8 +57,7 @@ def annonce_entry(request, pk):
 
 
 
-def candidature_entry(request,pk):
-    utilisateur = Utilisateurs.objects.get(id=pk)
+def candidature_entry(request,pk=0):
     if request.method == 'POST':
         prenom = request.POST.get('prenom')
         nom = request.POST.get('nom')
