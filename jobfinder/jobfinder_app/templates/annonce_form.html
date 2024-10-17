@@ -15,30 +15,30 @@
                   <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
                 </div>
                 {% if user.is_authenticated %}
-      
+
                 {% if user.is_entreprise == True %}
-      
+
                 <div class="log">
                   <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion">Mon compte pro </a>
                 </div>
                 <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Se déconnecter</a>
-      
+
                 {% else %}
-      
+
                 <div class="log">
                   <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
                 </div>
                 {% endif %}
-      
+
               {% else %}
-      
+
               <div class="log">
                 <!-- Connexion -->
-                <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connection</a>
+                <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
                 <!-- Inscription-->
                 <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
               </div>
-      
+
               {% endif %}
               </nav>
         </header>

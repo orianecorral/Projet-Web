@@ -38,7 +38,7 @@
 
             <div class="log">
               <!-- Connexion -->
-              <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connection</a>
+              <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
               <!-- Inscription-->
               <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
             </div>
@@ -60,7 +60,7 @@
 
           {% for annonce in annonces %}
           <div class="jobEncart">
-          
+
             <div class="jobTitle">
               <h3 class="annonceTitre">{{annonce.titre}}</h3>
               <h6 class="annonceElement">Adresse : <br>{{annonce.adresse}}</h6>
@@ -101,7 +101,7 @@
             <h2 class="catchPhrase">Find your dream job here</h2>
           </div>
         </main>
-        
+
         <!-- Contact us -->
         <footer>
           <h4>Contactez-nous</h4>
@@ -112,15 +112,15 @@
         <script>
 
           const learnMoreButton = document.querySelectorAll(".learnMore")
-  
+
             learnMoreButton.forEach(button => {
               button.addEventListener("click", function(){
-  
+
               const jobEncart = button.closest(".jobEncart")
-  
+
               const longDescription = jobEncart.querySelector(".long_description")
               const shortDescription = jobEncart.querySelector(".short_description")
-  
+
               if (longDescription.style.display == "none"){
                 longDescription.style.display = "block"
                 shortDescription.style.display = "none"
@@ -130,9 +130,9 @@
                 shortDescription.style.display = "block"
                 button.textContent = "Learn More"
               }
-            });          
+            });
           })
-        
+
         </script>
     </body>
 </html>

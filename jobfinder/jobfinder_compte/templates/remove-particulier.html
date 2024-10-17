@@ -21,14 +21,6 @@
           {% if user.is_particulier == True%}
 
           <div class="log">
-            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
-            {% for particulier in particuliers %}
-              {% if user.id == particulier.user_id%}
-                {{particulier.prenom}}
-                {% endif %}
-            {% endfor %}</a>
-          </div>
-          <div class="log">
             <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Se déconnecter</a>
           </div>
 
@@ -53,20 +45,22 @@
         </nav>
     </header>
     <main>
-      <!-- Montrer les informations utilisateurs -->
-      {% for particulier in particuliers %}
-        {% if user.id == particulier.user_id%}
-          <h1> {{particulier.prenom}} </h1>
-          <h2> {{particulier.nom}} </h2>
-          <p>Telephone : {{particulier.telephone}} </p>
-          <p>Email : {{user.email}} </p>
-        {% endif %}
-      {% endfor %}
-      <div class="log">
-        <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
-        <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 connexion"> Supprimer mon compte  </a>
-      </div>
+      <form action="" method="POST">
+        {% csrf_token %}
 
+        <br><br>
+        <div class="alert alert-danger" role="alert">
+          Etes-vous sûr de vouloir supprimer "{{particulier.nom}}"?
+        </div>
+
+        <p>
+            <a href="{% url 'jobfinder_compte:entreprise_page' %}">--Return</a>
+        </p>
+
+        <p>
+            <input type="submit" value="Confirm">
+        </p>
+      </form>
     </main>
     <footer>
         <h4>Contactez-nous</h4>

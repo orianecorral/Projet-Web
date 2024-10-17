@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mise à jour profil Entreprises</title>
+        <title>Mise à jour Annonce</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
@@ -22,7 +22,6 @@
           {% if user.is_entreprise == True%}
             <form method="POST">
               {% csrf_token %}
-              {{form1.as_p}}
               {{form2.as_p}}
               <input type="submit">
           </form>
