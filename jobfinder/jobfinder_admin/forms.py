@@ -6,11 +6,8 @@ from jobfinder_compte.models import Utilisateurs
 from jobfinder_app.models import Annonces
 from .forms import *
 
+
 class particulierForm(forms.ModelForm):
-    class Meta:
-        model = Particuliers
-        fields = '__all__'
-class particulierForm1234(forms.ModelForm):
     class Meta:
         model = Particuliers
         exclude = ["user_id","id"]
