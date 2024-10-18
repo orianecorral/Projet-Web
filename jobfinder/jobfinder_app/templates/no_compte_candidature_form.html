@@ -48,7 +48,6 @@
       </header>
       <main>
 
-        <!-- Si l'utilisateur est authentifié les champs sont rempli automatiquement-->
 
           <form method="POST">
             {% csrf_token %}
@@ -68,9 +67,9 @@
               <label for="telephone">Téléphone</label><br>
               <input type="text" name="telephone" class="input">
             </div>
-            <div>
+            <div class="submit_div">
               <label for="submit"></label>
-              <input type="submit" name="submit">
+              <input type="submit" name="submit" class="submit">
             </div>
           </form>
           

@@ -66,6 +66,29 @@
         <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
         <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 connexion"> Supprimer mon compte  </a>
       </div>
+      <!-- Ici affichage des candidatures -->
+      
+      {% for candidature in candidatures %}
+
+        {% if candidature.user_id == user.id %}
+
+          {% for annonce in annonces %}
+
+            {% if candidature.annonce_id == annonce.id %}
+          
+            <div>
+              <h3>Titre : {{annonce.titre}} </h3>
+              <h5>Nom de l'entreprise : {{annonce.nom_entreprise}}</h5>
+              <h5>Adresse : {{annonce.adresse}}</h5>
+            </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+        {% endif %}
+
+      {% endfor %}
 
     </main>
     <footer>

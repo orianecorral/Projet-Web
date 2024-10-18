@@ -93,10 +93,21 @@
                   </div>
                 </div>
               {% endif %}
-
+                <!-- Candidature de chaque annonce -->
               {% for candidature in candidatures %}
 
-              {}
+                {% if candidature.annonce_id == annonce.id %}
+                
+                <div class="jobTitle">
+                  <h5>Prénom : {{candidature.prenom}}</h5>
+                  <h5>Nom : {{candidature.nom}}</h5>
+                  <h5>Email : {{candidature.email}}</h5>
+                  <h5>Telephone : {{candidature.telephone}}</h5>
+                </div>
+
+                {% endif %}
+
+              {% endfor %}
 
           {% endfor %}
 

@@ -5,7 +5,7 @@
         <title>Connexion Particulier</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style_form_01.css' %}">
     </head>
     <body>
         <header>
@@ -18,22 +18,23 @@
         </header>
         <main>
             <h1>Connexion Particulier</h1>
-            {%for message in messages%}
-                <p>{{ message }} </p>
-            {%endfor%}
+            <div class="message">
+                {%for message in messages%}
+                    <p>{{ message }} </p>
+                {%endfor%}
+            </div>
             <form method="POST">
             {% csrf_token %}
-                <div>
+                <div class="element">
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" required/>
+                    <input type="email" name="email" class="input" required/>
                 </div>
-                <div>
+                <div class="element">
                     <label for="password">Mot de passe</label><br>
-                    <input type="password" name="password" required/>
+                    <input type="password" name="password" class="input" required/>
                 </div>
-                <div>
-                    <label for="submit"></label><br>
-                    <input type="submit" name="submit">
+                <div class="submit_div">
+                    <input type="submit" name="submit" class="submit">
                 </div>
             </form>
 

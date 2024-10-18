@@ -5,7 +5,7 @@
         <title>Connexion Entreprise</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style_form_01.css' %}">
     </head>
     <body>
         <header>
@@ -23,17 +23,17 @@
             {%endfor%}
             <form method="POST">
             {% csrf_token %}
-                <div>
+                <div class="element">
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" required/>
+                    <input type="email" name="email" class="input" required/>
                 </div>
-                <div>
+                <div class="element">
                     <label for="password">Mot de passe</label><br>
-                    <input type="password" name="password" required/>
+                    <input type="password" name="password" class="input" required/>
                 </div>
-                <div>
+                <div class="submit_div">
                     <label for="submit"></label><br>
-                    <input type="submit" name="submit">
+                    <input type="submit" name="submit" class="submit">
                 </div>
             </form>
 

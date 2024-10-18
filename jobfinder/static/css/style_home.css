@@ -7,14 +7,13 @@
     font-family: ITC_book;
     src: url(../font/ITC/ITCAvantGardeStd-BkCn.otf);
 }
-/* django a as l'air d'aimer les otf font mais les ttf c'est ok */
-
 
 body{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: min-content;
     font-family: ITC_book;
+    background-color: #A8DADC;
 }
 
 header{
@@ -22,36 +21,168 @@ header{
     display: flex;
 }
 
-
-nav{
-    flex: 1;
+main{
+    flex:6;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content : center;
+    align-items: center;
 }
 
-.logo{
+footer{
     flex: 3;
+    border: solid black;
+}
+
+
+@media screen and (max-width: 426px) {
+
+    nav{
+        flex: 1;
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 100%;
+        
+    }
+    
+    .logo{
+        flex: 3;
+    
+    }
+    
+    .logo_img{
+        /* max-width: 60%; */
+        height: 100%;
+        max-height: 96px;
+        
+    }
+    
+    .log{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: min-content;
+        align-content: flex-end;
+    }
+
+    /* Main */
+    form{
+        text-align: center;
+        flex: 4;
+        width: 100%;
+    }
+
+    /* Find ton job de reve */
+    
+    .find{
+        font-size: x-large;
+    }
+
+    .searchEncart{
+        margin: 0px;
+        padding: 5%;
+        border-radius: 20px;
+        background-color: rgb(46, 46, 46);
+    }
+
+    /* Autour de la bare de recherche */
+    
+    .searchBar{
+        border-radius: 30px;
+        height: 30px;
+
+        display: flex;
+        padding: 5px;
+    }
+    
+    .recherche{
+        outline: none;
+        border: none;
+        border-radius: 30px;
+        padding-left: 10px;
+        font-size: larger;
+        width: 100%;
+    }
+    
+    .searchBut{
+        background-color: #457B9D;
+        border: 0;
+        text-align: center;
+        height: 20px;
+        width: 30%;
+        border-radius: 40px;
+    }
+
+    /* ANNONCES */
+
+    .jobEncart{
+        background-color: #F1FAEE;
+        border: solid black 0.5px;
+        border-radius: 15px;
+        margin: 1%;
+        width: 100%;
+    
+        display: flex;
+        height: min-content;
+        flex-direction: column;
+    }
+    
+    .jobTitle{
+        margin: 1%;
+        flex: 1;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .annonceTitre{
+        flex: 1 99%;
+        font-size: x-large;
+        margin: 3px;
+    }
+    
+    .annonceElement{
+        flex: 1 45%;
+        margin: 5px;
+    }
+    
+    .short_description{
+        margin: 1%;
+        flex: 2;
+    }
+    
+    .long_description{
+        margin: 1%;
+        flex: 2;
+    }
+    
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        margin: 2%;
+        justify-content: space-between;
+    }
+
+    /* Catch phrase */
+
+    .divCatch{
+        flex: 1;
+    }
+
+    .catchPhrase{
+        font-family: Quantify;
+        text-align: center;
+        font-size: 100px;
+    }
+
 
 }
 
-.logo_img{
-    max-width: 20%;
-    max-height: 99%;
-    margin: 10px;
-}
 
-.log{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    height: min-content;
-    align-content: flex-end;
-}
 
 /* CSS - Bouton connexion*/
 .connexion{
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #457B9D;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -79,7 +210,7 @@ nav{
 
 .inscription {
     align-items: center;
-    background-color: #828dc4;
+    background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: .25rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -127,105 +258,16 @@ nav{
 /* Fin Header */
 
 /* Main */
-main{
-    flex:6;
-    display: flex;
-    flex-direction: column;
-    justify-content : center;
-    align-items: center;
-}
+
 
 /* Home page form */
 
-form{
-    text-align: center;
-    flex: 4;
-}
 
-.find{
-    font-size: x-large;
-}
 
-.searchBar{
-    border: solid black;
-    border-radius: 30px;
-    height: 30px;
-    display: flex;
-    padding: 5px;
-}
 
-.recherche{
-    outline: none;
-    border: none;
-    border-radius: 30px;
-    padding-left: 5px;
-    font-size: larger;
-}
-
-.searchBut{
-    max-width: 99%;
-    max-height: 99%;
-    border-radius: 40px;
-}
-
-/* catch phrase */
-
-.divCatch{
-    flex: 1;
-}
-
-.catchPhrase{
-    font-family: Quantify;
-    text-align: center;
-    font-size: 130px;
-}
 /* ANNONCES */
 
-.jobEncart{
-    border: solid black;
-    border-radius: 15px;
-    margin: 2%;
-    width: 90vw;
-  
-    display: flex;
-    height: min-content;
-    flex-direction: column;
-}
-  
-.jobTitle{
-    margin: 1%;
-    flex: 1;
-    display: flex;
-    flex-flow: row wrap;
-}
-  
-.annonceTitre{
-    flex: 1 99%;
-    font-size: x-large;
-    margin: 3px;
-}
-  
-.annonceElement{
-    flex: 1 23%;
-    margin: 5px;
-}
-  
-.short_description{
-    margin: 1%;
-    flex: 2;
-}
-  
-.long_description{
-    margin: 1%;
-    flex: 2;
-}
-  
-.buttons{
-    display: flex;
-    flex-direction: row;
-    margin: 1%;
-    justify-content: space-between;
-}
+
   
 .learnMore{
     margin: 2%;
@@ -244,7 +286,7 @@ form{
     line-height: 1.25;
     margin: 0;
     min-height: 3rem;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    padding: calc(.875rem - 1px) 1px;
     position: relative;
     text-decoration: none;
     transition: all 250ms;
@@ -252,7 +294,7 @@ form{
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: baseline;
-    width: 150px;
+    width: 120px;
 }
   
 .postuler{
@@ -272,7 +314,7 @@ form{
     line-height: 1.25;
     margin: 0;
     min-height: 3rem;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    padding: calc(.875rem - 1px) 1px;
     position: relative;
     text-decoration: none;
     transition: all 250ms;
@@ -280,13 +322,9 @@ form{
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: baseline;
-    width: 150px;
+    width: 120px;
 }
   
 
 /* Footer */
-footer{
-    flex: 3;
-    border: solid black;
-}
 

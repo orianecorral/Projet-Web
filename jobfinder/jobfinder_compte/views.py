@@ -149,9 +149,10 @@ def connexion_entreprise(request):
 
 
 def user_page(request):
-
     particuliers = Particuliers.objects.all()
-    return render(request,'user_page.html',{'particuliers':particuliers})
+    candidatures = Candidatures.objects.all()
+    annonces = Annonces.objects.all()
+    return render(request,'user_page.html',{'particuliers':particuliers, 'candidatures':candidatures, 'annonces':annonces})
 
 def entreprise_page(request):
     entreprises = Entreprises.objects.all()

@@ -5,7 +5,7 @@
         <title>Formulaire annonce</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style_form_01.css' %}">
     </head>
     <body>
         <header>
@@ -19,15 +19,15 @@
                 {% if user.is_entreprise == True %}
 
                 <div class="log">
-                  <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion">Mon compte pro </a>
+                    <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion">Mon compte pro </a>
+                    <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 inscription">Se déconnecter</a>
                 </div>
-                <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 connexion">Se déconnecter</a>
-
                 {% else %}
 
                 <div class="log">
-                  <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
-                </div>
+                    <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte pro </a>
+                    <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 inscription">Se déconnecter</a>
+                  </div>
                 {% endif %}
 
               {% else %}

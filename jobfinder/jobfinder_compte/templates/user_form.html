@@ -5,7 +5,7 @@
         <title>Formulaire particuliers</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style_form_01.css' %}">
     </head>
     <body>
         <header>
@@ -19,33 +19,32 @@
         <main>
             <form method="POST">
                 {% csrf_token %}
-                <div>
+                <div class="element">
                     <label for="nom">Nom</label><br>
-                    <input type="text" name="nom" required>
+                    <input type="text" name="nom" class="input" required>
                 </div>
-                <div>
+                <div class="element">
                     <label for="prenom">Prénom</label><br>
-                    <input type="text" name="prenom" required>
+                    <input type="text" name="prenom" class="input" required>
                 </div>
-                <div>
+                <div class="element">
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" class="input" required>
                 </div>
-                <div>
+                <div class="element">
                     <label for="telephone">Téléphone</label><br>
-                    <input type="text" name="telephone">
+                    <input type="text" name="telephone" class="input">
                 </div>
-                <div>
+                <div class="element">
                     <label for="cmdp">Mot de passe</label><br>
-                    <input type="password" name="cmdp" required>
+                    <input type="password" name="cmdp" class="input" required>
                 </div>
-                <div>
+                <div class="element">
                     <label for="password">Confirmation du mot de passe</label><br>
-                    <input type="password" name="password" required>
+                    <input type="password" name="password" class="input" required>
                 </div>
-                <div>
-                    <label for="submit"></label><br>
-                    <input type="submit" name="submit" value="Envoyer">
+                <div class="submit_div">
+                    <input type="submit" name="submit" class="submit" value="Envoyer">
                 </div>
             </form>
             {%for message in messages%}
