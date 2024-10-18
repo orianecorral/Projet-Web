@@ -9,6 +9,8 @@ from django.contrib.auth import authenticate
 def tab_Particulier(request):
     particulierform = particulierForm()
     Particulier =Particuliers.objects.all()
+    Entreprise =Entreprises.objects.all()
+    annonces =Annonces.objects.all()
     if request.method =='POST': 
         if 'sauvegarder' in request.POST:
             ul = request.POST.get('sauvegarder')
@@ -28,7 +30,7 @@ def tab_Particulier(request):
             ide = request.POST.get('supprimer')
             jul = Particuliers.objects.get(id=ide)
             jul.delete()
-    return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'TabPar':particulierform},)
+    return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'annonces':annonces,'TabPar':particulierform,'entreprises':Entreprise})
 
 def tab_entreprise(request):
     Entreprise =Entreprises.objects.all()
