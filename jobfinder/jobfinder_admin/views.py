@@ -11,11 +11,19 @@ def tab_Particulier(request):
     Particulier =Particuliers.objects.all()
     if request.method =='POST': 
         if 'sauvegarder' in request.POST:
-            particulierform = particulierForm(request.POST)
+            ul = request.POST.get('sauvegarder')
+            print(ul)
+            if not ul:
+                particulierform = particulierForm(request.POST)
+            else:
+                jul = Particuliers.objects.get(id=ul)
+                particulierform = particulierForm(request.POST,instance=jul)
             particulierform.save()
-            print('bouton sauvegarde')
+            particulierform = particulierForm()
         if 'editer' in request.POST:
-            print('bouton editer')
+            ide = request.POST.get('editer')
+            jul = Particuliers.objects.get(id=ide)
+            particulierform = particulierForm(instance=jul)
         if 'supprimer' in request.POST:
             ide = request.POST.get('supprimer')
             jul = Particuliers.objects.get(id=ide)

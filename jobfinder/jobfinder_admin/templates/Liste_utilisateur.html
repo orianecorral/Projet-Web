@@ -18,20 +18,22 @@
                     <th>action</th>
                 </tr>
             </thead>
-            {%for field in TabPar%}
-            <td>{{field}}</td>
-            {%endfor%}
-            <td></td>
-            <td><button name="sauvegarder">sauvegarder</button></td>
+            {%if not TabPar.instance.id%}
+                {%include 'editer.html'%}
+            {%endif%}
             <tbody>
                 {%for us in particulier%}
                 <tr>
+                    {%if TabPar.instance.id == us.id%}
+                    {%include 'editer.html'%}
+                    {%else%}
                     <td>{{us.user}}</td>
                     <td>{{us.nom}}</td>
                     <td>{{us.prenom}}</td>
                     <td>{{us.telephone}}</td>
                     <td>{{us.id}}</td>
                     <td><button name="editer"value="{{us.id}}">editer</button><button name="supprimer"value="{{us.id}}">supprimer</button></td>
+                    {%endif%}
                 </tr>
                 {% endfor %}
             </tbody>
