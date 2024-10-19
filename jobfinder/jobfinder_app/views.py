@@ -60,7 +60,6 @@ def annonce_entry(request, pk):
 # Candidature sans compte
 def no_compte_candidature_entry(request, pk):
     annonces = Annonces.objects.get(id=pk)
-    the_annonces = Annonces.objects.all()
     if request.method == 'POST':
         prenom = request.POST.get('prenom')
         nom = request.POST.get('nom')
@@ -78,7 +77,7 @@ def no_compte_candidature_entry(request, pk):
 
         return redirect('http://127.0.0.1:8000/jobfinder')
     
-    return render(request, 'no_compte_candidature_form.html',{'annonces':the_annonces})
+    return render(request, 'no_compte_candidature_form.html',{'annonces':annonces})
 
 
 def compte_candidature_entry(request,pk,pz):

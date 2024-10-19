@@ -42,6 +42,7 @@
         </nav>
     </header>
     <main>
+      <div class="myInfo">
       <!-- Montrer les informations utilisateurs -->
       {% for particulier in particuliers %}
         {% if user.id == particulier.user_id%}
@@ -50,9 +51,10 @@
           <p class="info">Email :<br> {{user.email}} </p>
         {% endif %}
       {% endfor %}
+      </div>
       <div class="log">
         <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
-        <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 inscription"> Supprimer mon compte  </a>
+        <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 suppr"> Supprimer mon compte  </a>
       </div>
       <!-- Ici affichage des candidatures -->
       
@@ -66,7 +68,7 @@
             {% if candidature.annonce_id == annonce.id %}
           
             <div class="jobEncart">
-              <h3 class="jobTitle"><u>Titre : </u><br> {{annonce.titre}} </h3>
+              <h3 class="jobTitle"><u>Titre : </u> {{ annonce.titre }} </h3>
               <h5 class="annonceElement"><u>Nom de l'entreprise : </u><br>{{annonce.nom_entreprise}}</h5>
               <h5 class="annonceElement"><u>Adresse : </u><br> {{annonce.adresse}}</h5>
             </div>
@@ -81,10 +83,34 @@
 
     </main>
     <footer>
-        <h4>Contactez-nous</h4>
-        <p>Email : x </p>
-        <p>Télephone : 06-</p>
-        <p>adresse</p>
+          
+      <h3><center>Contactez-nous pour trouver votre job de rêve</center></h3>
+      <div class="info-G">
+        <h4 class="infos">A propos de jobfinder</h4>
+        <p class="infos">Email : findyourdreamjob@jobfinder.com </p>
+        <p class="infos">Telephone : 01-45-02-65-16</p>
+        <p class="infos">Siège social : 36 Quai des Orfèvres, <br>75016 Paris </p>
+        <p class="infos">SIRET :  91326852000065 </p>
+      </div>
+     <div class="reseaux-J">
+      <div class="reseaux">
+        <h4>Nos réseaux sociaux : </h4>
+        <ul>
+          <a class="loo" href="https://www.instagram.com/hoppy.epitech/" ><img class="logo-footer" src="{% static 'img/Logo_Insta.png' %}" alt=""></a>
+          <a class="loo" href="https://www.linkedin.com/school/epitech---european-institute-of-technology/posts/?feedView=all" ><img class="logo-footer" src="{% static 'img/Logo_LinkedIn.png' %}" alt=""></a>
+          <a class="loo" href="https://x.com/Epitech" ><img class="logo-footer" src="{% static 'img/Logo_X.png' %}" alt=""></a>
+          <a class="loo" href="" ><img src="{% static 'img/Logo_dispo.png' %}" class="logo-footer" alt=""></a>
+          <!-- <a  href="" ><img class="logo-footer" src="" alt="">App store</a> -->
+        </ul>
+      </div>
+      <div class="info-J">
+        <p class="mention"><center>CGV</center></p>
+        <p class="mention"><center> - </center></p>
+        <p class="mention"><center>Mentions légales</center></p>
+        <p class="mention"><center> - </center></p>
+        <p class="mention"><center>Traitement de données</center></p>
+      </div>
+    </div>
     </footer>
     </body>
 </html>

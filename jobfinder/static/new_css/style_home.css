@@ -13,30 +13,27 @@ body{
     flex-direction: column;
     height: min-content;
     font-family: ITC_book;
-    background-color: #A8DADC;
+    background-color: #F2F6F7;
+    margin: 0%;
 }
 
 header{
     flex: 1;
     display: flex;
+    margin: 2%;    
 }
 
 main{
     flex:6;
-    /* display: flex;
-    flex-direction: column;
-    justify-content : center; */
-    align-items: center;
-}
-
-footer{
-    flex: 3;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    background-color: #F0F0F1;
-    padding: 3%;
+    /* justify-content : center; */
+    align-items: center;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
+
 
 
 @media screen and (max-width: 426px) {
@@ -74,6 +71,9 @@ footer{
         text-align: center;
         flex: 4;
         width: 100%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
     }
 
     /* Find ton job de reve */
@@ -85,6 +85,7 @@ footer{
     .searchEncart{
         margin: 0px;
         padding: 5%;
+        width: 85%;
         border-radius: 20px;
         background-color: rgb(46, 46, 46);
     }
@@ -94,7 +95,6 @@ footer{
     .searchBar{
         border-radius: 30px;
         height: 30px;
-
         display: flex;
         padding: 5px;
     }
@@ -110,25 +110,31 @@ footer{
     
     .searchBut{
         background-color: #457B9D;
+        height: 40px;
+        width: 45%;
         border: 0;
-        text-align: center;
-        height: 20px;
-        width: 30%;
         border-radius: 40px;
+        text-align: center;
+        margin-top: 8px;
+        font-family: Quantify;
+        font-size: medium;
+        text-align: center;
     }
 
     /* ANNONCES */
 
     .jobEncart{
-        background-color: #F1FAEE;
+        background-color: #FFFFFF;
         border: solid black 0.5px;
         border-radius: 15px;
         margin: 1%;
-        width: 100%;
+        width: auto;
     
         display: flex;
         height: min-content;
         flex-direction: column;
+
+        box-shadow: 0px 0px 5px black;
     }
     
     .jobTitle{
@@ -143,6 +149,7 @@ footer{
         font-size: x-large;
         margin: 3px;
     }
+
     
     .annonceElement{
         flex: 1 45%;
@@ -180,6 +187,15 @@ footer{
 
     /* Footer */
 
+    footer{
+        flex: 3;
+        margin: 0%;
+        display: flex;
+        flex-flow: column;
+        background-color: #F0F0F1;
+        padding: 3%;
+    }    
+
     .info-G {
         display: flex;
         flex-direction: column;
@@ -200,8 +216,7 @@ footer{
         align-items: center;
         flex: 2 60%;
       }
-}
-       
+
       .info-J {
         display: flex;
         flex-direction: row;
@@ -239,6 +254,241 @@ footer{
         justify-content: space-around;
       } */
 
+}
+
+
+@media screen and (min-width: 426px) {
+
+    nav{
+        flex: 1;
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 100%;
+        
+    }
+    
+    .logo{
+        flex: 3;
+    
+    }
+    
+    .logo_img{
+        /* max-width: 60%; */
+        height: 100%;
+        max-height: 96px;
+        
+    }
+    
+    .log{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: min-content;
+        align-content: flex-end;
+    }
+
+    /* Main */
+    form{
+        text-align: center;
+        flex: 4;
+        width: 100%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    /* Find ton job de reve */
+    
+    .find{
+        font-size: x-large;
+    }
+
+    .searchEncart{
+        margin: 0px;
+        padding: 3%;
+        width: 50%;
+        border-radius: 20px;
+        background-color: rgb(46, 46, 46);
+
+        box-shadow: 0px 0px 5px black;
+    }
+
+    /* Autour de la bare de recherche */
+    
+    .searchBar{
+        border-radius: 30px;
+        height: 30px;
+
+        display: flex;
+        padding: 5px;
+    }
+    
+    .recherche{
+        outline: none;
+        border: none;
+        border-radius: 30px;
+        padding-left: 10px;
+        font-size: larger;
+        width: 100%;
+    }
+    
+    .searchBut{
+        background-color: #457B9D;
+        height: 40px;
+        width: min-content;
+        border: 0;
+        border-radius: 40px;
+        text-align: center;
+        margin-top: 8px;
+        font-family: Quantify;
+        font-size: medium;
+    }
+
+    /* ANNONCES */
+
+    .jobEncart{
+        background-color: #FFFFFF;
+        /* border: solid black 0.5px; */
+        border-radius: 15px;
+        margin: 1%;
+        width: auto;
+        
+        display: flex;
+        height: min-content;
+        flex-direction: column;
+
+        box-shadow: 0px 0px 5px black;
+    }
+    
+    .jobTitle{
+        margin: 1%;
+        flex: 1;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .annonceTitre{
+        flex: 1 99%;
+        font-size: xx-large;
+        margin: 3px;
+    }    
+
+    h5{
+        font-size: medium;
+    }
+    
+    .annonceElement{
+        flex: 1 45%;
+        margin: 5px;
+    }
+    
+    .short_description{
+        margin: 1%;
+        flex: 2;
+    }
+    
+    .long_description{
+        margin: 1%;
+        flex: 2;
+    }
+    
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        margin: 2%;
+        justify-content: space-between;
+    }
+
+    /* Catch phrase */
+
+    .divCatch{
+        flex: 1;
+    }
+
+    .catchPhrase{
+        font-family: Quantify;
+        text-align: center;
+        font-size: 100px;
+        
+    }
+
+    span{
+        color: #457B9D;
+    }
+
+    /* Footer */
+
+    footer{
+        flex: 3;
+        margin: 0%;
+        display: flex;
+        flex-flow: row wrap;
+        background-color: #F0F0F1;
+        padding: 2%;
+    }    
+
+    h3{
+        flex: 1 100%;
+        font-size: medium;
+    }
+
+    .info-G {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1 45%;
+        margin: 0;
+      }
+
+      .infos{
+        margin-top: 3%;
+        margin-bottom: 3%;
+      }
+
+      .reseaux-J {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 2 45%;
+      }
+
+      .info-J {
+        display: flex;
+        flex: 1 50%;
+        align-items: center;
+      }
+       
+      .reseaux {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        justify-items: center;
+        align-items: center;
+        flex: 1 45%;
+        height: min-content;
+      }
+
+      ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .logo-footer{
+        max-width: 50%;
+      }
+
+      .mention{
+        flex: 1;
+      }
+       
+      /* .reseaux p {
+        flex: 1 30%;
+        justify-content: space-around;
+      } */
+
+}
+
 
 
 
@@ -247,13 +497,13 @@ footer{
   align-items: center;
   background-color: #457B9D;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
+  border-radius: 3rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: ITC_book,system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
@@ -270,19 +520,20 @@ footer{
   vertical-align: baseline;
   width: auto;
   text-align: center;
+  box-shadow: 0px 0px 3px black;
 }
 
 .inscription {
     align-items: center;
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: .25rem;
+    border-radius: 3rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.85);
     cursor: pointer;
     display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: ITC_book,system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
     font-weight: 600;
     justify-content: center;
@@ -299,6 +550,7 @@ footer{
     vertical-align: baseline;
     width: auto;
     text-align: center;
+    box-shadow: 0px 0px 3px black;
   }
 
 .button-1:hover,
@@ -338,20 +590,20 @@ footer{
     margin: 2%;
     background-color: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: .25rem;
+    border-radius: 3rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.85);
     cursor: pointer;
     display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: ITC_book,system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
     font-weight: 600;
     justify-content: center;
     line-height: 1.25;
     margin: 0;
     min-height: 3rem;
-    padding: calc(.875rem - 1px) 1px;
+    padding: calc(.875rem - 1px) 3px;
     position: relative;
     text-decoration: none;
     transition: all 250ms;
@@ -360,26 +612,27 @@ footer{
     touch-action: manipulation;
     vertical-align: baseline;
     width: 120px;
+    box-shadow: 0px 0px 3px black;
 }
   
 .postuler{
     margin: 2%;
-    background-color: #FFFFFF;
+    background-color: #457B9D;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: .25rem;
+    border-radius: 3rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.85);
     cursor: pointer;
     display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: ITC_book,system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
     font-weight: 600;
     justify-content: center;
     line-height: 1.25;
     margin: 0;
     min-height: 3rem;
-    padding: calc(.875rem - 1px) 1px;
+    padding: calc(.875rem - 1px) 3px;
     position: relative;
     text-decoration: none;
     transition: all 250ms;
@@ -388,8 +641,5 @@ footer{
     touch-action: manipulation;
     vertical-align: baseline;
     width: 120px;
+    box-shadow: 0px 0px 3px black;
 }
-  
-
-/* Footer */
-

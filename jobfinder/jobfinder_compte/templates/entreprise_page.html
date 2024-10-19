@@ -27,6 +27,7 @@
         </nav>
     </header>
         <main>
+          <div class="myInfo">
           {% for entreprise in entreprises %}
         {% if user.id == entreprise.user_id%}
           <h1> {{entreprise.nom_entreprise}} </h1>
@@ -36,11 +37,12 @@
           <p class="info"><u>Description:</u> <br>{{entreprise.description}} </p>
         {% endif %}
         {% endfor %}
+        </div>
 
         <div class="log">
           <a href="/jobfinder/annonce_form/{{user.pk}}" class="button-1 inscription"> Créer une nouvelle annonce </a>
           <a href="/compte/update_entreprise/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
-          <a href="/compte/delete_entreprise/{{user.pk}}" class="button-1 inscription"> Supprimer mon compte </a>
+          <a href="/compte/delete_entreprise/{{user.pk}}" class="button-1 suppr"> Supprimer mon compte </a>
         </div>
 
         <!-- Section Annonces  -->
@@ -89,9 +91,9 @@
                 </div>
 
                 <div class="buttons">
-                  <a href="/compte/update_annonce/{{annonce.pk}}"><button class="postuler">Modifier l'annonce</button></a>
-                  <button class="learnMore">Voir les Candidatures</button>
-                  <a href="/compte/delete_annonce/{{annonce.pk}}"><button class="postuler">Supprimer l'annonce</button></a>
+                  <a href="/compte/update_annonce/{{annonce.pk}}"><button class="button-1 modif">Modifier l'annonce</button></a>
+                  <button class="button-1 learnMore">Voir les Candidatures</button>
+                  <a href="/compte/delete_annonce/{{annonce.pk}}"><button class="button-1 suppr">Supprimer l'annonce</button></a>
                 </div>
 
               </div>
@@ -104,10 +106,34 @@
 
         </main>
         <footer>
-          <h4>Contactez-nous</h4>
-          <p>Email : x </p>
-          <p>Télephone : 06-</p>
-          <p>adresse</p>
+          
+          <h3><center>Contactez-nous pour trouver votre job de rêve</center></h3>
+          <div class="info-G">
+            <h4 class="infos">A propos de jobfinder</h4>
+            <p class="infos">Email : findyourdreamjob@jobfinder.com </p>
+            <p class="infos">Telephone : 01-45-02-65-16</p>
+            <p class="infos">Siège social : 36 Quai des Orfèvres, <br>75016 Paris </p>
+            <p class="infos">SIRET :  91326852000065 </p>
+          </div>
+         <div class="reseaux-J">
+          <div class="reseaux">
+            <h4>Nos réseaux sociaux : </h4>
+            <ul>
+              <a class="loo" href="https://www.instagram.com/hoppy.epitech/" ><img class="logo-footer" src="{% static 'img/Logo_Insta.png' %}" alt=""></a>
+              <a class="loo" href="https://www.linkedin.com/school/epitech---european-institute-of-technology/posts/?feedView=all" ><img class="logo-footer" src="{% static 'img/Logo_LinkedIn.png' %}" alt=""></a>
+              <a class="loo" href="https://x.com/Epitech" ><img class="logo-footer" src="{% static 'img/Logo_X.png' %}" alt=""></a>
+              <a class="loo" href="" ><img src="{% static 'img/Logo_dispo.png' %}" class="logo-footer" alt=""></a>
+              <!-- <a  href="" ><img class="logo-footer" src="" alt="">App store</a> -->
+            </ul>
+          </div>
+          <div class="info-J">
+            <p class="mention"><center>CGV</center></p>
+            <p class="mention"><center> - </center></p>
+            <p class="mention"><center>Mentions légales</center></p>
+            <p class="mention"><center> - </center></p>
+            <p class="mention"><center>Traitement de données</center></p>
+          </div>
+        </div>
         </footer>
         <script>
 
