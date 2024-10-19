@@ -1,6 +1,6 @@
 @font-face {
     font-family: Quantify;
-    src: url(../font/Quantify.ttf);
+    src: url(../JobFinder_Front_Elements/font/Quantify.ttf);
 }
 
 @font-face {
@@ -25,15 +25,14 @@ main{
     flex:6;
     display: flex;
     flex-direction: column;
-    justify-content : center;
-    align-items: center;
+    /* justify-content : center;
+    align-items: center; */
 }
 
 footer{
     flex: 3;
     border: solid black;
 }
-
 
 @media screen and (max-width: 426px) {
 
@@ -65,81 +64,42 @@ footer{
         align-content: flex-end;
     }
 
-    /* Main */
-    form{
+    a{
         text-align: center;
-        flex: 4;
-        width: 100%;
     }
 
-    /* Find ton job de reve */
-    
-    .find{
-        font-size: x-large;
+    h2{
+        margin: 2%;
     }
 
-    .searchEncart{
-        margin: 0px;
-        padding: 5%;
-        border-radius: 20px;
-        background-color: rgb(46, 46, 46);
+    .info{
+        margin: 2%;
     }
-
-    /* Autour de la bare de recherche */
-    
-    .searchBar{
-        border-radius: 30px;
-        height: 30px;
-
-        display: flex;
-        padding: 5px;
-    }
-    
-    .recherche{
-        outline: none;
-        border: none;
-        border-radius: 30px;
-        padding-left: 10px;
-        font-size: larger;
-        width: 100%;
-    }
-    
-    .searchBut{
-        background-color: #457B9D;
-        border: 0;
-        text-align: center;
-        height: 20px;
-        width: 30%;
-        border-radius: 40px;
-    }
-
-    /* ANNONCES */
 
     .jobEncart{
-        background-color: #F1FAEE;
-        border: solid black 0.5px;
-        border-radius: 15px;
-        margin: 1%;
-        width: 100%;
-    
-        display: flex;
-        height: min-content;
-        flex-direction: column;
-    }
-    
+      background-color: #F1FAEE;
+      border: solid black 0.5px;
+      border-radius: 15px;
+      margin: 1%;
+      padding: 1%;
+      width: auto;
+  
+      display: flex;
+      height: min-content;
+      flex-direction: column;
+  }
     .jobTitle{
         margin: 1%;
         flex: 1;
         display: flex;
         flex-flow: row wrap;
     }
-    
-    .annonceTitre{
-        flex: 1 99%;
-        font-size: x-large;
-        margin: 3px;
+
+    .annonceElement{
+        flex: 1 45%;
+        margin: 5px;
     }
-    
+
     .annonceElement{
         flex: 1 45%;
         margin: 5px;
@@ -154,7 +114,7 @@ footer{
         margin: 1%;
         flex: 2;
     }
-    
+
     .buttons{
         display: flex;
         flex-direction: row;
@@ -162,56 +122,29 @@ footer{
         justify-content: space-between;
     }
 
-    /* Catch phrase */
-
-    .divCatch{
-        flex: 1;
+    .encartCand{
+        background-color: #c6cec3;
+        border: solid black 0.5px;
+        border-radius: 15px;
+        margin: 1%;
+        padding: 1%;
+        width: auto;
+    
+        display: flex;
+        height: min-content;
+        flex-direction: column;
     }
 
-    .catchPhrase{
-        font-family: Quantify;
-        text-align: center;
-        font-size: 100px;
+    .candElement{
+        margin-top: 1%;
+        margin-bottom: 1%;
     }
-
-
+    
 }
 
-
-
-/* CSS - Bouton connexion*/
 .connexion{
-  align-items: center;
-  background-color: #457B9D;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  margin: 0;
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
-  text-align: center;
-}
-
-.inscription {
     align-items: center;
-    background-color: #ffffff;
+    background-color: #457B9D;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: .25rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -237,6 +170,35 @@ footer{
     width: auto;
     text-align: center;
   }
+  
+  .inscription {
+      align-items: center;
+      background-color: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: .25rem;
+      box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+      box-sizing: border-box;
+      color: rgba(0, 0, 0, 0.85);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      justify-content: center;
+      line-height: 1.25;
+      margin: 0;
+      min-height: 3rem;
+      padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+      position: relative;
+      text-decoration: none;
+      transition: all 250ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: baseline;
+      width: auto;
+      text-align: center;
+    }
 
 .button-1:hover,
 .button-1:focus {
@@ -257,20 +219,6 @@ footer{
   transform: translateY(0);
 }
 
-/* Fin Header */
-
-/* Main */
-
-
-/* Home page form */
-
-
-
-
-/* ANNONCES */
-
-
-  
 .learnMore{
     margin: 2%;
     background-color: #FFFFFF;
@@ -327,6 +275,21 @@ footer{
     width: 120px;
 }
   
-
-/* Footer */
-
+  .button-1:hover,
+  .button-1:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+  
+  .button-1:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-1:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }

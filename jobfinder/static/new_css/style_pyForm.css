@@ -72,43 +72,34 @@ footer{
         padding: 3%;
         font-size: 20px;
     }
-    
-    h3{
-        margin:2%;
-    }
-    
-    .element{
-        width: 90%;
-        margin-top: 2%;
-        align-self: center;
+
+    p{
         display: flex;
         flex-direction: column;
-        align-self: center;
-        font-family: ITC_book;
+        justify-content: center;
+        align-items: center;
+        margin: 2%;
     }
 
     label{
-        text-align: center;
-        margin-bottom: 2%;
+        font-size: large;
     }
 
-    .input{
-        align-self: center;
+    input, select{
+        font-family: ITC_book;
         font-size: 18px;
         height: 4vh;
-        width: 70%;
         border-radius: 10px;
-        padding-left: 5%;
-        width: 100%;
+        padding-left: 2%;
+        padding-right: 2%;
+        width: 80%;
         height: fit-content;
         text-align: center;
-    }
-    
-    .element_descr{
-        width: 100%;
+        align-self: center;
     }
     
     textarea{
+        font-family: ITC_book;
         font-size: 18px;
         align-self: center;
         width: 99%;
@@ -116,13 +107,6 @@ footer{
         border-radius: 10px;
         padding-left: 1%;
         padding-top: 0.5%;
-    }
-    
-    .submit_div{
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
     
     .submit{

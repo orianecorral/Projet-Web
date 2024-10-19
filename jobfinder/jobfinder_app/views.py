@@ -8,12 +8,15 @@ from django.db.models import Q
 
 
 def home_page(request):
+    particuliers = Particuliers.objects.all()
+    entreprises = Entreprises.objects.all()
     if request.method == "POST":
         recherche = request.POST['recherche']
         annonces = Annonces.objects.filter(Q(titre__contains=recherche) | Q(nom_entreprise__contains=recherche) | Q(contrat__contains=recherche)| Q(short_description__contains=recherche)| Q(long_description__contains=recherche))
-        return render(request,'home_page.html',{'annonces':annonces})
+
+        return render(request,'home_page.html',{'annonces':annonces, 'particuliers':particuliers, 'entreprises':entreprises})
     
-    return render(request,'home_page.html')
+    return render(request,'home_page.html', {'particuliers':particuliers, 'entreprises':entreprises})
 
 
 def connexion_page(request):
@@ -57,6 +60,7 @@ def annonce_entry(request, pk):
 # Candidature sans compte
 def no_compte_candidature_entry(request, pk):
     annonces = Annonces.objects.get(id=pk)
+    the_annonces = Annonces.objects.all()
     if request.method == 'POST':
         prenom = request.POST.get('prenom')
         nom = request.POST.get('nom')
@@ -74,7 +78,7 @@ def no_compte_candidature_entry(request, pk):
 
         return redirect('http://127.0.0.1:8000/jobfinder')
     
-    return render(request, 'no_compte_candidature_form.html')
+    return render(request, 'no_compte_candidature_form.html',{'annonces':the_annonces})
 
 
 def compte_candidature_entry(request,pk,pz):
@@ -99,7 +103,7 @@ def compte_candidature_entry(request,pk,pz):
         return redirect('http://127.0.0.1:8000/jobfinder')
     
     particuliers = Particuliers.objects.all()
-    return render(request, 'compte_candidature_form.html', {'particuliers':particuliers})
+    return render(request, 'compte_candidature_form.html', {'particuliers':particuliers, 'annonces':annonces})
 
 
 

@@ -5,7 +5,7 @@
         <title>Formulaire entreprise</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_form_01.css' %}">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
     </head>
     <body>
       <header>
@@ -19,6 +19,7 @@
         <main>
           <form method="POST">
             {% csrf_token %}
+            <h3><center>Création de votre compte entreprise</center></h3>
             <!-- nom entreprise -->
             <div class="element">
               <label for="nom_entreprise">Nom de votre entreprise</label>
@@ -62,18 +63,17 @@
             <!-- confirmation de mot de passe -->
             <div class="element">
               <label for="cmdp">Confirmez votre mot de passe</label>
-              <input type="password" name="cmdp" id="cmdp"class="input" required >
+              <input type="password" name="cmdp" id="cmdp" class="input" required >
             </div>
             <!-- boutton envoyer -->
             <div class="submit_div">
               <br>
-              <input type="submit" class="submit" value="Envoyer">
+              <input type="submit" class="button-1 submit" value="Inscription">
             </div>
-
           </form>
           {%for message in messages%}
-                <p>{{ message }} </p>
-            {%endfor%}
+            <p>{{ message }} </p>
+          {%endfor%}
         </main>
         <footer>
           <h4>Contactez-nous</h4>

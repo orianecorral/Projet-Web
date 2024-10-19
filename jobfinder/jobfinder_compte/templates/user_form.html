@@ -5,7 +5,7 @@
         <title>Formulaire particuliers</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_form_01.css' %}">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
     </head>
     <body>
         <header>
@@ -19,37 +19,39 @@
         <main>
             <form method="POST">
                 {% csrf_token %}
+                <h3><center>Création de votre compte particulier</center></h3>
+                {%for message in messages%}
+                    <p><center>{{ message }}</center></p>
+                {%endfor%}
                 <div class="element">
-                    <label for="nom">Nom</label><br>
+                    <label for="nom">Nom</label>
                     <input type="text" name="nom" class="input" required>
                 </div>
                 <div class="element">
-                    <label for="prenom">Prénom</label><br>
+                    <label for="prenom">Prénom</label>
                     <input type="text" name="prenom" class="input" required>
                 </div>
                 <div class="element">
-                    <label for="email">Email</label><br>
+                    <label for="email">Email</label>
                     <input type="email" name="email" class="input" required>
                 </div>
                 <div class="element">
-                    <label for="telephone">Téléphone</label><br>
-                    <input type="text" name="telephone" class="input">
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" name="telephone" maxlength="10" class="input">
                 </div>
                 <div class="element">
-                    <label for="cmdp">Mot de passe</label><br>
+                    <label for="cmdp">Mot de passe</label>
                     <input type="password" name="cmdp" class="input" required>
                 </div>
                 <div class="element">
-                    <label for="password">Confirmation du mot de passe</label><br>
+                    <label for="password">Confirmation du mot de passe</label>
                     <input type="password" name="password" class="input" required>
                 </div>
                 <div class="submit_div">
-                    <input type="submit" name="submit" class="submit" value="Envoyer">
+                    <input type="submit" name="submit" class="button-1 submit" value="Inscription">
                 </div>
             </form>
-            {%for message in messages%}
-                <p>{{ message }} </p>
-            {%endfor%}
+
         </main>
         <footer>
           <h4>Contactez-nous</h4>

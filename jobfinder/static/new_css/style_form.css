@@ -31,7 +31,7 @@ main{
 
 footer{
     flex: 3;
-    border: solid black;
+    /* border: solid black; */
 }
 
 
@@ -93,12 +93,14 @@ footer{
     }
 
     .input{
+        font-family: ITC_book;
         align-self: center;
         font-size: 18px;
         height: 4vh;
         width: 70%;
         border-radius: 10px;
-        padding-left: 5%;
+        padding-left: 3%;
+        padding-right: 3%;
         width: 100%;
         height: fit-content;
         text-align: center;
@@ -109,6 +111,7 @@ footer{
     }
     
     textarea{
+        font-family: ITC_book;
         font-size: 18px;
         align-self: center;
         width: 99%;
@@ -124,6 +127,28 @@ footer{
         align-items: center;
         justify-content: center;
     }
+    /* Button on Remove */
+
+    .remove{
+        flex: 5;
+        background-color: #F1FAEE;
+        display: flex;
+        flex-flow: column;
+        width: 90%;
+        border-radius: 30px;
+        margin-top: 3%;
+        margin-left: 1%;
+        margin-right: 1%;
+        padding: 3%;
+        font-size: 20px;
+    }
+    .submitDiv{
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    /* Button on Remove fin*/
     
     .submit{
         align-self: center;
@@ -151,6 +176,7 @@ footer{
         touch-action: manipulation;
         vertical-align: baseline;
         width: auto;
+        
     }
     
 

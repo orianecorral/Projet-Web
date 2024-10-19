@@ -5,7 +5,7 @@
     <title>Profil particuliers</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
+    <link rel="stylesheet" href="{% static 'new_css/style_pages.css' %}">
 </head>
 <body>
     <header>
@@ -16,9 +16,9 @@
           </div>
 
           <!-- Vérifié si l'utilisateur est connecté -->
-          {% if user.is_authenticated %}
+          <!-- {% if user.is_authenticated %}
 
-          {% if user.is_particulier == True%}
+          {% if user.is_particulier == True%} -->
 
           <div class="log">
             <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
@@ -27,28 +27,17 @@
                 {{particulier.prenom}}
                 {% endif %}
             {% endfor %}</a>
-          </div>
-          <div class="log">
-            <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Se déconnecter</a>
+            <a href="{% url 'logout_user' %}" method="post" class="button-1 inscription">Se déconnecter</a>
           </div>
 
-          {% else %}
+          <!-- {% else %}
 
           <div class="log">
-            <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> Mon compte pro </a>
+            <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 inscription"> Mon compte pro </a>
           </div>
           {% endif %}
 
-        {% else %}
-
-        <div class="log">
-          <!-- Connexion -->
-          <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
-          <!-- Inscription-->
-          <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
-        </div>
-
-        {% endif %}
+        {% endif %} -->
 
         </nav>
     </header>
@@ -56,18 +45,18 @@
       <!-- Montrer les informations utilisateurs -->
       {% for particulier in particuliers %}
         {% if user.id == particulier.user_id%}
-          <h1> {{particulier.prenom}} </h1>
-          <h2> {{particulier.nom}} </h2>
-          <p>Telephone : {{particulier.telephone}} </p>
-          <p>Email : {{user.email}} </p>
+          <h2>Bienvenue <br>{{particulier.prenom}} {{particulier.nom}}</h2>
+          <p class="info">Telephone :<br> {{particulier.telephone}} </p>
+          <p class="info">Email :<br> {{user.email}} </p>
         {% endif %}
       {% endfor %}
       <div class="log">
         <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
-        <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 connexion"> Supprimer mon compte  </a>
+        <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 inscription"> Supprimer mon compte  </a>
       </div>
       <!-- Ici affichage des candidatures -->
       
+      <h3><center>Vos Candidatures :</center></h3>
       {% for candidature in candidatures %}
 
         {% if candidature.user_id == user.id %}
@@ -76,10 +65,10 @@
 
             {% if candidature.annonce_id == annonce.id %}
           
-            <div>
-              <h3>Titre : {{annonce.titre}} </h3>
-              <h5>Nom de l'entreprise : {{annonce.nom_entreprise}}</h5>
-              <h5>Adresse : {{annonce.adresse}}</h5>
+            <div class="jobEncart">
+              <h3 class="jobTitle"><u>Titre : </u><br> {{annonce.titre}} </h3>
+              <h5 class="annonceElement"><u>Nom de l'entreprise : </u><br>{{annonce.nom_entreprise}}</h5>
+              <h5 class="annonceElement"><u>Adresse : </u><br> {{annonce.adresse}}</h5>
             </div>
 
             {% endif %}

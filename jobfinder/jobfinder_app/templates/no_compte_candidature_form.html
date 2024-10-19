@@ -5,7 +5,7 @@
         <title>Formulaire candidature</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
     </head>
     <body>
       <header>
@@ -14,27 +14,19 @@
           <div class="logo">
             <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
           </div>
-          <!-- Vérifié si l'utilisateur est connecté -->
 
           {% if user.is_authenticated %}
 
-          {% if user.is_particulier == True%}
-
-          <div class="log">
-            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> Mon compte particulier </a>
-            <a href="{% url 'logout_user' %}" method="post" class="button-1 connexion">Log out</a>
-          </div>
           {% else %}
 
           <div class="log">
             <!-- Connexion -->
-            <a href="" class="button-1 connexion">Connexion</a>
+            <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
             <!-- Inscription-->
-            <a href="/user_form" class="button-1 inscription">Inscription</a>
+            <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
           </div>
-          {% endif %}
 
-        {% else %}
+          {% endif %}
 
         <div class="log">
           <!-- Connexion -->
@@ -48,8 +40,9 @@
       </header>
       <main>
 
-
           <form method="POST">
+
+            <h2>{{annonces.titre}}</h2>
             {% csrf_token %}
             <div class="element">
               <label for="nom">Nom</label><br>

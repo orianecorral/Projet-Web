@@ -24,7 +24,7 @@ class Annonces(models.Model):
     salaire = models.CharField(max_length=300)
     contrat = models.CharField(max_length=300, choices=CONTRAT_CHOICES)
     date = models.DateField()
-    short_description = models.CharField(max_length=150)
+    short_description = models.CharField(max_length=255)
     long_description = models.TextField()
     entreprise = models.ForeignKey(Utilisateurs, on_delete=models.CASCADE, default=None)
 

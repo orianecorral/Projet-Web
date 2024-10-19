@@ -230,7 +230,7 @@ def delete_particulier(request, pk):
     if request.method == 'POST':
         utilisateur.delete()
         particulier.delete()
-        return redirect('jobfinder/home_page')
+        return redirect('http://127.0.0.1:8000/jobfinder')
 
     context = {
         'utilisateur': utilisateur,
@@ -245,7 +245,7 @@ def delete_entreprise(request, pk):
     if request.method == 'POST':
         utilisateur.delete()
         entreprise.delete()
-        return redirect('entreprise_page')
+        return redirect('http://127.0.0.1:8000/jobfinder')
 
     context = {
         'utilisateur': utilisateur,
@@ -260,7 +260,7 @@ def delete_annonce(request, pk):
     if request.method == 'POST':
         annonce.delete()
         # entreprise.delete()
-        return redirect('compte/entreprise_page')
+        return redirect('http://127.0.0.1:8000/compte/entreprise_page')
 
     context = {
         'annonce': annonce,
