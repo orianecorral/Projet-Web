@@ -1,20 +1,37 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.apps import apps
 from jobfinder_compte.models import Particuliers
 from jobfinder_compte.models import Entreprises
+from jobfinder_compte.models import Utilisateurs
 from jobfinder_app.models import Annonces
 from .forms import *
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 # Create your views here.
+
+# code de vérification des admins
+def CoAdmin(request):
+    if request.method=='POST':
+        username = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request,username=username, password=password)
+        if user is not None and user.is_superuser:
+            login(request, user)
+            return redirect('/jobfinder/') #url qui renvoie pas directement au tab admin pour raison de sécurité
+        else:
+             messages.info(request, "Identifiant ou mot de passe incorect")
+    return render(request,'connexion_admin.html')
+    
 def tab_Particulier(request):
     particulierform = particulierForm()
     entrepriseform = EntreprisesForm(request.POST)
     annonceform =AnnoncesForm(request.POST)
     userform = UtilisateursForm(request.POST)
     Particulier =Particuliers.objects.all()
+    Utilisateur = Utilisateurs.objects.all()
     Entreprise =Entreprises.objects.all()
     annonces =Annonces.objects.all()
-    if request.method =='POST': 
+    if request.method =='POST': #par ent et ann correspondent chacun à la modif d'un tableau (particulier entreprise et annonce)
         if 'sauvegarderPar' in request.POST:
             ul = request.POST.get('sauvegarderPar')
             if not ul:
@@ -25,7 +42,7 @@ def tab_Particulier(request):
             particulierform.save()
             particulierform = particulierForm()
 
-
+            
         if 'sauvegarderEnt' in request.POST:
             ul = request.POST.get('sauvegarderEnt')
             if not ul:
@@ -70,14 +87,4 @@ def tab_Particulier(request):
             ide = request.POST.get('supprimerEnt')    
             jul = Entreprises.objects.get(id=ide)
             jul.delete()
-    return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'annonces':annonces,'entreprises':Entreprise,'TabPar':particulierform,'TabEnt':entrepriseform,'TabAnn':annonceform,'TabUti':userform})
-
-def CoAdmin(request):
-    print('testtttttttt')
-    user = authenticate(is_superuser = 1)
-    if user is not None:
-        print('je suis co')
-        return render(request,'Liste_utilisateur.html')
-    else:
-        print('jesuis pasco')
-        return render(request,'Liste_utilisateur.html')
+    return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'annonces':annonces,'entreprises':Entreprise,'TabPar':particulierform,'TabEnt':entrepriseform,'TabAnn':annonceform,'TabUti':userform,'mails':Utilisateur})

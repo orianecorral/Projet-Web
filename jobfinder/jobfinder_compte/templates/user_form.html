@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home page</title>
+        <title>Formulaire particuliers</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
     </head>
     <body>
         <header>
@@ -17,37 +17,41 @@
             </nav>
         </header>
         <main>
-            <form method="POST" >
+            <form method="POST">
                 {% csrf_token %}
-                <div>
-                    <label for="nom">Nom</label><br>
-                    <input type="text" name="nom" required>
+                <h3><center>Création de votre compte particulier</center></h3>
+                {%for message in messages%}
+                    <p><center>{{ message }}</center></p>
+                {%endfor%}
+                <div class="element">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" class="input" required>
                 </div>
-                <div>
-                    <label for="prenom">Prénom</label><br>
-                    <input type="text" name="prenom" required>
+                <div class="element">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" name="prenom" class="input" required>
                 </div>
-                <div>
-                    <label for="email">Email</label><br>
-                    <input type="email" name="email" required>
+                <div class="element">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="input" required>
                 </div>
-                <div>
-                    <label for="telephone">Téléphone</label><br>
-                    <input type="text" name="telephone">
+                <div class="element">
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" name="telephone" maxlength="10" class="input">
                 </div>
-                <div>
-                    <label for="cmdp">Mot de passe</label><br>
-                    <input type="password" name="cmdp" required>
+                <div class="element">
+                    <label for="cmdp">Mot de passe</label>
+                    <input type="password" name="cmdp" class="input" required>
                 </div>
-                <div>
-                    <label for="password">Confirmation du mot de passe</label><br>
-                    <input type="password" name="password" required>
+                <div class="element">
+                    <label for="password">Confirmation du mot de passe</label>
+                    <input type="password" name="password" class="input" required>
                 </div>
-                <div>
-                    <label for="submit"></label><br>
-                    <input type="submit" name="submit" value="Envoyer">
+                <div class="submit_div">
+                    <input type="submit" name="submit" class="button-1 submit" value="Inscription">
                 </div>
             </form>
+
         </main>
         <footer>
           <h4>Contactez-nous</h4>

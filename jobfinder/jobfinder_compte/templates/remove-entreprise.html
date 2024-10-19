@@ -1,0 +1,37 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Supprimer compte entreprise</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+          <!-- logo -->
+          <div class="logo">
+            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+          </div>
+
+        </nav>
+    </header>
+    <main>
+      <div class="remove">
+        <form action="" method="POST">
+          {% csrf_token %}
+        
+          <div class="alert alert-danger" role="alert">
+              <center>Etes-vous sûr de vouloir supprimer "{{entreprise.nom_entreprise}}"?</center>
+          </div>
+
+          <p class="submitDiv">
+              <a href="{% url 'jobfinder_compte:entreprise_page' %}" class="submit" >--Return</a>
+              <input type="submit" class="submit" value="Confirm">
+          </p>
+        </form>
+      </div>
+    </main>
+    </body>
+</html>

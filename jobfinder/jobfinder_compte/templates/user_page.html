@@ -1,35 +1,90 @@
+{%load static%}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>User page</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-      <header>
+  <head>
+    <title>Profil particuliers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'new_css/style_pages.css' %}">
+</head>
+<body>
+    <header>
         <nav>
           <!-- logo -->
-          <div>
-            <a href="home_page.html">LOGO</a>
+          <div class="logo">
+            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
           </div>
-          <!-- connexion -->
-           <div>
-            <a href="">Connexion</a>
-           </div>
-           <!-- Inscription-->
-            <div>
-              <a href="user_form.html">Inscription</a>
-            </div>
+
+          <!-- Vérifié si l'utilisateur est connecté -->
+          <!-- {% if user.is_authenticated %}
+
+          {% if user.is_particulier == True%} -->
+
+          <div class="log">
+            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
+            {% for particulier in particuliers %}
+              {% if user.id == particulier.user_id%}
+                {{particulier.prenom}}
+                {% endif %}
+            {% endfor %}</a>
+            <a href="{% url 'logout_user' %}" method="post" class="button-1 inscription">Se déconnecter</a>
+          </div>
+
+          <!-- {% else %}
+
+          <div class="log">
+            <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 inscription"> Mon compte pro </a>
+          </div>
+          {% endif %}
+
+        {% endif %} -->
+
         </nav>
     </header>
-        <main>
-          <h1>GG</h1>
-        </main>
-        <footer>
-          <h4>Contactez-nous</h4>
-          <p>Email : x </p>
-          <p>Télephone : 06-</p>
-          <p>adresse</p>
-        </footer>
+    <main>
+      <!-- Montrer les informations utilisateurs -->
+      {% for particulier in particuliers %}
+        {% if user.id == particulier.user_id%}
+          <h2>Bienvenue <br>{{particulier.prenom}} {{particulier.nom}}</h2>
+          <p class="info">Telephone :<br> {{particulier.telephone}} </p>
+          <p class="info">Email :<br> {{user.email}} </p>
+        {% endif %}
+      {% endfor %}
+      <div class="log">
+        <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
+        <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 inscription"> Supprimer mon compte  </a>
+      </div>
+      <!-- Ici affichage des candidatures -->
+      
+      <h3><center>Vos Candidatures :</center></h3>
+      {% for candidature in candidatures %}
+
+        {% if candidature.user_id == user.id %}
+
+          {% for annonce in annonces %}
+
+            {% if candidature.annonce_id == annonce.id %}
+          
+            <div class="jobEncart">
+              <h3 class="jobTitle"><u>Titre : </u><br> {{annonce.titre}} </h3>
+              <h5 class="annonceElement"><u>Nom de l'entreprise : </u><br>{{annonce.nom_entreprise}}</h5>
+              <h5 class="annonceElement"><u>Adresse : </u><br> {{annonce.adresse}}</h5>
+            </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+        {% endif %}
+
+      {% endfor %}
+
+    </main>
+    <footer>
+        <h4>Contactez-nous</h4>
+        <p>Email : x </p>
+        <p>Télephone : 06-</p>
+        <p>adresse</p>
+    </footer>
     </body>
 </html>

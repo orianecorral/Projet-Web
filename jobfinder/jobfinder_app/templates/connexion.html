@@ -5,7 +5,7 @@
         <title>Connexion</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/co-inscr.css' %}">
+        <link rel="stylesheet" href="{% static 'new_css/style_con-inscr.css' %}">
     </head>
     <body>
         <header>
@@ -21,7 +21,7 @@
                 <h2>Sélectionnez le compte que vous possédez</h2>
                 <div>
                     <a class="entrepriseLog" href="{% url 'jobfinder_compte:connexion_entreprise' %}">Entreprise</a> <br>
-                    <a class="utilisateurLog" href="{% url 'jobfinder_compte:connexion_user' %}">Utilisateur</a>
+                    <a class="utilisateurLog" href="{% url 'jobfinder_compte:connexion_user' %}">Particulier</a>
                 </div>
             </center>
         </main>

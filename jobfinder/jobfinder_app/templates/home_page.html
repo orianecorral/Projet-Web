@@ -5,7 +5,7 @@
         <title>Home page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_main.css' %}">
+        <link rel="stylesheet" href="{% static 'new_css/style_home.css' %}">
     </head>
     <body>
         <header>
@@ -14,43 +14,171 @@
               <div class="logo">
                 <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
               </div>
-              {% if user.authentificated %}
-              
+
+              <!-- Vérifié si l'utilisateur est connecté -->
+
+              {% if user.is_authenticated %}
+
+              {% if user.is_particulier == True%}
+
               <div class="log">
-                <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion"> {{Particuliers.prenom}} </a>
+                <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
+                {% for particulier in particuliers %}
+                  {% if user.id == particulier.user_id%}
+                    {{particulier.prenom}}
+                    {% endif %}
+                {% endfor %}</a>
+                <a href="{% url 'logout_user' %}" method="post" class="button-1 inscription">Se déconnecter</a>
               </div>
 
               {% else %}
 
               <div class="log">
-                <!-- Connexion -->
-                <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
-                <!-- Inscription-->
-                <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
+                <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 connexion"> 
+                  {% for entreprise in entreprises %}
+                    {% if user.id == entreprise.user_id%}
+                      {{entreprise.nom_entreprise}}
+                    {% endif %}
+                {% endfor %}</a>
+                <a href="{% url 'logout_entreprise' %}" method="post" class="button-1 inscription">Se déconnecter</a>
               </div>
-
               {% endif %}
+
+            {% else %}
+
+            <div class="log">
+              <!-- Connexion -->
+              <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
+              <!-- Inscription-->
+              <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
+            </div>
+
+            {% endif %}
             </nav>
         </header>
+        <br><br>
         <main>
-          <form action="{%url 'recherche_page'%}">
+          
+          <form method="POST">
+
+            {% csrf_token %}
             <label for="recherche" class="find">Find ton job de rêve ici</label><br>
-            <div class="searchBar">
-              <input type="text" name="recherche" class="recherche" size="40" placeholder="Search here"/>
-              <button class="searchBut"><img src="{% static 'img/Loupe.png' %}" class="searchBut"></button>
+            <div class="searchEncart">
+              <div class="searchBar">
+                <input type="text" name="recherche" class="recherche" placeholder="Search here"/>
+              </div>
+                <button class="searchBut">Rechercher</button>
+                <!-- <img src="{% static 'img/Loupe.png' %}" class="searchBut"> -->
             </div>
+
           </form>
+
+          <!-- Ici doit y avoir les annonces -->
+
+          {% for annonce in annonces %}
+          <div class="jobEncart">
+
+            <div class="jobTitle">
+              <h3 class="annonceTitre">{{annonce.titre}}</h3>
+              <h5 class="annonceElement">Entreprise : <br>{{annonce.nom_entreprise}}</h5>
+              <h5 class="annonceElement">Adresse : <br>{{annonce.adresse}}</h5>
+              <h5 class="annonceElement">Type de contrat :<br>{{annonce.contrat}}</h5>
+              <h5 class="annonceElement">Date de publication :<br>{{annonce.date}}</h5>
+            </div>
+
+            <div class="short_description">
+              <p>{{ annonce.short_description }}</p>
+            </div>
+
+            <!-- Longue description cachée -->
+            <div class="long_description" style="display: none;">
+              <p>{{ annonce.long_description }}</p>
+            </div>
+
+            {% if user.is_authenticated and user.is_particulier == True %}
+
+            <div class="buttons">
+              <button class="button-1 learnMore">Learn More</button>
+              <a href="compte_candidature_form/{{annonce.pk}}/{{user.id}}"><button class="button-1 postuler">Postuler</button></a>
+            </div>
+
+            {% elif user.is_entreprise == True %}
+
+            <div class="buttons">
+              <button class="button-1 learnMore">Learn More</button>
+            </div>
+
+            {% else %}
+
+            <div class="buttons">
+              <button class="button-1 learnMore">Learn More</button>
+              <a href="no_compte_candidature_form/{{annonce.pk}}"><button class="button-1 postuler">Postuler</button></a>
+            </div>
+
+            {% endif %}
+
+          </div>
+          {% endfor %}
 
           <div class="divCatch">
             <h2 class="catchPhrase">Find your dream job here</h2>
           </div>
         </main>
+
         <!-- Contact us -->
         <footer>
-          <h4>Contactez-nous</h4>
-          <p>Email : x </p>
-          <p>Telephone : 06-</p>
-          <p>adresse</p>
+          
+          <h4><center>Contactez-nous pour trouver votre job de rêve</center></h4>
+          <div class="info-G">
+            <p class="infos">A propos de jobfinder</p>
+            <p class="infos">Email : findyourdreamjob@jobfinder.com </p>
+            <p class="infos">Telephone : 01-45-02-65-16</p>
+            <p class="infos">Siège social : 36 Quai des Orfèvres, <br>75016 Paris </p>
+            <p class="infos">SIRET :  91326852000065 </p>
+          </div>
+         <div class="reseaux-J">
+          <div class="reseaux">
+            <p>Nos réseaux sociaux : </p>
+            <ul>
+              <a class="loo" href="https://www.instagram.com/hoppy.epitech/" ><img class="logo-footer" src="{% static 'img/Logo_Insta.png' %}" alt=""></a>
+              <a class="loo" href="https://www.linkedin.com/school/epitech---european-institute-of-technology/posts/?feedView=all" ><img class="logo-footer" src="{% static 'img/Logo_LinkedIn.png' %}" alt=""></a>
+              <a class="loo" href="https://x.com/Epitech" ><img class="logo-footer" src="{% static 'img/Logo_X.png' %}" alt=""></a>
+              <a class="loo" href="" ><img src="{% static 'img/Logo_dispo.png' %}" class="logo-footer" alt=""></a>
+              <!-- <a  href="" ><img class="logo-footer" src="" alt="">App store</a> -->
+            </ul>
+          </div>
+          <div class="info-J">
+            <p class="mention"><center>CGV</center></p>
+            <p class="mention"><center>Mentions légales</center></p>
+            <p class="mention"><center>Traitement de données</center></p>
+          </div>
+        </div>
         </footer>
+
+        <script>
+
+          const learnMoreButton = document.querySelectorAll(".learnMore")
+
+            learnMoreButton.forEach(button => {
+              button.addEventListener("click", function(){
+
+              const jobEncart = button.closest(".jobEncart")
+
+              const longDescription = jobEncart.querySelector(".long_description")
+              const shortDescription = jobEncart.querySelector(".short_description")
+
+              if (longDescription.style.display == "none"){
+                longDescription.style.display = "block"
+                shortDescription.style.display = "none"
+                button.textContent = "Show Less"
+              }else{
+                longDescription.style.display = "none"
+                shortDescription.style.display = "block"
+                button.textContent = "Learn More"
+              }
+            });
+          })
+
+        </script>
     </body>
 </html>

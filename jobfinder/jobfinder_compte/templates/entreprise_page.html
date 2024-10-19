@@ -1,28 +1,106 @@
+{%load static%}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Entreprise page</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+  <head>
+    <title>Profil entreprise</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'new_css/style_pages.css' %}">
+  </head>
     <body>
       <header>
         <nav>
           <!-- logo -->
-          <div>
-            <a href="home_page.html">LOGO</a>
+          <div class="logo">
+            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
           </div>
-          <!-- connexion -->
-           <div>
-            <a href="">Connexion</a>
-           </div>
-           <!-- Inscription-->
-            <div>
-              <a href="user_form.html">Inscription</a>
-            </div>
+
+          <div class="log">
+            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
+            {% for entreprise in entreprises %}
+              {% if user.id == entreprise.user_id%}
+                {{entreprise.nom_entreprise}}
+                {% endif %}
+            {% endfor %}</a>
+            <a href="{% url 'logout_user' %}" method="post" class="button-1 inscription">Se déconnecter</a>
+          </div>
         </nav>
     </header>
         <main>
+          {% for entreprise in entreprises %}
+        {% if user.id == entreprise.user_id%}
+          <h1> {{entreprise.nom_entreprise}} </h1>
+          <h2> {{entreprise.pageweb}} </h2>
+          <p class="info"><u>Adresse:</u><br>{{entreprise.adresse}} </p>
+          <p class="info"><u>Taille:</u> <br>{{entreprise.taille}} </p>
+          <p class="info"><u>Description:</u> <br>{{entreprise.description}} </p>
+        {% endif %}
+        {% endfor %}
+
+        <div class="log">
+          <a href="/jobfinder/annonce_form/{{user.pk}}" class="button-1 inscription"> Créer une nouvelle annonce </a>
+          <a href="/compte/update_entreprise/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
+          <a href="/compte/delete_entreprise/{{user.pk}}" class="button-1 inscription"> Supprimer mon compte </a>
+        </div>
+
+        <!-- Section Annonces  -->
+        <div>
+
+          {% for annonce in annonces %}
+
+            {% if annonce.entreprise_id == user.id %}
+
+              <div class="jobEncart">
+
+                <div class="jobTitle">
+                  <h3 class="annonceTitre">{{annonce.titre}}</h3>
+                  <h6 class="annonceElement"><u>Adresse:</u> <br>{{annonce.adresse}}</h6>
+                  <h6 class="annonceElement"><u>Entreprise:</u><br>{{annonce.nom_entreprise}}</h6>
+                  <h6 class="annonceElement"><u>Type de contrat:</u><br>{{annonce.contrat}}</h6>
+                   <h6 class="annonceElement"><u>Date de publication:</u><br>{{annonce.date}}</h6>
+                </div>
+
+                <div class="short_description">
+                  <p>Description courte:<br>{{annonce.short_description}}</p>
+                </div>
+
+                <div class="long_description">
+                  <p>Description longue:<br>{{annonce.long_description}}</p>
+                </div>
+
+                <!-- Candidature de chaque annonce -->
+                <div class="candidatures" style="display: none;">
+
+                  <h3><center>Voici les candidatures reçu pour cette offre</center></h3>
+                  {% for candidature in candidatures %}
+
+                    {% if candidature.annonce_id == annonce.id %}
+                
+                      <div class="encartCand">
+                        <h5 class="candElement">Prénom : {{candidature.prenom}}</h5>
+                        <h5 class="candElement">Nom : {{candidature.nom}}</h5>
+                        <h5 class="candElement">Email : {{candidature.email}}</h5>
+                        <h5 class="candElement">Telephone : {{candidature.telephone}}</h5>
+                      </div>
+
+                    {% endif %}
+
+                  {% endfor %}
+                </div>
+
+                <div class="buttons">
+                  <a href="/compte/update_annonce/{{annonce.pk}}"><button class="postuler">Modifier l'annonce</button></a>
+                  <button class="learnMore">Voir les Candidatures</button>
+                  <a href="/compte/delete_annonce/{{annonce.pk}}"><button class="postuler">Supprimer l'annonce</button></a>
+                </div>
+
+              </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+        </div>
 
         </main>
         <footer>
@@ -31,5 +109,27 @@
           <p>Télephone : 06-</p>
           <p>adresse</p>
         </footer>
+        <script>
+
+          const learnMoreButton = document.querySelectorAll(".learnMore")
+
+            learnMoreButton.forEach(button => {
+              button.addEventListener("click", function(){
+
+              const jobEncart = button.closest(".jobEncart")
+
+              const longDescription = jobEncart.querySelector(".candidatures")
+
+              if (longDescription.style.display == "none"){
+                longDescription.style.display = "block"
+                button.textContent = "Cacher les Candidatures"
+              }else{
+                longDescription.style.display = "none"
+                button.textContent = "Voir les Candidatures"
+              }
+            });
+          })
+
+        </script>
     </body>
 </html>

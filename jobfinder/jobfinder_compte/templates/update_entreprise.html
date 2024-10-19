@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mise à jour profil Entreprises</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'new_css/style_pyForm.css' %}">
+    </head>
+    <body>
+        <header>
+            <nav>
+              <!-- logo -->
+              <div class="logo">
+                <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+              </div>
+
+            </nav>
+        </header>
+        <main>
+          {% if user.is_authenticated %}
+            {% if user.is_entreprise == True%}
+            <form method="POST">
+              {%for message in messages%}
+                <p>{{ message }} </p>
+              {%endfor%}
+              {% csrf_token %}
+              {{form1.as_p}}
+              {{form2.as_p}}
+              <input type="submit" class="submit">
+            </form>
+            {% endif %}
+          {% endif %}
+
+        </main>
+        <footer>
+          <h4>Contactez-nous</h4>
+          <p>Email : x </p>
+          <p>Télephone : 06-</p>
+          <p>adresse</p>
+        </footer>
+    </body>
+</html>

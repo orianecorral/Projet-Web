@@ -2,51 +2,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Annonce Form</title>
+        <title>Formulaire annonce</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/style_form.css' %}">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
     </head>
     <body>
         <header>
             <nav>
-              <!-- logo -->
-              <div class="logo">
-                <a href="http://127.0.0.1:8000/"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
-              </div>
-              <!-- connexion -->
-              <div class="log">
-                <a href="" class="button-1 connexion">Connexion</a>
-               <!-- Inscription-->
-                <a href="user_form.html " class="button-1 inscription">Inscription</a>
-              </div>
-            </nav>
+                <!-- logo -->
+                <div class="logo">
+                  <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+                </div>
+              </nav>
         </header>
         <main>
-            <form method="post" action="{% url 'process_annonce_entry' %}">
+            <form method="POST">
                 {% csrf_token %}
+                <h3><center>Création d'une nouvelle annonce</center></h3>
                 <div class="element">
-                    <label for="titre">Titre de l'annonce</label><br>
+                    <label for="titre">Titre de l'annonce</label>
                     <input type="text" name="titre" class="input" required>
                 </div>
                 <div class="element">
-                    <label for="adresse">Localisation du poste</label><br>
+                    <label for="adresse">Localisation du poste</label>
                     <input type="text" name="adresse"  class="input"required>
                 </div>
                 <div class="element">
-                    <label for="nom_entreprise">Nom de l'entreprise</label><br>
+                    <label for="nom_entreprise">Nom de l'entreprise</label>
                     <input type="text" name="nom_entreprise" class="input"required>
                 </div>
                 <div class="element">
-                    <label for="salaire">Fourchette de salaire</label><br>
+                    <label for="salaire">Fourchette de salaire</label>
                     <input type="text" name="salaire" class="input">
                 </div>
                 <div class="element">
-                    <label for="date">Date de publication de l'annonce</label><br>
+                    <label for="date">Date de publication de l'annonce</label>
                     <input type="date" name="date" class="input" required>
                 </div>
                 <div class="element">
-                    <label for="contrat">Type de contrat</label><br>
+                    <label for="contrat">Type de contrat</label>
                     <select name="contrat" class="input" required>
                         <option value="">Selectionner le type de contrat</option>
                         <option value="CDI">CDI</option>
@@ -59,16 +54,16 @@
                     </select>
                 </div>
                 <div class="element_descr">
-                    <label for="short_description">Description courte du post (100 caractères)</label><br>
+                    <label for="short_description">Description courte du post (255 caractères)</label>
                     <textarea name="short_description" maxlength="100" rows="3" required></textarea>
                 </div>
                 <div class="element_descr">
-                    <label for="long_description">Description détaillé du poste</label><br>
+                    <label for="long_description">Description détaillé du poste</label>
                     <textarea name="long_description" rows="5" required></textarea>
                 </div>
                 <div class="submit_div">
-                    <label for="submit"></label><br>
-                    <input type="submit" name="submit" value="Envoyer" class="submit">
+                    <label for="submit"></label>
+                    <input type="submit" name="submit" value="Créer" class="submit">
                 </div>
             </form>
         </main>

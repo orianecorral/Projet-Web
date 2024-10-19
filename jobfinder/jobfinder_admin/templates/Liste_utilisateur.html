@@ -7,6 +7,9 @@
 </head>
 
 <body>
+                <!-- table des particuliers -->
+    {% if user.is_authenticated %}
+    {% if user.is_superuser == True %}
     <form method='POST'>
         {% csrf_token %}
         <table align="center" style="margin: 0px auto;">
@@ -16,11 +19,12 @@
                     <th>Prenom</th>
                     <th>Telephone</th>
                     <th>action</th>
+
                 </tr>
             </thead>
-            {%if not TabPar.instance.id%}
+            <!-- {%if not TabPar.instance.id%}
             {%include 'editer.html'%}
-            {%endif%}
+            {%endif%} -->
             <tbody>
                 {%for us in particulier%}
                 <tr>
@@ -30,7 +34,7 @@
                     <td>{{us.nom}}</td>
                     <td>{{us.prenom}}</td>
                     <td>{{us.telephone}}</td>
-                    <td><button name="editerPar" value="{{us.id}}">editer</button><button name="supprimerPar"
+                    <td><button name="editerPar" value="{{us.id}}">editer</button><button formnovalidate name="supprimerPar"
                             value="{{us.id}}">supprimer</button></td>
                     {%endif%}
                 </tr>
@@ -40,7 +44,7 @@
     </form>
 
 
-
+                <!-- table des entreprises -->
     <form method='POST'>
         {% csrf_token %}
         <table align="center" style="margin: 0px auto;">
@@ -54,9 +58,9 @@
                     <th>action</th>
                 </tr>
             </thead>
-            {%if not TabEnt.instance.id%}
+           <!--  {%if not TabEnt.instance.id%}
             {%include 'editerentreprise.html'%}
-            {%endif%}
+            {%endif%} -->
             <tbody>
                 {%for x in entreprises%}
                 <tr>
@@ -69,7 +73,7 @@
                     <td>{{x.adresse}}</td>
                     <td>{{x.taille}}</td>
                     <td>{{x.description}}</td>
-                    <td><button name="editerEnt" value="{{x.id}}">editer</button><button name="supprimerEnt"
+                    <td><button name="editerEnt" value="{{x.id}}">editer</button><button formnovalidate name="supprimerEnt"
                             value="{{x.id}}">supprimer</button></td>
                     {%endif%}
                 </tr>
@@ -80,7 +84,7 @@
 
 
 
-
+                <!-- table des annonces -->
 
     <form method='POST'>
         {% csrf_token %}
@@ -90,15 +94,17 @@
                     <th>titre</th>
                     <th>adresse</th>
                     <th>nom entreprise</th>
-                    <th>salaise</th>
+                    <th>salaire</th>
                     <th>contrat</th>
                     <th>date</th>
+                    <th>description courte</th>
                     <th>description</th>
+                    <th>action</th>
                 </tr>
             </thead>
-            {%if not TabAnn.instance.id%}
+          <!--    {%if not TabAnn.instance.id%}
             {%include 'editerannonce.html'%}
-            {%endif%}
+            {%endif%} -->
             <tbody>
                 {%for y in annonces%}
                 <tr>
@@ -112,7 +118,8 @@
                     <td>{{y.contrat}}</td>
                     <td>{{y.date}}</td>
                     <td>{{y.short_description}}</td>
-                    <td><button name="editerAnn" value="{{y.id}}">editer</button><button name="supprimerAnn"
+                    <td>{{y.description}}</td>
+                    <td><button name="editerAnn" value="{{y.id}}">editer</button><button formnovalidate name="supprimerAnn"
                             value="{{y.id}}">supprimer</button></td>
                     {%endif%}
                 </tr>
@@ -120,36 +127,8 @@
             </tbody>
         </table>
     </form>
-
-
-
-    <form method='POST'>
-        {% csrf_token %}
-        <table align="center" style="margin: 0px auto;">
-            <thead>
-                <tr>
-                    <th>Mail</th>
-                    <th>action</th>
-                </tr>
-            </thead>
-            {%if not TabUti.instance.id%}
-            {%include 'editeruser.html'%}
-            {%endif%}
-            <tbody>
-                {%for z in users%}
-                <tr>
-                    {%if TabUti.instance.id == z.id%}
-                    {%include 'editeruser.html'%}
-                    {%else%}
-                    <td>{{z.email}}</td>
-                    <td><button name="editer" value="{{z.id}}">editer</button><button name="supprimer"
-                            value="{{z.id}}">supprimer</button></td>
-                    {%endif%}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </form>
+    {%endif%}
+    {%endif%}
 </body>
 
 </html>

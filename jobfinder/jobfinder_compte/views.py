@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from .models import Utilisateurs, Entreprises, Particuliers
-from django.http import HttpResponse
+from jobfinder_app.models import Annonces, Candidatures
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password, is_password_usable
+
+from .forms import ParticuliersForm, UtilisateursForm, EntreprisesForm, AnnoncesForm
 
 # Create your views here.
 
@@ -24,7 +25,7 @@ def user_form(request):
         if (cmdp != password):
             messages.info(request,'Mot de Passe Incorect')
             return redirect('/compte/user_form/')
-        
+
         # Vérification que l'email est unique
         if Utilisateurs.objects.filter(email=email).exists():
             messages.info(request,'Un compte avec cet email existe déjà')
@@ -51,7 +52,7 @@ def user_form(request):
         )
         particulier.save()
 
-        return HttpResponse("Data successfully inserted!")
+        return redirect('http://127.0.0.1:8000/jobfinder')
 
     return render(request,'user_form.html')
 
@@ -72,11 +73,11 @@ def entreprise_form(request):
         if (cmdp != password):
             messages.info(request,'Mot de Passe Incorect')
             return redirect('/compte/entreprise_form/')
-            
-        if Utilisateurs.objects.filter(email=email).exist():
+
+        if Utilisateurs.objects.filter(email=email).exists():
             messages.info(request,'Un compte avec cet email existe déjà')
-            return redirect('/compte/user_form/')
-        
+            return redirect('/compte/entreprise_form/')
+
         utilisateur = Utilisateurs.objects.create_user(
             username=email,
             email=email,
@@ -85,10 +86,10 @@ def entreprise_form(request):
         )
         utilisateur.save()
 
-        # Ajout du reste a Particuliers
+        # Ajout du reste a Entreprise
 
         entreprise = Entreprises.objects.create(
-            user = entreprise,
+            user = utilisateur,
             nom_entreprise = nom_entreprise,
             pageweb = pageweb,
             adresse = adresse,
@@ -96,10 +97,9 @@ def entreprise_form(request):
             description=description,
         )
         entreprise.save()
- 
 
 
-        return HttpResponse("Data successfully inserted!")
+        return redirect('http://127.0.0.1:8000/jobfinder')
     # Apres il faudra redirect to user_page
     return render(request,'entreprise_form.html')
 
@@ -116,41 +116,31 @@ def connexion_user(request):
 
         user = authenticate(request, username = username, password = password)
 
-        if user is not None:
+        if user is not None and user.is_active:
             login(request, user)
-            return redirect("/user_page.html")
+            return redirect("jobfinder_compte:user_page")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
-            
+
     return render(request, 'connexion_user.html')
-    #     verif_user = Utilisateurs.objects.filter(email=email, password=password).exists()
-    #     print(verif_user)
-    #     if verif_user is True:
-    #         # login(request, verif_user)
-    #         return redirect("http://127.0.0.1:8000/jobfinder/")
-    #     else:
-    #         messages.info(request, "Identifiant ou mot de passe incorect")
-    
-    # return render(request, 'connexion_user.html')
 
 # Connection au compte Entreprises
 
 def connexion_entreprise(request):
     if request.method =="POST":
-        email = request.POST["email"]
+        username = request.POST["email"]
         password = request.POST["password"]
 
-        user = authenticate(request, email = email, password = password)
+        user = authenticate(request, username = username, password = password)
 
         if user is not None:
             login(request, user)
-            return redirect("user_page")
+            return redirect("jobfinder_compte:entreprise_page")
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
-    
 
-# def connexion_user(request):
-#     return render(request,'connexion_user.html')
+    return render(request, 'connexion_entreprise.html')
+
 
 
 # Fin de connection
@@ -159,14 +149,121 @@ def connexion_entreprise(request):
 
 
 def user_page(request):
-    return render(request,'user_page.html')
+    particuliers = Particuliers.objects.all()
+    candidatures = Candidatures.objects.all()
+    annonces = Annonces.objects.all()
+    return render(request,'user_page.html',{'particuliers':particuliers, 'candidatures':candidatures, 'annonces':annonces})
 
 def entreprise_page(request):
-    return render(request,'entreprise_page.html')
+    entreprises = Entreprises.objects.all()
+    annonces = Annonces.objects.all()
+    candidatures = Candidatures.objects.all()
+    return render(request,'entreprise_page.html',{'entreprises':entreprises,'annonces':annonces,'candidatures':candidatures})
+
+def update_user_bis(request,pk):
+    particulier = Particuliers.objects.get(user_id=pk)
+    utilisateur = Utilisateurs.objects.get(id=pk)
+    form1 = ParticuliersForm(instance = particulier)
+    form2 = UtilisateursForm(instance = utilisateur)
+    if request.method == 'POST':
+        form1 = ParticuliersForm(request.POST, instance=particulier)
+        form1.save()
+        form2 = UtilisateursForm(request.POST, instance=utilisateur)
+        form2.save()
+        return redirect('/compte/user_page')
+
+    context = {
+        'particulier': particulier,
+        'utilisateur' : utilisateur,
+        'form1': form1,
+        'form2': form2,
+    }
+    return render(request,'update_user.html',context)
+
+def update_entreprise(request,pk):
+    entreprise = Entreprises.objects.get(user_id=pk)
+    utilisateur = Utilisateurs.objects.get(id=pk)
+    form1 = EntreprisesForm(instance = entreprise)
+    form2 = UtilisateursForm(instance = utilisateur)
+    if request.method == 'POST':
+        form1 = EntreprisesForm(request.POST, instance=entreprise)
+        form1.save()
+        form2 = UtilisateursForm(request.POST, instance=utilisateur)
+        form2.save()
+        return redirect('/compte/entreprise_page')
+
+    context = {
+        'entreprise': entreprise,
+        'utilisateur' : utilisateur,
+        'form1': form1,
+        'form2': form2,
+    }
+    return render(request,'update_entreprise.html',context)
 
 
-# Pour le Logout
+def update_annonce(request,pk):
+    # entreprise = Entreprises.objects.get(user_id=pk)
+    annonce = Annonces.objects.get(id=pk)
+    # form1 = EntreprisesForm(instance = entreprise)
+    form2 = AnnoncesForm(instance = annonce)
+    if request.method == 'POST':
+        # form1 = EntreprisesForm(request.POST, instance=entreprise)
+        # form1.save()
+        form2 = AnnoncesForm(request.POST, instance=annonce)
+        form2.save()
+        return redirect('/compte/entreprise_page')
 
-# def logout_user(request):
-#     logout(request)
-#     return redirect("jobfinder_app:home_page")
+    context = {
+        # 'entreprise': entreprise,
+        'annonce' : annonce,
+        # 'form1': form1,
+        'form2': form2,
+    }
+    return render(request,'update_annonce.html',context)
+
+# Delete
+
+def delete_particulier(request, pk):
+    utilisateur = Utilisateurs.objects.get(id=pk)
+    particulier = Particuliers.objects.get(user_id = pk)
+
+    if request.method == 'POST':
+        utilisateur.delete()
+        particulier.delete()
+        return redirect('http://127.0.0.1:8000/jobfinder')
+
+    context = {
+        'utilisateur': utilisateur,
+        'particulier': particulier,
+    }
+    return render(request, 'remove-particulier.html', context)
+
+def delete_entreprise(request, pk):
+    utilisateur = Utilisateurs.objects.get(id=pk)
+    entreprise =  Entreprises.objects.get(user_id = pk)
+
+    if request.method == 'POST':
+        utilisateur.delete()
+        entreprise.delete()
+        return redirect('http://127.0.0.1:8000/jobfinder')
+
+    context = {
+        'utilisateur': utilisateur,
+        'entreprise': entreprise,
+    }
+    return render(request, 'remove-entreprise.html', context)
+
+def delete_annonce(request, pk):
+    # entreprise = Entreprises.objects.get(user_id=pk)
+    annonce =  Annonces.objects.get(id = pk)
+
+    if request.method == 'POST':
+        annonce.delete()
+        # entreprise.delete()
+        return redirect('http://127.0.0.1:8000/compte/entreprise_page')
+
+    context = {
+        'annonce': annonce,
+        # 'entreprise': entreprise,
+    }
+    return render(request, 'remove-annonce.html', context)

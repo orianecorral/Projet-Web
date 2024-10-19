@@ -17,7 +17,7 @@
             </nav>
         </header>
         <main>
-            <h1>Connection Particulier</h1>
+            <h1>Connection Administrateur</h1>
             {%for message in messages%}
                 <p>{{ message }} </p>
             {%endfor%}
@@ -25,7 +25,7 @@
             {% csrf_token %}
                 <div>
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" required/>
+                    <input type="text" name="email" required/>
                 </div>
                 <div>
                     <label for="password">Mot de passe</label><br>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+# from jobfinder_app.models import Annonces
 
 # Create your models here.
 
@@ -9,7 +10,7 @@ class Utilisateurs(AbstractUser):
     is_particulier = models.BooleanField(default=False)
     is_entreprise = models.BooleanField(default=False)
 
-   
+
     class Meta:
         db_table = 'Utilisateurs'
     # Element pas obligatoire représente un chaine de charactere permet de changer l'affichage de :
@@ -23,11 +24,12 @@ class Utilisateurs(AbstractUser):
 
 class Particuliers(models.Model):
     # Lien en OnetoOne avec la table Utilisateurs avec l'option delete qui efface les données si ils sont
-    # effacés de la table Utilisateur 
+    # effacés de la table Utilisateur
     user = models.OneToOneField(Utilisateurs, on_delete=models.CASCADE)
     prenom = models.CharField(max_length=200, null=True)
     nom = models.CharField(max_length=300, null=True)
     telephone = models.CharField(max_length=300, null=True)
+    # candidature = models.ForeignKey(Candidatures, on_delete=models.CASCADE, default=None)
 
     class Meta:
         db_table = 'Particuliers'
@@ -50,7 +52,7 @@ class Entreprises(models.Model):
     adresse = models.CharField(max_length=300, null=True)
     taille = models.CharField(max_length=100, choices=SIZE_CHOICES, null=True)
     description = models.TextField()
-
+    # annonce = models.ForeignKey(Annonces, on_delete=models.CASCADE, default=None)
 
     class Meta:
         db_table = 'Entreprises'

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulaire candidature</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
+    </head>
+    <body>
+      <header>
+        <nav>
+          <!-- logo -->
+          <div class="logo">
+            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+          </div>
+          <!-- Vérifié si l'utilisateur est connecté -->
+
+          {% if user.is_authenticated %}
+
+          {% else %}
+
+          <div class="log">
+            <!-- Connexion -->
+            <a href="{% url 'connexion_page'%}" class="button-1 connexion">Connexion</a>
+            <!-- Inscription-->
+            <a href="{% url 'inscription_page'%}" class="button-1 inscription">Inscription</a>
+          </div>
+
+          {% endif %}
+        </nav>
+      </header>
+      <main>
+
+        <!-- Si l'utilisateur est authentifié les champs sont rempli automatiquement-->
+
+          {% for particulier in particuliers %}
+
+            {% if particulier.user_id == user.id %}
+
+              <form method="POST">
+                <h3><center>{{annonces.titre}}</center></h3>
+                {% csrf_token %}
+                <div class="element">
+                  <label for="nom">Nom</label>
+                  <input type="text" name="nom" class="input" value="{{particulier.nom}}" required>
+                </div>
+                <div class="element">
+                  <label for="prenom">Prénom</label>
+                  <input type="text" name="prenom" class="input" value="{{particulier.prenom}}" required>
+                </div>
+                <div class="element">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="input" value="{{user.email}}" required>
+                </div>
+                <div class="element">
+                  <label for="telephone">Téléphone</label>
+                  <input type="text" name="telephone" class="input" value="{{particulier.telephone}}">
+                </div>
+                <div class="submit_div">
+                  <label for="submit"></label>
+                  <input type="submit" name="submit" class="submit">
+                </div>
+              </form>
+
+            {% endif %}
+            
+          {% endfor %}
+        
+      </main>
+      <footer>
+        <h4>Contactez-nous</h4>
+        <p>Email : x </p>
+        <p>Télephone : 06-</p>
+        <p>adresse</p>
+      </footer>
+    </body>
+</html>
