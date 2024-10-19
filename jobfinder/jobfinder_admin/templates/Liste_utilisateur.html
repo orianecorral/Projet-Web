@@ -1,12 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Liste Utilisateur</title>
-    </head>
-    <body>
-        <form method ='POST'>
-            {% csrf_token %}
+
+<head>
+    <title>Liste Utilisateur</title>
+</head>
+
+<body>
+    <form method='POST'>
+        {% csrf_token %}
         <table align="center" style="margin: 0px auto;">
             <thead>
                 <tr>
@@ -17,7 +19,7 @@
                 </tr>
             </thead>
             {%if not TabPar.instance.id%}
-                {%include 'editer.html'%}
+            {%include 'editer.html'%}
             {%endif%}
             <tbody>
                 {%for us in particulier%}
@@ -28,7 +30,8 @@
                     <td>{{us.nom}}</td>
                     <td>{{us.prenom}}</td>
                     <td>{{us.telephone}}</td>
-                    <td><button name="editerPar"value="{{us.id}}">editer</button><button name="supprimerPar"value="{{us.id}}">supprimer</button></td>
+                    <td><button name="editerPar" value="{{us.id}}">editer</button><button name="supprimerPar"
+                            value="{{us.id}}">supprimer</button></td>
                     {%endif%}
                 </tr>
                 {% endfor %}
@@ -38,7 +41,7 @@
 
 
 
-    <form method ='POST'>
+    <form method='POST'>
         {% csrf_token %}
         <table align="center" style="margin: 0px auto;">
             <thead>
@@ -52,7 +55,7 @@
                 </tr>
             </thead>
             {%if not TabEnt.instance.id%}
-                {%include 'editerentreprise.html'%}
+            {%include 'editerentreprise.html'%}
             {%endif%}
             <tbody>
                 {%for x in entreprises%}
@@ -66,20 +69,21 @@
                     <td>{{x.adresse}}</td>
                     <td>{{x.taille}}</td>
                     <td>{{x.description}}</td>
-                    <td><button name="editerEnt"value="{{x.id}}">editer</button><button name="supprimerEnt"value="{{x.id}}">supprimer</button></td>
+                    <td><button name="editerEnt" value="{{x.id}}">editer</button><button name="supprimerEnt"
+                            value="{{x.id}}">supprimer</button></td>
                     {%endif%}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        </form>
+    </form>
 
 
 
 
 
-        <form method ='POST'>
-            {% csrf_token %}
+    <form method='POST'>
+        {% csrf_token %}
         <table align="center" style="margin: 0px auto;">
             <thead>
                 <tr>
@@ -108,18 +112,19 @@
                     <td>{{y.contrat}}</td>
                     <td>{{y.date}}</td>
                     <td>{{y.short_description}}</td>
-                    <td><button name="editerAnn"value="{{y.id}}">editer</button><button name="supprimerAnn"value="{{y.id}}">supprimer</button></td>
+                    <td><button name="editerAnn" value="{{y.id}}">editer</button><button name="supprimerAnn"
+                            value="{{y.id}}">supprimer</button></td>
                     {%endif%}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        </form>
+    </form>
 
 
 
-        <form method ='POST'>
-            {% csrf_token %}
+    <form method='POST'>
+        {% csrf_token %}
         <table align="center" style="margin: 0px auto;">
             <thead>
                 <tr>
@@ -137,12 +142,14 @@
                     {%include 'editeruser.html'%}
                     {%else%}
                     <td>{{z.email}}</td>
-                    <td><button name="editer"value="{{z.id}}">editer</button><button name="supprimer"value="{{z.id}}">supprimer</button></td>
+                    <td><button name="editer" value="{{z.id}}">editer</button><button name="supprimer"
+                            value="{{z.id}}">supprimer</button></td>
                     {%endif%}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        </form>
-    </body>
+    </form>
+</body>
+
 </html>

@@ -60,24 +60,18 @@ def tab_Particulier(request):
             entrepriseform = EntreprisesForm(instance=jul)
         if 'supprimerPar' in request.POST:
             ide = request.POST.get('supprimerPar')    
-            jul = Particuliers.objects.get(id=ide)  #ici le problème est que je met particulier même si c'est entreprises ou annonces .
+            jul = Particuliers.objects.get(id=ide)
             jul.delete()
         if 'supprimerAnn' in request.POST:
             ide = request.POST.get('supprimerAnn')    
-            jul = Annonces.objects.get(id=ide)  #ici le problème est que je met particulier même si c'est entreprises ou annonces .
+            jul = Annonces.objects.get(id=ide)
             jul.delete()
         if 'supprimerEnt' in request.POST:
             ide = request.POST.get('supprimerEnt')    
-            jul = Entreprises.objects.get(id=ide)  #ici le problème est que je met particulier même si c'est entreprises ou annonces .
+            jul = Entreprises.objects.get(id=ide)
             jul.delete()
     return render(request,'Liste_utilisateur.html',{'particulier':Particulier,'annonces':annonces,'entreprises':Entreprise,'TabPar':particulierform,'TabEnt':entrepriseform,'TabAnn':annonceform,'TabUti':userform})
 
-def tab_entreprise(request):
-    Entreprise =Entreprises.objects.all()
-    return render(request,'Liste_utilisateur.html',{'entreprises':Entreprise})
-def tab_annonce(request):
-    annonces =Annonces.objects.all()
-    return render(request,'Liste_utilisateur.html',{'annonces':annonces})
 def CoAdmin(request):
     print('testtttttttt')
     user = authenticate(is_superuser = 1)
@@ -87,10 +81,3 @@ def CoAdmin(request):
     else:
         print('jesuis pasco')
         return render(request,'Liste_utilisateur.html')
-    
-def suprimmer(request):
-    print('placeholder')
-def editer(request):
-    print('placeholder update')
-def sauvegarder(request):
-    print('placeholder sauvegarde')
