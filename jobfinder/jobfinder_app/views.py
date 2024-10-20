@@ -1,6 +1,10 @@
 # Create your views here.
 from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import Annonces, Candidatures
+from jobfinder_compte.models import Particuliers, Utilisateurs, Entreprises
+from django.contrib.auth import logout
 from .models import Annonces, Candidatures
 from jobfinder_compte.models import Particuliers, Utilisateurs, Entreprises
 from django.contrib.auth import logout
@@ -8,6 +12,8 @@ from django.db.models import Q
 
 
 def home_page(request):
+    particuliers = Particuliers.objects.all()
+    entreprises = Entreprises.objects.all()
     particuliers = Particuliers.objects.all()
     entreprises = Entreprises.objects.all()
     if request.method == "POST":
@@ -37,6 +43,8 @@ def annonce_entry(request, pk):
         date = request.POST.get('date')
         short_description = request.POST.get('short_description')
         long_description = request.POST.get('long_description')
+
+
 
 
         # Create a new patient entry in the database using the Patient model

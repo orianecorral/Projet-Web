@@ -39,7 +39,7 @@
             {% if particulier.user_id == user.id %}
 
               <form method="POST">
-                <h3><center>{{annonces.titre}}</center></h3>
+                <center><h3>Candidater pour un poste de<br></h3><h2>{{annonces.titre}}</h2></center>
                 {% csrf_token %}
                 <div class="element">
                   <label for="nom">Nom</label>

@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Liste Utilisateur</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'new_css/style_admin.css' %}">
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    {% if user.is_superuser == True %}
+
+    <!-- table des particuliers -->
+    <form method='POST' class="formPart">
+        {% csrf_token %}
+        <table align="center">
+            <h2><center>Table Particulier</center></h2>
+            <center><a href="{% url 'form_user'%}" class="edit">Création d'un nouveau profil particulier</a></center>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Telephone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <!-- {%if not TabPar.instance.id%}
+            {%include 'editer.html'%}
+            {%endif%} -->
+            <tbody>
+                {%for us in particulier%}
+                <tr>
+                    {%if TabPar.instance.id == us.id%}
+                    {%include 'editer.html'%}
+                    {%else%}
+                    <td>{{us.nom}}</td>
+                    <td>{{us.prenom}}</td>
+                    <td>{{us.telephone}}</td>
+                    <td>
+                        <button name="editerPar" value="{{us.id}}" class="edit">editer</button>
+                        <button formnovalidate name="supprimerPar" value="{{us.id}}" class="delete">supprimer</button>
+                    </td>
+                    {%endif%}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+
+                <!-- table des entreprises -->
+    <form method='POST'>
+        {% csrf_token %}
+        <h2><center>Table Entreprise</center></h2>
+        <center><a href="{% url 'form_entreprise'%}" class="edit">Création d'un nouveau profil entreprise</a></center>
+        <table align="center">
+            <thead>
+                <tr>
+                    <th>Nom entreprise</th>
+                    <th>Page web</th>
+                    <th>Adresse</th>
+                    <th>Taille</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+           <!--  {%if not TabEnt.instance.id%}
+            {%include 'editerentreprise.html'%}
+            {%endif%} -->
+            <tbody>
+                {%for x in entreprises%}
+                <tr>
+                    {%if TabEnt.instance.id == x.id%}
+                    {%include 'editerentreprise.html'%}
+                    {%else%}
+
+                    <td>{{x.nom_entreprise}}</td>
+                    <td>{{x.pageweb}}</td>
+                    <td>{{x.adresse}}</td>
+                    <td>{{x.taille}}</td>
+                    <td class="description"><div>{{x.description}}</div></td>
+                    <td><button name="editerEnt" value="{{x.id}}" class="edit">editer</button><button formnovalidate name="supprimerEnt"
+                            value="{{x.id}}" class="delete">supprimer</button><a href="/jobfinder/admin/form_annonce/{{x.user_id}}" class="edit">Création d'une nouvelle annonce</a></td>
+                    {%endif%}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+
+
+                <!-- table des annonces -->
+
+    <form method='POST'>
+        {% csrf_token %}
+        <h2><center>Table Annonce</center></h2>
+        <table align="center" >
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Adresse</th>
+                    <th>Nom entreprise</th>
+                    <th>Salaire</th>
+                    <th>Contrat</th>
+                    <th>Date</th>
+                    <th>Description courte</th>
+                    <th>Description longue</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+          <!--    {%if not TabAnn.instance.id%}
+            {%include 'editerannonce.html'%}
+            {%endif%} -->
+            <tbody>
+                {%for y in annonces%}
+                <tr>
+                    {%if TabAnn.instance.id == y.id%}
+                    {%include 'editerannonce.html'%}
+                    {%else%}
+                    <td>{{y.titre}}</td>
+                    <td>{{y.adresse}}</td>
+                    <td>{{y.nom_entreprise}}</td>
+                    <td>{{y.salaire}}</td>
+                    <td>{{y.contrat}}</td>
+                    <td>{{y.date}}</td>
+                    <td>{{y.short_description}}</td>
+                    <td class="description">{{y.long_description}}</td>
+                    <td><button name="editerAnn" value="{{y.id}}" class="edit">editer</button><button formnovalidate name="supprimerAnn"
+                            value="{{y.id}}" class="delete">supprimer</button></td>
+                    {%endif%}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+    {%endif%}
+    {%endif%}
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+@font-face {
+    font-family: Quantify;
+    src: url(../JobFinder_Front_Elements/font/Quantify.ttf);
+  }
+  
+  @font-face {
+    font-family: ITC_book;
+    src: url(../font/ITC/ITCAvantGardeStd-BkCn.otf);
+  }
+  
+  body{
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    font-family: ITC_book;
+    background-color: #F2F6F7;
+    margin: 0%;
+  }
+  
+  header{
+    flex: 1;
+    display: flex;
+    margin: 2%;
+  }
+  
+  main{
+    flex:6;
+    display: flex;
+    flex-direction: column;
+    justify-content : center;
+    align-items: center;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+  
+  
+    /* Formulaire */
+form{
+    background-color: #FFFFFF;
+    margin: 1%;
+
+}
+
+table{
+    border: solid black;
+    width: auto;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: solid black;
+    max-width: 200px;
+
+}
+
+/* th{
+    max-height: 50px;
+} */
+
+.description{
+    max-height: 100px; 
+    overflow-y: scroll; 
+
+}
+    
+  
+  /* CSS - Bouton connexion*/
+  .edit{
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: ITC_book,system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 2px;
+    min-height: 1rem;
+    padding: auto;
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+    text-align: center;
+    box-shadow: 0px 0px 3px black;
+  }
+  
+  .delete {
+      align-items: center;
+      background-color: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: .25rem;
+      box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+      box-sizing: border-box;
+      color: rgba(0, 0, 0, 0.85);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: ITC_book,system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      justify-content: center;
+      line-height: 1.25;
+      margin: 2px;
+      min-height: 1rem;
+      padding: auto;
+      position: relative;
+      text-decoration: none;
+      transition: all 250ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: baseline;
+      width: auto;
+      text-align: center;
+      box-shadow: 0px 0px 3px black;
+    }
+  
+  .button-1:hover,
+  .button-1:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+  
+  .button-1:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-1:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }

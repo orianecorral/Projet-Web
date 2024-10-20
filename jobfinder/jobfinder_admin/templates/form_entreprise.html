@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulaire entreprise</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
+    </head>
+    <body>
+      <header>
+        <nav>
+          <!-- logo -->
+          <div class="logo">
+            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+          </div>
+        </nav>
+    </header>
+        <main>
+          <form method="POST">
+            {% csrf_token %}
+            <h2><center>Création de votre compte entreprise</center></h2>
+            <!-- nom entreprise -->
+            <div class="element">
+              <label for="nom_entreprise">Nom de votre entreprise</label>
+              <input type="text" name="nom_entreprise" id="nom_entreprise" class="input" required>
+            </div>
+            <!-- pageweb -->
+            <div class="element">
+              <label for="pageweb">Votre page web</label>
+              <input type="url" name="pageweb" id="pageweb" class="input" required>
+            </div>
+            <!-- adresse -->
+            <div class="element">
+              <label for="adresse">Votre adresse</label>
+              <input type="text" name="adresse" id="adresse" class="input" required>
+            </div>
+            <!-- taille entreprise -->
+            <div class="element">
+              <label for="taille">Taille de votre entreprise</label>
+              <select name="taille" id="taille" class="input">
+                <option value="0-10"> 0-10 employés </option>
+                <option value="10-250"> 10-250 employés </option>
+                <option value="250-5000"> 250-5000 employés </option>
+                <option value="+5000"> +5000 employés </option>
+              </select>
+            </div class="element">
+            <!-- description de l'entreprise -->
+            <div class="element">
+              <label for="description">Description de votre entreprise</label>
+              <textarea name="description" id="description" placeholder="Votre description" required></textarea>
+            </div>
+            <!-- email -->
+            <div class="element">
+              <label for="email">Votre email</label>
+              <input type="email" name="email" id="email" class="input" required>
+            </div>
+            <!-- mot de passe -->
+            <div class="element">
+              <label for="password">Choisissez un mot de passe</label>
+              <input type="password" name="password" id="password"class="input" required>
+            </div class="element">
+            <!-- confirmation de mot de passe -->
+            <div class="element">
+              <label for="cmdp">Confirmez votre mot de passe</label>
+              <input type="password" name="cmdp" id="cmdp" class="input" required >
+            </div>
+            <!-- boutton envoyer -->
+            <div class="submit_div">
+              <br>
+              <input type="submit" class="button-1 submit" value="Inscription">
+            </div>
+          </form>
+          {%for message in messages%}
+            <p>{{ message }} </p>
+          {%endfor%}
+        </main>
+    </body>
+</html>

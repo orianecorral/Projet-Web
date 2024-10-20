@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulaire annonce</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'new_css/style_form.css' %}">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <!-- logo -->
+                <div class="logo">
+                  <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+                </div>
+              </nav>
+        </header>
+        <main>
+            <form method="POST">
+                {% csrf_token %}
+                <h2><center>Création d'une nouvelle annonce</center></h2>
+                <div class="element">
+                    <label for="titre">Titre de l'annonce</label>
+                    <input type="text" name="titre" class="input" required>
+                </div>
+                <div class="element">
+                    <label for="adresse">Localisation du poste</label>
+                    <input type="text" name="adresse"  class="input"required>
+                </div>
+                <div class="element">
+                    <label for="nom_entreprise">Nom de l'entreprise</label>
+                    <input type="text" name="nom_entreprise" class="input"required>
+                </div>
+                <div class="element">
+                    <label for="salaire">Fourchette de salaire</label>
+                    <input type="text" name="salaire" class="input">
+                </div>
+                <div class="element">
+                    <label for="date">Date de publication de l'annonce</label>
+                    <input type="date" name="date" class="input" required>
+                </div>
+                <div class="element">
+                    <label for="contrat">Type de contrat</label>
+                    <select name="contrat" class="input" required>
+                        <option value="">Selectionner le type de contrat</option>
+                        <option value="CDI">CDI</option>
+                        <option value="CDD 6 mois">CDD 6 mois</option>
+                        <option value="CDD 12 mois">CDD 12 mois</option>
+                        <option value="CDD 18 mois">CDD 18 mois</option>
+                        <option value="Stage">Stage</option>
+                        <option value="Stage 6 mois">Stage 6 mois</option>
+                        <option value="Alternance">Alternance</option>
+                    </select>
+                </div>
+                <div class="element_descr">
+                    <label for="short_description">Description courte du post (255 caractères)</label>
+                    <textarea name="short_description" maxlength="100" rows="3" required></textarea>
+                </div>
+                <div class="element_descr">
+                    <label for="long_description">Description détaillé du poste</label>
+                    <textarea name="long_description" rows="5" required></textarea>
+                </div>
+                <div class="submit_div">
+                    <label for="submit"></label>
+                    <input type="submit" name="submit" value="Créer" class="submit">
+                </div>
+            </form>
+        </main>
+        </footer>
+    </body>
+</html>

@@ -19,7 +19,7 @@
         <main>
             <form method="POST">
                 {% csrf_token %}
-                <h3><center>Création de votre compte particulier</center></h3>
+                <h2><center>Création de votre compte particulier</center></h2>
                 {%for message in messages%}
                     <p><center>{{ message }}</center></p>
                 {%endfor%}
