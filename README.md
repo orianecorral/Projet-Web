@@ -1,31 +1,30 @@
 # Jobfinder
-1. Aperçu du projet :
+## 1. Aperçu du projet :
 À travers ce projet web, nous avons créé un job-board, Jobfinder qui permet de visualiser des offres de travail et ainsi pouvoir postuler à celles-ci.
 Notre groupe de travail pour ce projet comprend Antoine Ribeyre, Ryan Mzalouat et Oriane Corral.
-2. Fonctionnalités
+## 2. Fonctionnalités
 
-A. Page principale
-
+### A. Page principale
 Jobfinder comprend une page principale où il est possible de rechercher des offres de travail selon des critères, par exemple, le titre du poste. Sur cette même page, un utilisateur peut se connecter à son compte qu'il soit représentant d'une entreprise ou un particulier à la recherche d'un poste.
 Également,   un utilisateur qui  visite Jobfinder pour la première fois pourra créer son compte. L'inscription comprend un formulaire différent pour les particuliers et les entreprises.
 
-B. Comptes
-Pour les particuliers : 
+### B. Comptes
+#### Pour les particuliers : 
 Lorsqu'un particulier est connecté à son compte particulier, il peut avoir accès à ses informations personnelles en cliquant sur le bouton en haut à droite. Il peut ainsi les modifier ou même supprimer son compte. 
 Le particulier peut aussi visualiser les annonces auxquelles il a candidaté.
 Nous avons ajouté une fonctionnalité où un particulier peut candidater à une offre sans s'inscrire à Jobfinder. Cependant, ses informations ne seront pas pré remplies contrairement à un particulier qui a déjà son compte Jobfinder.
-Pour les entreprises : 
+#### Pour les entreprises : 
 Similaire au compte particulier, une entreprise peut modifier, supprimer, ses informations personnelles sur son profil. Une entreprise est l'unique entité qui peut créer une offre de travail et cela depuis son profil. 
 Le professionnel peut accéder à toutes les offres d'emploi qui correspondent à son entreprise ainsi qu'à toutes les candidatures des particuliers à chacune des offres de travail. 
 
-C. Admin
+### C. Admin
 Nous avons implémenté une partie admin où un superuser est capable de créer des utilisateurs, c'est à dire un particulier ou une entreprise. 
 Pour les utilisateurs qui sont déjà inscrits, l'admin peut modifier les informations personnelles de ceux-ci, cependant il ne pourra pas modifier l'email(l'identifiant) et son mot de passe. 
 Du côté des annonces, le superuser peut créer, modifier et supprimer une offre de travail pour une entreprise.
 Concernant les candidatures, l'admin peut modifier et même supprimer une candidature pour une annonce en particulier.
 Un admin a accès à des tableaux représentatifs de la base de données et ses différents éléments comme les descriptions,les informations correspondant aux annonces etc. Cependant, l'admin n'a pas accès au tableau "Utilisateurs".
 
-5. Technologies utilisées
+## 3. Technologies utilisées
 Pour ce projet, nous avons fait le choix d'utiliser les technologies suivantes :
 - Python comme langage principal 
 - Django pour créer un lien entre la base de données et MySQL, ainsi que pour créer des vues. Nous avons utilisé les fonctionnalités intégrées de Django telles que forms, modelForm, AbstractUser, messages, authenticate.
@@ -33,7 +32,10 @@ Pour ce projet, nous avons fait le choix d'utiliser les technologies suivantes :
 - Javascript pour créer une interactivité dynamique et la "responsivité" de la page web.
 - MySQL/PhpMyAdmin pour gérer une base de données avec des primary keys et des foreign keys.
 
-7. Structure du projet
+**Nous avons intégré la database dans ce repo**
+  
+
+## 4. Structure du projet
 ├── jobfinder
 │   ├── asgi.py
 │   ├── __init__.py
@@ -147,7 +149,7 @@ Pour ce projet, nous avons fait le choix d'utiliser les technologies suivantes :
         ├── style_home.css
         ├── style_pages.css
         └── style_pyForm.css
-9. Points d'amélioration
+## 5. Points d'amélioration
 - Manque de visibilité sur la complexité du sujet avec un changement de technologies utilisées à partir de la fin de la première semaine de projet (uniquement Python à Python avec Django).
-- Implémenter une RestAPI pour la base de données. 
-11. Conclusion
+- Implémenter une RestAPI pour la base de données.
+- Fonctionnalités supplémentaires : recherche avancées avec filtres, pagination des offres de travail, implémentation d'une recherche par localisation avec un plan google ou utilisation de framework pour le front-end comme react/typescript ou tailwind.
