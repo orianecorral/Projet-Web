@@ -58,7 +58,7 @@
       </div>
       <!-- Ici affichage des candidatures -->
       
-      <h3><center>Vos Candidatures :</center></h3>
+      <h2><center>Vos Candidatures :</center></h2>
       {% for candidature in candidatures %}
 
         {% if candidature.user_id == user.id %}
@@ -68,7 +68,7 @@
             {% if candidature.annonce_id == annonce.id %}
           
             <div class="jobEncart">
-              <h3 class="jobTitle"><u>Titre : </u> {{ annonce.titre }} </h3>
+              <h2 class="jobTitle"><u>Titre : </u> {{ annonce.titre }} </h2>
               <h5 class="annonceElement"><u>Nom de l'entreprise : </u><br>{{annonce.nom_entreprise}}</h5>
               <h5 class="annonceElement"><u>Adresse : </u><br> {{annonce.adresse}}</h5>
             </div>
