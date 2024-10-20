@@ -2,6 +2,8 @@
 ## 1. Aperçu du projet :
 À travers ce projet web, nous avons créé un job-board, Jobfinder qui permet de visualiser des offres de travail et ainsi pouvoir postuler à celles-ci.
 Notre groupe de travail pour ce projet comprend Antoine Ribeyre, Ryan Mzalouat et Oriane Corral.
+Pour avoir accès à notre projet : http://127.0.0.1:8000/jobfinder/
+
 ## 2. Fonctionnalités
 
 ### A. Page principale
@@ -23,6 +25,12 @@ Pour les utilisateurs qui sont déjà inscrits, l'admin peut modifier les inform
 Du côté des annonces, le superuser peut créer, modifier et supprimer une offre de travail pour une entreprise.
 Concernant les candidatures, l'admin peut modifier et même supprimer une candidature pour une annonce en particulier.
 Un admin a accès à des tableaux représentatifs de la base de données et ses différents éléments comme les descriptions,les informations correspondant aux annonces etc. Cependant, l'admin n'a pas accès au tableau "Utilisateurs".
+
+Le lien du compte admin est le suivant : 
+Page de connexion : http://127.0.0.1:8000/jobfinder/admin/ccc/
+
+Pour avoir accès aux tables : http://127.0.0.1:8000/jobfinder/admin/admin_table/
+
 
 ## 3. Technologies utilisées
 Pour ce projet, nous avons fait le choix d'utiliser les technologies suivantes :
