@@ -13,6 +13,8 @@
     {% if user.is_authenticated %}
     {% if user.is_superuser == True %}
 
+    <center><h1>Voici les tableaux de gestion admin</h1></center>
+
     <!-- table des particuliers -->
     <form method='POST' class="formPart">
         {% csrf_token %}
@@ -81,9 +83,11 @@
                     <td>{{x.pageweb}}</td>
                     <td>{{x.adresse}}</td>
                     <td>{{x.taille}}</td>
-                    <td class="description"><div>{{x.description}}</div></td>
-                    <td><button name="editerEnt" value="{{x.id}}" class="edit">editer</button><button formnovalidate name="supprimerEnt"
-                            value="{{x.id}}" class="delete">supprimer</button><a href="/jobfinder/admin/form_annonce/{{x.user_id}}" class="edit">Création d'une nouvelle annonce</a></td>
+                    <td class="description-cell"><div class="description-content">{{x.description}}</div></td>
+                    <td><button name="editerEnt" value="{{x.id}}" class="edit">editer</button>
+                        <button formnovalidate name="supprimerEnt" value="{{x.id}}" class="delete">supprimer</button>
+                        <a href="/jobfinder/admin/form_annonce/{{x.user_id}}" class="edit">Création d'une nouvelle annonce</a>
+                    </td>
                     {%endif%}
                 </tr>
                 {% endfor %}
@@ -127,16 +131,21 @@
                     <td>{{y.salaire}}</td>
                     <td>{{y.contrat}}</td>
                     <td>{{y.date}}</td>
-                    <td>{{y.short_description}}</td>
-                    <td class="description">{{y.long_description}}</td>
-                    <td><button name="editerAnn" value="{{y.id}}" class="edit">editer</button><button formnovalidate name="supprimerAnn"
-                            value="{{y.id}}" class="delete">supprimer</button></td>
+                    <td class="description-cell"><div class="description-content">{{y.short_description}}</div></td>
+                    <td class="description-cell"><div class="description-content">{{y.long_description}}</div></td>
+                    <td><button name="editerAnn" value="{{y.id}}" class="edit">editer</button>
+                        <button formnovalidate name="supprimerAnn" value="{{y.id}}" class="delete">supprimer</button>
+                        <a href="/jobfinder/admin/liste_candidatures/{{x.id}}" class="edit">Accéder au candidatures</a>
+                    </td>
                     {%endif%}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </form>
+
+
+    
     {%endif%}
     {%endif%}
 </body>

@@ -18,7 +18,18 @@ def home_page(request):
     entreprises = Entreprises.objects.all()
     if request.method == "POST":
         recherche = request.POST['recherche']
-        annonces = Annonces.objects.filter(Q(titre__contains=recherche) | Q(nom_entreprise__contains=recherche) | Q(contrat__contains=recherche)| Q(short_description__contains=recherche)| Q(long_description__contains=recherche))
+        lieu = request.POST['lieu']
+
+        annonces = Annonces.objects.filter(
+            Q(titre__contains=recherche) | 
+            Q(nom_entreprise__contains=recherche) | 
+            Q(contrat__contains=recherche)| 
+            Q(short_description__contains=recherche)| 
+            Q(long_description__contains=recherche)
+            )
+        if lieu:
+            annonces = annonces.filter(Q(adresse__icontains=lieu))
+        
 
         return render(request,'home_page.html',{'annonces':annonces, 'particuliers':particuliers, 'entreprises':entreprises})
     

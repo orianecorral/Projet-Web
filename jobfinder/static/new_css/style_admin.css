@@ -50,18 +50,23 @@ table{
 
 th, td{
     border: solid black;
-    max-width: 200px;
+    max-width: min-content;
 
 }
 
-/* th{
-    max-height: 50px;
-} */
+.description-cell {
+  width: 200px; /* Force a fixed width */
+}
 
-.description{
-    max-height: 100px; 
-    overflow-y: scroll; 
+.description-content {
+  max-height: 100px; 
+  overflow-y: auto; 
+  padding: 5px;
+  box-sizing: border-box; 
+}
 
+input{
+  width: 70px;
 }
     
   

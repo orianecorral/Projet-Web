@@ -22,7 +22,7 @@ class EntreprisesForm(forms.ModelForm):
 class AnnoncesForm(forms.ModelForm):
     class Meta:
         model = Annonces
-        exclude = ["entreprise_id","id"]
+        exclude = ["entreprise","id"]
  
 class UtilisateursForm(forms.ModelForm):
     class Meta:
