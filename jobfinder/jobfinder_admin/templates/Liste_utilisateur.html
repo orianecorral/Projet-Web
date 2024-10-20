@@ -135,7 +135,7 @@
                     <td class="description-cell"><div class="description-content">{{y.long_description}}</div></td>
                     <td><button name="editerAnn" value="{{y.id}}" class="edit">editer</button>
                         <button formnovalidate name="supprimerAnn" value="{{y.id}}" class="delete">supprimer</button>
-                        <a href="/jobfinder/admin/liste_candidatures/{{x.id}}" class="edit">Accéder au candidatures</a>
+                        <a href="/jobfinder/admin/liste_candidature/{{y.id}}" class="edit">Accéder au candidatures</a>
                     </td>
                     {%endif%}
                 </tr>
@@ -144,7 +144,7 @@
         </table>
     </form>
 
-
+    <center><a href="/jobfinder" class="edit">Retour a la page principale</a></center>
     
     {%endif%}
     {%endif%}

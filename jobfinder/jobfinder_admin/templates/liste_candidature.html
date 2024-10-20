@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Liste Utilisateur</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'new_css/style_admin.css' %}">
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    {% if user.is_superuser == True %}
+
+    <center><h1>Voici les tableaux de gestion admin</h1></center>
+
+    <!-- table des particuliers -->
+    <form method='POST' class="formPart">
+        {% csrf_token %}
+        <table align="center">
+            <h2><center>Table Candidature pour l'annonce : <br>{{annonces.titre}}</center></h2>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <!-- {%if not TabPar.instance.id%}
+            {%include 'editer.html'%}
+            {%endif%} -->
+            <tbody>
+                <tr>
+                {% for candidature in candidatures %}
+                {% if candidature.annonce_id == annonces.id %}
+                
+                    {%if TabCand.instance.id == candidature.id%}
+                    {%include 'editercandidature.html'%}
+                    {%else%}
+                    <td>{{candidature.nom}}</td>
+                    <td>{{candidature.prenom}}</td>
+                    <td>{{candidature.telephone}}</td>
+                    <td>{{candidature.email}}</td>
+                    <td>
+                        <button name="editerCand" value="{{candidature.id}}" class="edit">editer</button>
+                        <button formnovalidate name="supprimerCand" value="{{candidature.id}}" class="delete">supprimer</button>
+                    </td>
+                    {%endif%}
+                </tr>
+                {%endif%}
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+    <center><a href="/jobfinder/admin/tab_Particulier" class="edit">Retour au tableau</a></center>
+
+    {%endif%}
+    {%endif%}
+</body>
+
+</html>

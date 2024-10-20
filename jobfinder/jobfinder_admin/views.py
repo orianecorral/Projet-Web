@@ -3,7 +3,7 @@ from django.apps import apps
 from jobfinder_compte.models import Particuliers
 from jobfinder_compte.models import Entreprises
 from jobfinder_compte.models import Utilisateurs
-from jobfinder_app.models import Annonces
+from jobfinder_app.models import Annonces, Candidatures
 from .forms import *
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -31,7 +31,7 @@ def tab_Particulier(request):
     Utilisateur = Utilisateurs.objects.all()
     Entreprise =Entreprises.objects.all()
     annonces =Annonces.objects.all()
-    
+
     if request.method =='POST': #par ent et ann correspondent chacun à la modif d'un tableau (particulier entreprise et annonce)
         if 'sauvegarderPar' in request.POST:
             ul = request.POST.get('sauvegarderPar')
@@ -102,6 +102,30 @@ def tab_Particulier(request):
         'mails':Utilisateur
         }
     )
+
+def liste_candidature(request, pk):
+    annonces = Annonces.objects.get(id=pk)
+    candidatures = Candidatures.objects.all()
+    candidaturesform = CandidaturesForm(request.POST)
+    if request.method =='POST':
+        if 'sauvegarderCand' in request.POST:
+            ul = request.POST.get('sauvegarderCand')
+            if not ul:
+                candidaturesform = CandidaturesForm(request.POST)
+            else:
+                jul = Candidatures.objects.get(id=ul)
+                candidaturesform = CandidaturesForm(request.POST,instance=jul)
+            candidaturesform.save()
+            candidaturesform = CandidaturesForm()
+        if 'editerCand' in request.POST:
+            ide = request.POST.get('editerCand')
+            jul = Candidatures.objects.get(id=ide)
+            candidaturesform = CandidaturesForm(instance=jul)
+        if 'supprimerCand' in request.POST:
+            ide = request.POST.get('supprimerCand')    
+            jul = Candidatures.objects.get(id=ide)
+            jul.delete()
+    return render(request, 'liste_candidature.html', {'candidatures':candidatures, 'annonces':annonces,'TabCand':candidaturesform,})
 
 
 def form_user(request):
