@@ -107,15 +107,17 @@ main{
         flex-flow: row wrap;
     }
 
-    .annonceElement{
-        flex: 1 45%;
-        margin: 5px;
-    }
+    .annonceTitre{
+      flex: 1 90%;
+      margin: 5px;
+      font-size: xx-large;
+  }
 
-    .annonceElement{
-        flex: 1 45%;
-        margin: 5px;
-    }
+  .annonceElement{
+      flex: 1 45%;
+      margin: 5px;
+      font-size: large;
+  }
     
     .short_description{
         margin: 1%;
@@ -290,14 +292,16 @@ main{
         flex-flow: row wrap;
     }
 
-    .annonceElement{
-        flex: 1 45%;
-        margin: 5px;
-    }
+    .annonceTitre{
+      flex: 1 90%;
+      margin: 5px;
+      font-size: xx-large;
+  }
 
     .annonceElement{
         flex: 1 45%;
         margin: 5px;
+        font-size: large;
     }
     
     .short_description{
@@ -327,14 +331,16 @@ main{
     
         display: flex;
         height: min-content;
-        flex-direction: column;
+        flex-flow: row wrap;
 
         box-shadow: 0px 0px 5px black;
     }
 
     .candElement{
+        flex: 1 45%;
         margin-top: 1%;
         margin-bottom: 1%;
+        font-size: medium;
     }
 
      /* Footer */

@@ -27,6 +27,18 @@
         </nav>
     </header>
         <main>
+
+          <!-- Popup création d'annonce -->
+
+          {% if messages %}
+            <div id="message-popup" style="display:none;">
+              {% for message in messages %}
+                  <p class="message {{ message.tags }}">{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+
           <div class="myInfo">
           {% for entreprise in entreprises %}
         {% if user.id == entreprise.user_id%}
@@ -59,7 +71,8 @@
                   <h6 class="annonceElement"><u>Adresse:</u> <br>{{annonce.adresse}}</h6>
                   <h6 class="annonceElement"><u>Entreprise:</u><br>{{annonce.nom_entreprise}}</h6>
                   <h6 class="annonceElement"><u>Type de contrat:</u><br>{{annonce.contrat}}</h6>
-                   <h6 class="annonceElement"><u>Date de publication:</u><br>{{annonce.date}}</h6>
+                  <h6 class="annonceElement"><u>Date de publication:</u><br>{{annonce.date}}</h6>
+                  <h6 class="annonceElement"><u>Fourchette de salaire:</u><br>{{annonce.salaire}}</h6>
                 </div>
 
                 <div class="short_description">
@@ -155,6 +168,13 @@
               }
             });
           })
+
+          const messagePopup = document.getElementById('message-popup');
+        
+          if (messagePopup && messagePopup.innerText.trim() !== "") {
+              // Créer le popup
+              alert(messagePopup.innerText); 
+        }
 
         </script>
     </body>

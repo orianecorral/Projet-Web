@@ -35,6 +35,26 @@ main{
 }
 
 
+#message-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.message {
+    font-size: 16px;
+    color: #333;
+}
+
+
+
+
 
 @media screen and (max-width: 426px) {
 
@@ -106,12 +126,14 @@ main{
         padding-left: 10px;
         font-size: larger;
         width: 100%;
+        margin-left: 2px;
+        margin-right: 2px;
     }
     
     .searchBut{
         background-color: #457B9D;
         height: 40px;
-        width: 45%;
+        width: 70%;
         border: 0;
         border-radius: 40px;
         text-align: center;
@@ -330,12 +352,15 @@ main{
         padding-left: 10px;
         font-size: larger;
         width: 100%;
+        margin-left: 2px;
+        margin-right: 2px;
     }
     
     .searchBut{
         background-color: #457B9D;
-        height: 40px;
-        width: min-content;
+        height: 50px;
+        min-width: min-content;
+        width: 180px;
         border: 0;
         border-radius: 40px;
         text-align: center;
@@ -385,11 +410,13 @@ main{
     .short_description{
         margin: 1%;
         flex: 2;
+        font-size: large;
     }
     
     .long_description{
         margin: 1%;
         flex: 2;
+        font-size: large;
     }
     
     .buttons{

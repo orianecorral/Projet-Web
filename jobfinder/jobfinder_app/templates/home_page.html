@@ -58,6 +58,16 @@
         </header>
         <br><br>
         <main>
+
+          <!-- Message de d'inscription/candidature -->
+
+          {% if messages %}
+            <div id="message-popup" style="display:none;">
+              {% for message in messages %}
+                  <p class="message {{ message.tags }}">{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
           
           <form method="POST">
 
@@ -69,7 +79,6 @@
                 <input type="text" name="lieu" class="recherche" placeholder="Cherche par lieu"/>
               </div>
                 <button class="searchBut">Rechercher</button>
-                <!-- <img src="{% static 'img/Loupe.png' %}" class="searchBut"> -->
             </div>
 
           </form>
@@ -93,7 +102,7 @@
 
             <!-- Longue description cachée -->
             <div class="long_description" style="display: none;">
-              <p>{{ annonce.long_description }}</p>
+              <p>{{ annonce.long_description |linebreaks }}</p>
             </div>
 
             {% if user.is_authenticated and user.is_particulier == True %}
@@ -141,9 +150,9 @@
           <div class="reseaux">
             <h4>Nos réseaux sociaux : </h4>
             <ul>
-              <a class="loo" href="https://www.instagram.com/hoppy.epitech/" ><img class="logo-footer" src="{% static 'img/Logo_Insta.png' %}" alt=""></a>
-              <a class="loo" href="https://www.linkedin.com/school/epitech---european-institute-of-technology/posts/?feedView=all" ><img class="logo-footer" src="{% static 'img/Logo_LinkedIn.png' %}" alt=""></a>
-              <a class="loo" href="https://x.com/Epitech" ><img class="logo-footer" src="{% static 'img/Logo_X.png' %}" alt=""></a>
+              <a class="loo" href="https://www.instagram.com/hoppy.epitech/" target="_blank" ><img class="logo-footer" src="{% static 'img/Logo_Insta.png' %}" alt=""></a>
+              <a class="loo" href="https://www.linkedin.com/school/epitech---european-institute-of-technology/posts/?feedView=all" target="_blank"><img class="logo-footer" src="{% static 'img/Logo_LinkedIn.png' %}" alt=""></a>
+              <a class="loo" href="https://x.com/Epitech" target="_blank"><img class="logo-footer" src="{% static 'img/Logo_X.png' %}" alt=""></a>
               <a class="loo" href="" ><img src="{% static 'img/Logo_dispo.png' %}" class="logo-footer" alt=""></a>
               <!-- <a  href="" ><img class="logo-footer" src="" alt="">App store</a> -->
             </ul>
@@ -180,8 +189,15 @@
                 button.textContent = "Learn More"
               }
             });
-          })
+          });
 
+        
+        const messagePopup = document.getElementById('message-popup');
+        
+        if (messagePopup && messagePopup.innerText.trim() !== "") {
+            // Créer le popup
+            alert(messagePopup.innerText); 
+        }
         </script>
     </body>
 </html>

@@ -158,7 +158,7 @@ main{
       margin-top: 30px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
   }
   /* Button on Remove fin*/
   
@@ -367,7 +367,8 @@ main{
       flex: 5;
       background-color: #FFFFFF;
       display: flex;
-      flex-flow: column;
+      flex-flow: row;
+      justify-content: center;
       width: 90%;
       border-radius: 30px;
       margin-top: 3%;

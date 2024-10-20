@@ -9,6 +9,7 @@ from .models import Annonces, Candidatures
 from jobfinder_compte.models import Particuliers, Utilisateurs, Entreprises
 from django.contrib.auth import logout
 from django.db.models import Q
+from django.contrib import messages
 
 
 def home_page(request):
@@ -71,7 +72,7 @@ def annonce_entry(request, pk):
             entreprise_id=user.id
             )
         annonce.save()
-
+        messages.success(request, "Votre annonce à bien été créée !")
         return redirect('jobfinder_compte:entreprise_page')
     
     return render(request, 'annonce_form.html')
@@ -93,7 +94,7 @@ def no_compte_candidature_entry(request, pk):
             telephone=telephone,
             annonce_id=annonces.id)
         candidatures.save()
-
+        messages.success(request, "Votre candidature à bien été pris en compte !")
         return redirect('http://127.0.0.1:8000/jobfinder')
     
     return render(request, 'no_compte_candidature_form.html',{'annonces':annonces})
@@ -118,6 +119,7 @@ def compte_candidature_entry(request,pk,pz):
             user_id=user.id)
         candidatures.save()
 
+        messages.success(request, "Votre candidature à bien été pris en compte !")
         return redirect('http://127.0.0.1:8000/jobfinder')
     
     particuliers = Particuliers.objects.all()
