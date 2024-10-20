@@ -17,7 +17,7 @@ def CoAdmin(request):
         user = authenticate(request,username=username, password=password)
         if user is not None and user.is_superuser:
             login(request, user)
-            return redirect('/jobfinder/') #url qui renvoie pas directement au tab admin pour raison de sécurité
+            return redirect('/jobfinder/admin/admin_table/') #url qui renvoie pas directement au tab admin pour raison de sécurité
         else:
              messages.info(request, "Identifiant ou mot de passe incorect")
     return render(request,'connexion_admin.html')
@@ -90,7 +90,7 @@ def tab_Particulier(request):
             jul.delete()
 
 
-    return render(request,'Liste_utilisateur.html',{
+    return render(request,'admin_table.html',{
         'particulier':Particulier,
         'annonces':annonces,
         'entreprises':Entreprise,

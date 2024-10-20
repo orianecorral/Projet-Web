@@ -281,7 +281,7 @@ main{
   
       display: flex;
       height: min-content;
-      flex-flow: row wrap;
+      flex-flow: column wrap;
 
       box-shadow: 0px 0px 5px black;
   }
@@ -306,12 +306,12 @@ main{
     
     .short_description{
         margin: 1%;
-        flex: 2;
+        flex: 2 90%;
     }
     
     .long_description{
         margin: 1%;
-        flex: 2;
+        flex: 2 90%;
     }
 
     .buttons{

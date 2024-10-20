@@ -94,7 +94,7 @@ def no_compte_candidature_entry(request, pk):
             telephone=telephone,
             annonce_id=annonces.id)
         candidatures.save()
-        messages.success(request, "Votre candidature à bien été pris en compte !")
+        messages.success(request, "Votre candidature à bien été prise en compte !")
         return redirect('http://127.0.0.1:8000/jobfinder')
     
     return render(request, 'no_compte_candidature_form.html',{'annonces':annonces})

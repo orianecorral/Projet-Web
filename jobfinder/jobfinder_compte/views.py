@@ -52,7 +52,7 @@ def user_form(request):
         )
         particulier.save()
 
-        messages.success(request, "Création d'un compte particulier réussi !")
+        messages.success(request, "Création d'un compte particulier réussie !")
         return redirect('http://127.0.0.1:8000/jobfinder')
 
     return render(request,'user_form.html')
@@ -99,7 +99,7 @@ def entreprise_form(request):
         )
         entreprise.save()
 
-        messages.success(request, "Création d'un compte entreprise réussi !")
+        messages.success(request, "Création d'un compte entreprise réussie !")
         return redirect('http://127.0.0.1:8000/jobfinder')
     # Apres il faudra redirect to user_page
     return render(request,'entreprise_form.html')

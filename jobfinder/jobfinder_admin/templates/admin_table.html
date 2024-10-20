@@ -19,7 +19,7 @@
     <form method='POST' class="formPart">
         {% csrf_token %}
         <table align="center">
-            <h2><center>Table Particulier</center></h2>
+            <h2><center>Tables Particuliers</center></h2>
             <center><a href="{% url 'form_user'%}" class="edit">Création d'un nouveau profil particulier</a></center>
             <thead>
                 <tr>
@@ -56,7 +56,7 @@
                 <!-- table des entreprises -->
     <form method='POST'>
         {% csrf_token %}
-        <h2><center>Table Entreprise</center></h2>
+        <h2><center>Tables Entreprises</center></h2>
         <center><a href="{% url 'form_entreprise'%}" class="edit">Création d'un nouveau profil entreprise</a></center>
         <table align="center">
             <thead>
@@ -101,7 +101,7 @@
 
     <form method='POST'>
         {% csrf_token %}
-        <h2><center>Table Annonce</center></h2>
+        <h2><center>Tables Annonces</center></h2>
         <table align="center" >
             <thead>
                 <tr>
