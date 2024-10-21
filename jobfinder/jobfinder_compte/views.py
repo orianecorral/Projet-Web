@@ -135,7 +135,7 @@ def connexion_entreprise(request):
 
         if user is not None:
             login(request, user)
-            return redirect("jobfinder_compte:entreprise_page")
+            return redirect("jobfinder_compte:entreprise_page",{'a':True})
         else:
             messages.info(request, "Identifiant ou mot de passe incorect")
 

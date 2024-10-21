@@ -1,36 +1,46 @@
 {%load static%}
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Profil particuliers</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'new_css/style_pages.css' %}">
-</head>
-<body>
-    <header>
-        <nav>
-          <!-- logo -->
-          <div class="logo">
-            <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
-          </div>
 
-          <!-- Vérifié si l'utilisateur est connecté -->
-          <!-- {% if user.is_authenticated %}
+<head>
+
+  {%if a == true%}
+  <script type="text/javascript">
+      alert('Felicitation vous voila connecte');
+  </script>
+  {%endif%}
+  {% csrf_token %}
+  <title>Profil particuliers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'new_css/style_pages.css' %}">
+</head>
+
+<body>
+  
+  <header>
+    <nav>
+      <!-- logo -->
+      <div class="logo">
+        <a href="{% url 'home_page'%}"><img src="{% static 'img/Logo_main.png' %}" class="logo_img"></a>
+      </div>
+
+      <!-- Vérifié si l'utilisateur est connecté -->
+      <!-- {% if user.is_authenticated %}
 
           {% if user.is_particulier == True%} -->
 
-          <div class="log">
-            <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
-            {% for particulier in particuliers %}
-              {% if user.id == particulier.user_id%}
-                {{particulier.prenom}}
-                {% endif %}
-            {% endfor %}</a>
-            <a href="{% url 'logout_user' %}" method="post" class="button-1 inscription">Se déconnecter</a>
-          </div>
+      <div class="log">
+        <a href="{% url 'jobfinder_compte:user_page'%}" class="button-1 connexion">
+          {% for particulier in particuliers %}
+          {% if user.id == particulier.user_id%}
+          {{particulier.prenom}}
+          {% endif %}
+          {% endfor %}</a>
+        <a href="{% url 'logout_user' %}" method="post" class="button-1 inscription">Se déconnecter</a>
+      </div>
 
-          <!-- {% else %}
+      <!-- {% else %}
 
           <div class="log">
             <a href="{% url 'jobfinder_compte:entreprise_page'%}" class="button-1 inscription"> Mon compte pro </a>
@@ -39,78 +49,97 @@
 
         {% endif %} -->
 
-        </nav>
-    </header>
-    <main>
-      <div class="myInfo">
+    </nav>
+  </header>
+  <main>
+    <div class="myInfo">
       <!-- Montrer les informations utilisateurs -->
       {% for particulier in particuliers %}
-        {% if user.id == particulier.user_id%}
-          <h2>Bienvenue <br>{{particulier.prenom}} {{particulier.nom}}</h2>
-          <p class="info">Telephone :<br> {{particulier.telephone}} </p>
-          <p class="info">Email :<br> {{user.email}} </p>
-        {% endif %}
+      {% if user.id == particulier.user_id%}
+      <h2>Bienvenue <br>{{particulier.prenom}} {{particulier.nom}}</h2>
+      <p class="info">Telephone :<br> {{particulier.telephone}} </p>
+      <p class="info">Email :<br> {{user.email}} </p>
+      {% endif %}
       {% endfor %}
-      </div>
-      <div class="log">
-        <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
-        <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 suppr"> Supprimer mon compte  </a>
-      </div>
-      <!-- Ici affichage des candidatures -->
-      
-      <h3><center>Vos Candidatures :</center></h3>
-      {% for candidature in candidatures %}
+    </div>
+    <div class="log">
+      <a href="/compte/update_user/{{user.pk}}" class="button-1 connexion"> Mettre à jour mes informations </a>
+      <a href="/compte/delete_particulier/{{user.pk}}" class="button-1 suppr"> Supprimer mon compte </a>
+    </div>
+    <!-- Ici affichage des candidatures -->
 
-        {% if candidature.user_id == user.id %}
+    <h3>
+      <center>Vos Candidatures :</center>
+    </h3>
+    {% for candidature in candidatures %}
 
-          {% for annonce in annonces %}
+    {% if candidature.user_id == user.id %}
 
-            {% if candidature.annonce_id == annonce.id %}
-          
-            <div class="jobEncart">
-              <h3 class="jobTitle"><u>Titre : </u> {{ annonce.titre }} </h3>
-              <h5 class="annonceElement"><u>Nom de l'entreprise : </u><br>{{annonce.nom_entreprise}}</h5>
-              <h5 class="annonceElement"><u>Adresse : </u><br> {{annonce.adresse}}</h5>
-            </div>
+    {% for annonce in annonces %}
 
-            {% endif %}
+    {% if candidature.annonce_id == annonce.id %}
 
-          {% endfor %}
+    <div class="jobEncart">
+      <h3 class="jobTitle"><u>Titre : </u> {{ annonce.titre }} </h3>
+      <h5 class="annonceElement"><u>Nom de l'entreprise : </u><br>{{annonce.nom_entreprise}}</h5>
+      <h5 class="annonceElement"><u>Adresse : </u><br> {{annonce.adresse}}</h5>
+    </div>
 
-        {% endif %}
+    {% endif %}
 
-      {% endfor %}
+    {% endfor %}
 
-    </main>
-    <footer>
-          
-      <h3><center>Contactez-nous pour trouver votre job de rêve</center></h3>
-      <div class="info-G">
-        <h4 class="infos">A propos de jobfinder</h4>
-        <p class="infos">Email : findyourdreamjob@jobfinder.com </p>
-        <p class="infos">Telephone : 01-45-02-65-16</p>
-        <p class="infos">Siège social : 36 Quai des Orfèvres, <br>75016 Paris </p>
-        <p class="infos">SIRET :  91326852000065 </p>
-      </div>
-     <div class="reseaux-J">
+    {% endif %}
+
+    {% endfor %}
+
+  </main>
+  <footer>
+
+    <h3>
+      <center>Contactez-nous pour trouver votre job de rêve</center>
+    </h3>
+    <div class="info-G">
+      <h4 class="infos">A propos de jobfinder</h4>
+      <p class="infos">Email : findyourdreamjob@jobfinder.com </p>
+      <p class="infos">Telephone : 01-45-02-65-16</p>
+      <p class="infos">Siège social : 36 Quai des Orfèvres, <br>75016 Paris </p>
+      <p class="infos">SIRET : 91326852000065 </p>
+    </div>
+    <div class="reseaux-J">
       <div class="reseaux">
         <h4>Nos réseaux sociaux : </h4>
         <ul>
-          <a class="loo" href="https://www.instagram.com/hoppy.epitech/" ><img class="logo-footer" src="{% static 'img/Logo_Insta.png' %}" alt=""></a>
-          <a class="loo" href="https://www.linkedin.com/school/epitech---european-institute-of-technology/posts/?feedView=all" ><img class="logo-footer" src="{% static 'img/Logo_LinkedIn.png' %}" alt=""></a>
-          <a class="loo" href="https://x.com/Epitech" ><img class="logo-footer" src="{% static 'img/Logo_X.png' %}" alt=""></a>
-          <a class="loo" href="" ><img src="{% static 'img/Logo_dispo.png' %}" class="logo-footer" alt=""></a>
+          <a class="loo" href="https://www.instagram.com/hoppy.epitech/"><img class="logo-footer"
+              src="{% static 'img/Logo_Insta.png' %}" alt=""></a>
+          <a class="loo"
+            href="https://www.linkedin.com/school/epitech---european-institute-of-technology/posts/?feedView=all"><img
+              class="logo-footer" src="{% static 'img/Logo_LinkedIn.png' %}" alt=""></a>
+          <a class="loo" href="https://x.com/Epitech"><img class="logo-footer" src="{% static 'img/Logo_X.png' %}"
+              alt=""></a>
+          <a class="loo" href=""><img src="{% static 'img/Logo_dispo.png' %}" class="logo-footer" alt=""></a>
           <!-- <a  href="" ><img class="logo-footer" src="" alt="">App store</a> -->
         </ul>
       </div>
       <div class="info-J">
-        <p class="mention"><center>CGV</center></p>
-        <p class="mention"><center> - </center></p>
-        <p class="mention"><center>Mentions légales</center></p>
-        <p class="mention"><center> - </center></p>
-        <p class="mention"><center>Traitement de données</center></p>
+        <p class="mention">
+          <center>CGV</center>
+        </p>
+        <p class="mention">
+          <center> - </center>
+        </p>
+        <p class="mention">
+          <center>Mentions légales</center>
+        </p>
+        <p class="mention">
+          <center> - </center>
+        </p>
+        <p class="mention">
+          <center>Traitement de données</center>
+        </p>
       </div>
     </div>
-    </footer>
-    </body>
+  </footer>
+</body>
+
 </html>
